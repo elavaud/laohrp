@@ -239,13 +239,18 @@
 	<message key="submission.comments.noComments">No Comments</message>
 	<message key="submission.comments.noReviews">No Reviews</message>
 	<message key="submission.comments.review">Review</message>
+    <message key="submission.comments.reviewA">Review / ທົບທວນ</message>
+    <message key="submission.comments.reviewS">ທົບທວນ</message>
 	<message key="submission.comments.sendDecisionToReviewers">Send Reviewers editorial decision</message>
 	<message key="submission.comments.subject">Subject</message>
+    <message key="submission.comments.subjectS">ຫົວຂໍ້</message>
 	<message key="submission.complete">Complete</message>
 	<message key="submission.done">Done</message>
-	<message key="submission.dueDate">Due Date</message>
-	<message key="submission.due">Due</message>
+	<message key="submission.dueDate">Date due</message>
+    <message key="submission.dueDateS">ກຳນົດວັນ</message>
+	<message key="submission.due">Date due / ກຳນົດວັນ</message>
 	<message key="submission.editing">Editing</message>
+    <message key="submission.editingS">ກວດແກ້</message>
 	<message key="submission.editMetadata">Edit Metadata</message>
 	<message key="submission.email.backToEmailLog">Back to Email Log</message>
 	<message key="submission.email.confirmClearLog">Are you sure you want to clear the email log for this submission?</message>
@@ -276,6 +281,7 @@
 	<message key="submission.galley">Galley</message>
 	<message key="submission.history.clearLog">Clear Log</message>
 	<message key="submission.history">History</message>
+    <message key="submission.historyS">ປະຫວັດ</message>
 	<message key="submission.history.noLogEntries">No log entries.</message>
 	<message key="submission.history.recentLogEntries">Recent Entries</message>
 	<message key="submission.history.submissionEmailLog">Email Log</message>
@@ -336,17 +342,26 @@
 	<message key="submission.originalFile">Proposal file</message>
 	<message key="submission.page.editing">{$id} Editing</message>
 	<message key="submission.page.history">{$id} History</message>
+    <message key="submission.page.historyS">{$id} ປະຫວັດ</message>
 	<message key="submission.page.review">{$id} Review</message>
-	<message key="submission.page.summary">{$id} Summary</message>
+    <message key="submission.page.reviewS">{$id} ທົບທວນ</message>
+	<message key="submission.page.reviewA">{$id} Review / ທົບທວນ</message>
+    <message key="submission.page.fullReviewA">{$id} Full Review / ທົບທວນ</message>
+    <message key="submission.page.summaryS">{$id} ສະຫລຸບ/ສັງລວມຫຍໍ້</message>
+    <message key="submission.page.summaryA">{$id} Summary / ສະຫລຸບ/ສັງລວມຫຍໍ້</message>
+    <message key="submission.page.summary">{$id} Summary</message>
 	<message key="submission.page.citations">{$id} Citations</message>
 	<message key="submission.peerReview">Peer&amp;nbsp;Review</message>
 	<message key="submission.recommendation">Recommendation</message>
+    <message key="submission.recommendationS">ຂໍ້​ສະ​ເໜີ​ແນະ</message>
 	<message key="submission.rejected">Rejected</message>
 	<message key="submission.request">Request</message>
+    <message key="submission.requestS">ຮ້ອງຂໍ</message>
 	<message key="submission.response">Response</message>
 	<message key="submission.restrictions">Restrictions</message>
 	<message key="submission.reviewMetadata">Review Metadata</message>
 	<message key="submission.review">Review</message>
+    <message key="submission.reviewS">ທົບທວນ</message>
 	<message key="submission.reviewVersion">Review Version</message>
 	<message key="submissions.active">Active</message>
 	<message key="submissions.archived">Archived</message>
@@ -386,13 +401,15 @@
 
 	<message key="submissions.ruling">Ruling</message>
 	<message key="submissions.submit">Date of submission</message>
+    <message key="submissions.submitS">ວັນທີສົ່ງໂຄງການສະຫນີຄົ້ນຄວ້າ</message>
 	<message key="submissions.submitted">Submitted</message>
 	<message key="submission.start">Start</message>
 	<message key="submission.submissionHistory">Submission History</message>
 	<message key="submission.submissionManuscript">Submission Manuscript</message>
 	<message key="submission.submissionReview">Submission Review</message>
 	<message key="submission.submitter">Submitter</message>
-	<message key="submission.summary">Summary</message>
+    <message key="submission.summary">Summary</message>
+	<message key="submission.summaryS">ສະຫລຸບ/ສັງລວມຫຍໍ້</message>
 	<message key="submission.supplementaryFiles">Supplementary Files</message>
 
         <message key="submission.progressReports">Interim Progress Reports</message>
@@ -407,7 +424,7 @@
 	<message key="submission.supportingAgencies">Supporting Agencies</message>
 	<message key="submission.currentAgencies">Current Agencies</message>
 	<message key="submission.indexingInformation">Indexing Information</message>
-	<message key="submission.titleAndAbstract">Title and Abstract</message>
+	<message key="submission.titleAndAbstract">Title and summary of proposal</message>
 	<message key="submission.underway">Underway</message>
 	<message key="submission.uploadFileTo">Upload file to</message>
 	<message key="submission.viewMetadata">View Metadata</message>
@@ -419,5 +436,5 @@
 	<message key="submission.fileDetails">File Details</message>
 	<message key="submission.nameRequired">A name is required for this item.</message>
 	<message key="submission.date.mmdd">MM-DD</message>
-	<message key="submission.date.yyyymmdd">YYYY-MM-DD</message>
+	<message key="submission.date.yyyymmdd">Date of submission</message>
 </locale>

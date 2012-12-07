@@ -23,6 +23,7 @@ switch ($op) {
 	// Submission Tracking
 	//
 	case 'submission':
+	case 'submissionForFullReview':
 	case 'confirmReview':
 	case 'saveCompetingInterests':
 	case 'recordRecommendation':

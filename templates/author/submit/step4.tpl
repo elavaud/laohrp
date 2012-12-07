@@ -55,7 +55,7 @@ $(document).ready(function() {
 </tr>
 <tr class="heading" valign="bottom">
 	<!-- {* <td width="5%">{translate key="common.id"}</td> *} -->
-	<td width="40%">{translate key="common.title"}</td>
+	<td width="40%">{translate key="common.title"} / ຫົວຂໍ້</td>
 	<td width="25%">{translate key="common.originalFileName"}</td>
 	<td width="15%" class="nowrap">{translate key="common.dateUploaded"}</td>
 	<td width="15%" align="right">{translate key="common.action"}</td>
@@ -68,7 +68,7 @@ $(document).ready(function() {
 	<!-- {* <td>{$file->getSuppFileId()}</td> *} -->
 	<td>{$file->getSuppFileTitle()|escape} <!-- {*({$file->getType()|escape}) *} --></td>
 	<td>{$file->getOriginalFileName()|escape}</td>
-	<td>{$file->getDateSubmitted()|date_format:$dateFormatTrunc}</td>
+	<td>{$file->getDateSubmitted()|date_format:$dateFormatLong}</td>
 	<td align="right">
             <!-- {*<a href="{url op="submitSuppFile" path=$file->getSuppFileId() articleId=$articleId}" class="action">{translate key="common.edit"}</a>&nbsp;|&nbsp; *} -->
             <a href="{url op="deleteSubmitSuppFile" path=$file->getSuppFileId() articleId=$articleId}" onclick="return confirm('{translate|escape:"jsparam" key="author.submit.confirmDeleteSuppFile"}')" class="action">{translate key="common.delete"}</a></td>
@@ -84,10 +84,10 @@ $(document).ready(function() {
 
 <table class="data" width="100%">
 <tr>
-	<td width="30%" class="label">Select file type(s)<br />(Hold down the CTRL button to select multiple options.)</td>
+	<td title="ເລືອກຊະນິດຂອງຟາຍເອກະສານ (ກົດCTRLຄ້າງໄວ້ເພື່ອເຂົ້າສູ່ການເລືອກຫລາຍຟາຍພ້ອມກັນ)" width="30%" class="label">[?] Select file type(s)<br />(Hold down the CTRL button to select multiple options.)</td>
 	<td width="35%" class="value">
 <!--Start Edit Jan 30 2012-->
-                <select name="fileType[]" id="fileType" multiple="multiple" size="10" class="selectMenu">
+                <select name="fileType[]" id="fileType" multiple="multiple" size="8" class="selectMenu">
                     {html_options_translate options=$typeOptions translateValues="true" selected=$fileType}
                 </select>
                 <!-- {*
@@ -96,7 +96,7 @@ $(document).ready(function() {
         </td>
         <td style="vertical-align: bottom;">
                 <div id="divOtherFileType" style="display: none;">
-                    <span class="label" style="font-style: italic;">Specify "Other" file type</span> <br />
+                    <span class="label" style="font-style: italic;">Specify "Other" file type / ກະລຸນາລະບຸແຈ້ງ</span> <br />
                     <input type="text" name="otherFileType" id="otherFileType" size="20" /> <br />
                 </div>
         </td>
@@ -115,7 +115,7 @@ $(document).ready(function() {
 <div class="separator"></div>
 
 <p><input type="submit" onclick="return confirmForgottenUpload()" value="{translate key="common.saveAndContinue"}" class="button defaultButton" /> <input type="button" value="{translate key="common.cancel"}" class="button" onclick="confirmAction('{url page="author"}', '{translate|escape:"jsparam" key="author.submit.cancelSubmission"}')" /></p>
-
+<p><span class="formRequired">{translate key="common.laoTranslation"}</span></p>
 </form>
 
 {include file="common/footer.tpl"}

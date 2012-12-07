@@ -13,6 +13,12 @@
 {include file="common/header.tpl"}
 {/strip}
 <div id="aboutPeople">
+<p>
+<b>Head,</b><br/>
+National Health Research Coordination Office<br/>
+&#187; {mailto text="Dr. Sengchanh Kounnavong" address=sengchanhkounnavong@hotmail.com}
+</p>
+
 <h3>{translate key="about.people"}</h3>
 <ul class="plain">
 	{*{if not (empty($journalSettings.mailingAddress) && empty($journalSettings.contactName) && empty($journalSettings.contactAffiliation) && empty($journalSettings.contactMailingAddress) && empty($journalSettings.contactPhone) && empty($journalSettings.contactFax) && empty($journalSettings.contactEmail) && empty($journalSettings.supportName) && empty($journalSettings.supportPhone) && empty($journalSettings.supportEmail))}*}{*Not useful anymore. EL on April 18, 2012*}
@@ -31,7 +37,17 @@
 <ul class="plain">
 
 {* "policie" page changed for SOP pdf by EL on April 10 2012*}
-<li>&#187; <a title="WPRO Standard Operating Procedures" href="/public/WPRO_ERC_SOP_Final2010_web.pdf" target="_blank">WPRO ERC Standard Operating Procedures.<br /></a></li>
+<li>&#187; {*<a title="Standard Operating Procedures (lao)" href="/laohrp/public/Lao_IRBs_HR_SOP_lao.pdf" target="_blank">*}Standard Operating Procedures (lao) - Coming soon...<br />{*</a>*}</li>
+<li>&#187; {*<a title="Standard Operating Procedures (engl)" href="/laohrp/public/WPRO_ERC_SOP_Final2010_web.pdf" target="_blank">*}Standard Operating Procedures (engl) - Coming soon...<br />{*</a>*}</li>
+<li>&#187; {*<a title="Userguide for investigators (engl)" href="/laohrp/public/Lao_IRBs_HR_Investigator_Userguide_lao.pdf" target="_blank">*}Userguide for investigators (lao) - Coming soon...<br />{*</a>*}</li>
+<li>&#187; <a title="Userguide for investigators (lao)" href="/laohrp/public/LaoHRP_Userguide_Investigator_engl.pdf" target="_blank">Userguide for investigators (engl)<br /></a></li>
+</ul>
+</div>
+
+<div id="researchersDirectory">
+<h3>Researchers' Directory</h3>
+<ul class="plain">
+<li>&#187; Coming soon...</li>
 </ul>
 </div>
 

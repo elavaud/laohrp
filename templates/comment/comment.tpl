@@ -86,6 +86,5 @@ function handleAnonymousCheckbox(theBox) {
 
 </form>
 </div>
-
 {include file="common/footer.tpl"}
 

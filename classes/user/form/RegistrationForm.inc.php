@@ -167,13 +167,11 @@ class RegistrationForm extends Form {
 			$userVars[] = 'captchaId';
 			$userVars[] = 'captcha';
 		}
-
 		$this->readUserVars($userVars);
-
+		
 		if ($this->getData('userLocales') == null || !is_array($this->getData('userLocales'))) {
 			$this->setData('userLocales', array());
 		}
-
 		if ($this->getData('username') != null) {
 			// Usernames must be lowercase
 			$this->setData('username', strtolower($this->getData('username')));
@@ -198,7 +196,6 @@ class RegistrationForm extends Form {
 			} else {
 				$user =& $userDao->getUserByUsername($this->getData('username'));
 			}
-
 			if ($user == null) {
 				return false;
 			}
@@ -208,7 +205,6 @@ class RegistrationForm extends Form {
 		} else {
 			// New user
 			$user = new User();
-
 			$user->setUsername($this->getData('username'));
 			$user->setSalutation($this->getData('salutation'));
 			$user->setFirstName($this->getData('firstName'));
@@ -263,19 +259,20 @@ class RegistrationForm extends Form {
 			// Add reviewing interests to interests table
 			$interestDao =& DAORegistry::getDAO('InterestDAO');
 			$interests = Request::getUserVar('interestsKeywords');
-			$interests = array_map('urldecode', $interests); // The interests are coming in encoded -- Decode them for DB storage
-			$interestTextOnly = Request::getUserVar('interests');
-			if(!empty($interestsTextOnly)) {
-				// If JS is disabled, this will be the input to read
-				$interestsTextOnly = explode(",", $interestTextOnly);
-			} else $interestsTextOnly = null;
-			if ($interestsTextOnly && !isset($interests)) {
-				$interests = $interestsTextOnly;
-			} elseif (isset($interests) && !is_array($interests)) {
-				$interests = array($interests);
+			if (is_array($interests)){
+				$interests = array_map('urldecode', $interests); // The interests are coming in encoded -- Decode them for DB storage
+				$interestTextOnly = Request::getUserVar('interests');
+				if(!empty($interestsTextOnly)) {
+					// If JS is disabled, this will be the input to read
+					$interestsTextOnly = explode(",", $interestTextOnly);
+				} else $interestsTextOnly = null;
+				if ($interestsTextOnly && !isset($interests)) {
+					$interests = $interestsTextOnly;
+				} elseif (isset($interests) && !is_array($interests)) {
+					$interests = array($interests);
+				}
+				$interestDao->insertInterests($interests, $user->getId(), true);
 			}
-			$interestDao->insertInterests($interests, $user->getId(), true);
-
 			$sessionManager =& SessionManager::getManager();
 			$session =& $sessionManager->getUserSession();
 			$session->setSessionVar('username', $user->getUsername());
@@ -333,10 +330,12 @@ class RegistrationForm extends Form {
 			if ($this->getData('sendPassword')) {
 				// Send welcome email to user
 				$mail = new MailTemplate('USER_REGISTER');
-				$mail->setFrom($journal->getSetting('contactEmail'), $journal->getSetting('contactName'));
+				$mail->setFrom($journal->getSetting('supportEmail'), $journal->getSetting('supportName'));
+			
 				$mail->assignParams(array(
 					'username' => $this->getData('username'),
-					'password' => String::substr($this->getData('password'), 0, 30), // Prevent mailer abuse via long passwords
+					'password' => String::substr($this->getData('password'), 0, 30),
+					'supportName' => $journal->getSetting('supportName'),
 					'userFullName' => $user->getFullName()
 				));
 				$mail->addRecipient($user->getEmail(), $user->getFullName());

@@ -1117,7 +1117,6 @@ class Smarty
     function fetch($resource_name, $cache_id = null, $compile_id = null, $display = false)
     {
         static $_cache_info = array();
-        
         $_smarty_old_error_level = $this->debugging ? error_reporting() : error_reporting(isset($this->error_reporting)
                ? $this->error_reporting : error_reporting() & ~E_NOTICE);
 
@@ -1255,6 +1254,7 @@ class Smarty
             {
                 include($_smarty_compile_path);
             }
+            
         } else {
             ob_start();
             if ($this->_is_compiled($resource_name, $_smarty_compile_path)
@@ -1269,7 +1269,7 @@ class Smarty
                 $_smarty_results = call_user_func_array($_output_filter[0], array($_smarty_results, &$this));
             }
         }
-
+		
         if ($this->caching) {
             $_params = array('tpl_file' => $resource_name,
                         'cache_id' => $cache_id,
@@ -1289,6 +1289,7 @@ class Smarty
             // restore initial cache_info
             $this->_cache_info = array_pop($_cache_info);
         }
+        
         $this->_cache_including = $_cache_including;
 
         if ($display) {
@@ -1307,6 +1308,7 @@ class Smarty
             error_reporting($_smarty_old_error_level);
             if (isset($_smarty_results)) { return $_smarty_results; }
         }
+        echo '1';
     }
 
     /**
@@ -1377,6 +1379,7 @@ class Smarty
      */
     function _is_compiled($resource_name, $compile_path)
     {
+    	
         if (!$this->force_compile && file_exists($compile_path)) {
             if (!$this->compile_check) {
                 // no need to check compiled file
@@ -1387,6 +1390,7 @@ class Smarty
                 if (!$this->_fetch_resource_info($_params)) {
                     return false;
                 }
+                
                 if ($_params['resource_timestamp'] <= filemtime($compile_path)) {
                     // template not expired, no recompile
                     return true;
@@ -1412,6 +1416,7 @@ class Smarty
     {
 
         $_params = array('resource_name' => $resource_name);
+        
         if (!$this->_fetch_resource_info($_params)) {
             return false;
         }
@@ -1539,7 +1544,7 @@ class Smarty
             $_params['resource_base_path'] = $params['resource_base_path'];
         else
             $_params['resource_base_path'] = $this->template_dir;
-
+		
         if ($this->_parse_resource_name($_params)) {
             $_resource_type = $_params['resource_type'];
             $_resource_name = $_params['resource_name'];
@@ -1589,6 +1594,7 @@ class Smarty
                 $this->trigger_error('unable to read resource: "' . $params['resource_name'] . '"');
             }
         } else if ($_return && $this->security) {
+
             require_once(SMARTY_CORE_DIR . 'core.is_secure.php');
             if (!smarty_core_is_secure($_params, $this)) {
                 if (!$params['quiet'])
@@ -1614,10 +1620,8 @@ class Smarty
 
     function _parse_resource_name(&$params)
     {
-
         // split tpl_path by the first colon
         $_resource_name_parts = explode(':', $params['resource_name'], 2);
-
         if (count($_resource_name_parts) == 1) {
             // no resource type given
             $params['resource_type'] = $this->default_resource_type;
@@ -1651,6 +1655,7 @@ class Smarty
                         return true;
                     }
                 }
+
                 return false;
             } else {
                 /* absolute path */

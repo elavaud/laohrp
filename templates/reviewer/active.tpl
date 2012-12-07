@@ -18,7 +18,8 @@
 {assign var="dateTo" value="--"}
 {/if}
 
- <form method="post" name="submit" action="{url op='submissions' path='active'}">
+
+ <form method="post" name="submit" action="{url op='index' path='active'}">
 	<input type="hidden" name="sort" value="id"/>
 	<input type="hidden" name="sortDirection" value="ASC"/>
 	<select name="searchField" size="1" class="selectMenu">
@@ -42,9 +43,10 @@
 	<input type="hidden" name="dateToMinute" value="59" />
 	<input type="hidden" name="dateToSecond" value="59" />
 	<br/>
-	
+
 	<!-- Allows filtering by technical unit and country -->
 	<!-- Added by: igm 9/24/2011                        -->
+	<!--
 	<h5>Filter by</h5>
 	<select name="technicalUnitField" id="technicalUnit" class="selectMenu">
 		<option value="">All Technical Units</option>
@@ -54,22 +56,25 @@
 		<option value="">All Countries</option>
 		{html_options options=$countries selected=$countryField}
     </select>
+    -->
+
     <br/>
 	<input type="submit" value="{translate key="common.search"}" class="button" />
 </form>
+
 <br/><br/><br/>
+
 <div id="submissions">
 <table class="listing" width="100%">
-	<tr><td colspan="6">ACTIVE PROPOSALS</td></tr>
+	<tr><td colspan="6"><strong>ACTIVE PROPOSALS / ໂຄງການສະຫນີຄົ້ນຄວ້າຢູ່ໃນການທົບທວນ</strong></td></tr>
 	<tr><td colspan="6" class="headseparator">&nbsp;</td></tr>
 	<tr class="heading" valign="bottom">
-		<td width="5%">WHO ID</td> <!-- Replaced id with WHO ID, SPF, 21 Dec 2011 -->
-		<td width="5%"><span class="disabled">{translate key="submission.date.mmdd"}</span><br />{sort_heading key="common.assigned" sort='assignDate'}</td>
-		<!-- <td width="5%">{sort_heading key="submissions.sec" sort="section"}</td> *} Commented out by MSB, Sept25,2011-->
-		<td width="55%">{sort_heading key="article.title" sort='title'}</td>
-		<td width="15%" align="right"><span class="disabled">{translate key="submission.date.mmdd"}</span><br />{sort_heading key="submission.due" sort='dueDate'}</td>
-		<td width="15%" align="right"><span class="disabled">{translate key="submission.date.mmdd"}</span><br />Confirmed</td>
-		<td width="15%" align="right">{translate key="submission.recommendation"}</td>
+		<td width="5%">PROPOSAL ID / ລະຫັດບົດສະເຫນີ</td>
+		<td width="5%">{sort_heading key="common.assigned" sort='assignDate'}</td>
+		<td width="55%">{sort_heading key="article.titleA" sort='title'}</td>
+		<td width="15%" align="right">{sort_heading key="submission.due" sort='dueDate'}</td>
+		<td width="15%" align="right">Confirmed / ມື້ໄດ້ຮັບການຢືນຢັນ</td>
+		<td width="15%" align="right">{translate key="submission.recommendation"} / ຂໍ້ສະເໜີແນະ</td>
 		
 		
 	</tr>
@@ -80,17 +85,17 @@
 	{assign var="reviewId" value=$submission->getReviewId()}
 	{assign var="status" value=$submission->getSubmissionStatus()}
     {assign var="decision" value=$submission->getMostRecentDecision() }
-
-    	
+		
+		
 		<tr valign="top">
 			<td>{$articleId|escape}</td>
-			<td>{$submission->getDateNotified()|date_format:$dateFormatTrunc}</td>
+			<td>{$submission->getDateNotified()|date_format:$dateFormatLong}</td>
 			<!-- {* <td>{$submission->getSectionAbbrev()|escape}</td> *} Commented out by MSB, Sept25,2011-->
-			<td><a href="{url op="submission" path=$reviewId}" class="action">{$submission->getLocalizedTitle()|strip_unsafe_html|truncate:60:"..."}</a></td>
-			<td class="nowrap" align="right">{$submission->getDateDue()|date_format:$dateFormatTrunc}</td>
+			<td><a href="{url op="submission" path=$reviewId}" class="action">{$submission->getLocalizedTitle()|escape}</a></td>
+			<td class="nowrap" align="right">{$submission->getDateDue()|date_format:$dateFormatLong}</td>
 			<td class="nowrap" align="right">
 				{if $submission->getDateConfirmed()!=null && !$submission->getDeclined()}
-				 	{$submission->getDateConfirmed()|date_format:$dateFormatTrunc}
+				 	{$submission->getDateConfirmed()|date_format:$dateFormatLong}
 				{elseif $submission->getDeclined()}
 					<span class="disabled">Declined</span>
 				{else}
@@ -106,13 +111,14 @@
 				{/if}				
 			</td>			
 		</tr>
+		
+		
 		<td colspan="6" class="separator">&nbsp;</td>
 		{assign var="count" value=$count+1}
-		
 {/iterate}
 {if $count==0}
 	<tr>
-		<td colspan="6" class="nodata">{translate key="submissions.noSubmissions"}</td>
+		<td colspan="6" class="nodata">{translate key="submissions.noSubmissions"} / ບໍ່ມີຫຍັງ</td>
 	</tr>
 	<tr>
 		<td colspan="6" class="endseparator">&nbsp;</td>
@@ -122,9 +128,8 @@
 		<td colspan="6" class="endseparator">&nbsp;</td>
 	</tr>
 	<tr>
-		<td colspan="6" align="left">{$count} active submission(s)</td>
+		<td colspan="6" align="left">{$count} active submission(s) / ການສົ່ງບົດ</td>
 	</tr>
 {/if}
 </table>
 </div>
-

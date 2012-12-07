@@ -9,7 +9,8 @@
  * $Id$
  *}
 {strip}
-{assign var="pageTitle" value="user.login.resetPassword"}
+{assign var="pageTitle" value="user.login.resetPasswordA"}
+{assign var="pageCrumbTitle" value="user.login.resetPassword"}
 {include file="common/header.tpl"}
 {/strip}
 {if !$registerLocaleKey}
@@ -30,7 +31,7 @@
 </tr>
 </table>
 
-<p><input type="submit" value="{translate key="user.login.resetPassword"}" class="button defaultButton" /></p>
+<p><input type="submit" value="{translate key="user.login.resetPasswordA"}" class="button defaultButton" /></p>
 
 {if !$hideRegisterLink}
 	&#187; <a href="{url page="user" op=$registerOp}">{translate key=$registerLocaleKey}</a>
@@ -42,6 +43,7 @@
 // -->
 </script>
 </form>
+<p><br/><br/><span class="formRequired">{translate key="common.laoTranslation"}</span></p>
 
 {include file="common/footer.tpl"}
 

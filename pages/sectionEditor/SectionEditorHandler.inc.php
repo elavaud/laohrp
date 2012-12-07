@@ -14,10 +14,8 @@
 
 // $Id$
 
-
 // Filter section
 define('FILTER_SECTION_ALL', 0);
-
 import('classes.submission.sectionEditor.SectionEditorAction');
 import('classes.handler.Handler');
 
@@ -169,8 +167,8 @@ class SectionEditorHandler extends Handler {
          *********************************************************************/
 		$technicalUnitDAO =& DAORegistry::getDAO('TechnicalUnitDAO');
 		$technicalUnits =& $technicalUnitDAO->getTechnicalUnits();
-        $countryDAO =& DAORegistry::getDAO('AsiaPacificCountryDAO');
-        $countries =& $countryDAO->getAsiaPacificCountries();
+        $countryDAO =& DAORegistry::getDAO('ProvincesOfLaosDAO');
+        $countries =& $countryDAO->getProvincesOfLaos();
        
 		$templateMgr->assign_by_ref('technicalUnits', $technicalUnits);
         $templateMgr->assign_by_ref('countries', $countries);
@@ -207,7 +205,7 @@ class SectionEditorHandler extends Handler {
 
 		$roleSymbolic = $isEditor ? 'editor' : 'sectionEditor';
 		$roleKey = $isEditor ? 'user.role.editor' : 'user.role.sectionEditor';
-		$pageHierarchy = $subclass ? array(array(Request::url(null, 'user'), 'navigation.user'), array(Request::url(null, $roleSymbolic), $roleKey), array(Request::url(null, $roleSymbolic), 'article.submissions'))
+		$pageHierarchy = $subclass ? array(array(Request::url(null, 'user'), 'navigation.user'), array(Request::url(null, $roleSymbolic), $roleKey), array(Request::url(null, $roleSymbolic), 'article.submissionsS'))
 			: array(array(Request::url(null, 'user'), 'navigation.user'), array(Request::url(null, $roleSymbolic), $roleKey));
 
 		import('classes.submission.sectionEditor.SectionEditorAction');

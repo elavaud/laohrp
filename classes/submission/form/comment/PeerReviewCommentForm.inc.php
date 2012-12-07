@@ -42,14 +42,19 @@ class PeerReviewCommentForm extends CommentForm {
 		$reviewAssignment =& $reviewAssignmentDao->getById($this->reviewId);
 		$reviewLetters =& $reviewAssignmentDao->getReviewIndexesForRound($this->article->getArticleId(), $this->article->getCurrentRound());
 
+		$showReviewLetters = ($this->roleId == ROLE_ID_EDITOR || $this->roleId == ROLE_ID_SECTION_EDITOR) ? true : false;
+		
 		$templateMgr =& TemplateManager::getManager();
+		
+		
 		$templateMgr->assign('commentType', 'peerReview');
-		$templateMgr->assign('pageTitle', 'submission.comments.review');
+		$templateMgr->assign('showReviewLetters', $showReviewLetters);
+		if ($showReviewLetters) $templateMgr->assign('pageTitle', 'submission.comments.reviewS');
+		else $templateMgr->assign('pageTitle', 'submission.comments.reviewA');
 		$templateMgr->assign('commentAction', 'postPeerReviewComment');
 		$templateMgr->assign('commentTitle', strip_tags($this->article->getLocalizedTitle()));
 		$templateMgr->assign('isLocked', isset($reviewAssignment) && $reviewAssignment->getDateCompleted() != null);
 		$templateMgr->assign('canEmail', false); // Previously, editors could always email.
-		$templateMgr->assign('showReviewLetters', ($this->roleId == ROLE_ID_EDITOR || $this->roleId == ROLE_ID_SECTION_EDITOR) ? true : false);
 		$templateMgr->assign('reviewLetters', $reviewLetters);
 		$templateMgr->assign('reviewer', ROLE_ID_REVIEWER);
 		$templateMgr->assign('hiddenFormParams', 

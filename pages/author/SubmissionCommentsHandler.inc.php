@@ -157,6 +157,25 @@ class SubmissionCommentsHandler extends AuthorHandler {
 	}
 
 	/**
+	 * Post editor decision comments.
+	 */
+	function postEditorDecisionComment() {
+		$this->validate();
+		$this->setupTemplate(true);
+		
+		$articleId = Request::getUserVar('articleId');
+		// If the user pressed the "Save and email" button, then email the comment.
+		$emailComment = Request::getUserVar('saveAndEmail') != null ? true : false;
+
+		$trackSubmissionHandler = new TrackSubmissionHandler();
+		$trackSubmissionHandler->validate($articleId);
+		$submission =& $trackSubmissionHandler->submission;
+		if (AuthorAction::postEditorDecisionComment($submission, $emailComment)) {
+			AuthorAction::viewEditorDecisionComments($submission);
+		}
+	}
+
+	/**
 	 * Email an editor decision comment.
 	 */
 	function emailEditorDecisionComment() {

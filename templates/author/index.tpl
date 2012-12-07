@@ -23,8 +23,8 @@
 {/if}
 
 <ul class="menu">
-	<li{if ($pageToDisplay == "active")} class="current"{/if}><a href="{url op="index" path="active"}">{translate key="common.queue.short.active"}</a></li>
-	<li{if ($pageToDisplay == "completed")} class="current"{/if}><a href="{url op="index" path="completed"}">{translate key="common.queue.short.completed"}</a></li>
+	<li{if ($pageToDisplay == "active")} class="current"{/if}><a href="{url op="index" path="active"}">{translate key="common.queue.short.active"} / ປະຕິບັດ</a></li>
+	<li{if ($pageToDisplay == "completed")} class="current"{/if}><a href="{url op="index" path="completed"}">{translate key="common.queue.short.completed"} / ບ່ອນ​​ເກັບ​ຮັກສາເອກະສານ</a></li>
 </ul>
 
 <br />
@@ -58,6 +58,7 @@
 	
 	<!-- Allows filtering by technical unit and country -->
 	<!-- Added by: igm 9/24/2011                        -->
+	<!--
 	<h5>Filter by</h5>
 	<select name="technicalUnitField" id="technicalUnit" class="selectMenu">
 		<option value="">All Technical Units</option>
@@ -66,7 +67,7 @@
 	<select name="countryField" id="country" class="selectMenu">
 		<option value="">All Countries</option>
 		{html_options options=$countries selected=$countryField}
-    </select>
+    </select>-->
     <br/>
 	<input type="submit" value="{translate key="common.search"}" class="button" />
 </form>
@@ -86,5 +87,8 @@
 {*
 {call_hook name="Templates::Author::Index::AdditionalItems"}
 *}
+
+<p><br/><span class="formRequired">{translate key="common.laoTranslation"}</span></p>
+
 {include file="common/footer.tpl"}
 

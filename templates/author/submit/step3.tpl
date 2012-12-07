@@ -40,7 +40,7 @@
 <div class="separator"></div>
 
 <div id="submissionFile">
-<h3>{translate key="author.submit.submissionFile"}</h3>
+<h3>{translate key="author.submit.submissionFile"} / ຟາຍບົດສະເຫນີ</h3>
 <table class="data" width="100%">
 {if $submissionFile}
 <tr valign="top">
@@ -57,11 +57,11 @@
 </tr>
 <tr valign="top">
 	<td width="20%" class="label">{translate key="common.dateUploaded"}</td>
-	<td width="80%" class="value">{$submissionFile->getDateUploaded()|date_format:$datetimeFormatShort}</td>
+	<td width="80%" class="value">{$submissionFile->getDateUploaded()|date_format:$datetimeFormatLong}</td>
 </tr>
 {else}
 <tr valign="top">
-	<td colspan="2" class="nodata">{translate key="author.submit.noSubmissionFile"}</td>
+	<td title="ຈຳນວນຟາຍເອະສານທີຖືກອັບໂຫລດ. ທ່ານຈຳເປັນຕ້ອງອັບໂຫລດບົດສະເຫນີຫລັກຂອງທານເພື່ອເຂົ້າສູ່ຂັ້ນຕອນທີ4" colspan="2" class="nodata">[?] {translate key="author.submit.noSubmissionFile"}</td>
 </tr>
 {/if}
 </table>
@@ -89,9 +89,15 @@
 
 <div class="separator"></div>
 
-<p><input type="submit"{if !$submissionFile} onclick="return confirm('{translate|escape:"jsparam" key="author.submit.noSubmissionConfirm"}')"{/if} value="{translate key="common.saveAndContinue"}" class="button defaultButton" /> <input type="button" value="{translate key="common.cancel"}" class="button" onclick="confirmAction('{url page="author"}', '{translate|escape:"jsparam" key="author.submit.cancelSubmission"}')" /></p>
-
+<p>
+{if $submissionFile}
+<input type="submit"{if !$submissionFile} onclick="return confirm('{translate|escape:"jsparam" key="author.submit.noSubmissionConfirm"}')"{/if} value="{translate key="common.saveAndContinue"}" class="button defaultButton" /> 
+{/if}
+<input type="button" value="{translate key="common.cancel"}" class="button" onclick="confirmAction('{url page="author"}', '{translate|escape:"jsparam" key="author.submit.cancelSubmission"}')" />
+</p>
+<p><span class="formRequired">{translate key="common.laoTranslation"}</span></p>
 </form>
+
 
 {include file="common/footer.tpl"}
 

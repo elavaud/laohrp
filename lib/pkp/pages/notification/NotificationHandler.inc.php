@@ -38,7 +38,6 @@ class NotificationHandler extends Handler {
 		$rangeInfo =& Handler::getRangeInfo('notifications');
 		$notificationDao =& DAORegistry::getDAO('NotificationDAO');
 		$notifications = $notificationDao->getNotificationsByUserId($userId, NOTIFICATION_LEVEL_NORMAL, $rangeInfo);
-
 		$templateMgr->assign('notifications', $notifications);
 		$templateMgr->assign('unread', $notificationDao->getUnreadNotificationCount($userId));
 		$templateMgr->assign('read', $notificationDao->getReadNotificationCount($userId));

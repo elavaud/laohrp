@@ -9,18 +9,18 @@
  * $Id$
  *}
 <div id="submission">
-<h3>{translate key="article.submission"}</h3>
+<h3>{*{translate key="article.submission"}*}ການສົ່ງບົດສະຫນີ</h3>
 
 <table width="100%" class="data">
 	<tr>
-		<td width="20%" class="label">{translate key="article.authors"}</td>
+		<td width="20%" class="label">{translate key="article.authorsS"}</td>
 		<td width="80%">
 			{url|assign:"url" page="user" op="email" redirectUrl=$currentUrl to=$submission->getAuthorEmails() subject=$submission->getLocalizedTitle() articleId=$submission->getId()}
 			{* {$submission->getAuthorString()|escape} *} {$submission->getFirstAuthor()|escape} {icon name="mail" url=$url}
 		</td>
 	</tr>
 	<tr>
-		<td class="label">{translate key="article.title"}</td>
+		<td class="label">{translate key="article.titleS"}</td>
 		<td>{$submission->getLocalizedTitle()|strip_unsafe_html}</td>
 	</tr>
 <!-- Edited out "Section - Articles"  12Apr2012 -spf
@@ -30,7 +30,7 @@
 	</tr>
 --> 
 	<tr>
-		<td class="label">{translate key="user.role.editor"}</td>
+		<td class="label">{*{translate key="user.role.editor"}*}ເລຂາ</td>
 		<td>
 			{assign var=editAssignments value=$submission->getEditAssignments()}
 			{foreach from=$editAssignments item=editAssignment}

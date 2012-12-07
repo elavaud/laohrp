@@ -9,16 +9,16 @@
  * $Id$
  *}
 
-<script type="text/javascript" src="http://localhost/whorrp-release1/whorrp/lib/pkp/js/lib/jquery/jquery.min.js"></script>
-<script type="text/javascript" src="http://localhost/whorrp-release1/whorrp/lib/pkp/js/lib/jquery/plugins/jqueryUi.min.js"></script>
+<script type="text/javascript" src="http://localhost/laohrp-release1/laohrp/lib/pkp/js/lib/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="http://localhost/laohrp-release1/laohrp/lib/pkp/js/lib/jquery/plugins/jqueryUi.min.js"></script>
 
 {strip}
-{assign var="pageTitle" value="submission.dueDate"}
+{assign var="pageTitle" value="submission.dueDateS"}
 {include file="common/header.tpl"}
 {/strip}
 
 {literal}
-<script type="text/javascript" src="http://localhost/whorrp/lib/pkp/js/lib/jquery/jquery-ui-timepicker-addon.js"></script>
+<script type="text/javascript" src="http://localhost/laohrp/lib/pkp/js/lib/jquery/jquery-ui-timepicker-addon.js"></script>
 <style type="text/css" src="http://localhost/whorr/lib/pkp/styles/jquery-ui-timepicker-addon.css"></style>
 
 <script type="text/javascript">
@@ -61,7 +61,7 @@
 		 *********************************************************************}
 		 		
 	</table>
-<p><input type="submit" value="Set Due Date" class="button defaultButton" /> <input type="button" class="button" onclick="history.go(-1)" value="{translate key="common.cancel"}" /></p>
+<p><input type="submit" value="{translate key="common.saveS"}" class="button defaultButton" /> <input type="button" class="button" onclick="history.go(-1)" value="{translate key="common.cancelS"}" /></p>
 </form>
 </div>
 {include file="common/footer.tpl"}

@@ -11,15 +11,14 @@
 <br/><br/>
 <div id="submissions">
 <table class="listing" width="100%">
-        <tr><td colspan="6">ACTIVE PROPOSALS (Awaiting Decision/Revise and Resubmit)</td></tr>
+        <tr><td colspan="6"><strong>ໂຄງການສະຫນີຄົ້ນຄວ້າຢູ່ໃນການທົບທວນ(ລໍຖ້າການຕັດສິນໃຈ)</strong></td></tr>
 	<tr><td colspan="6" class="headseparator">&nbsp;</td></tr>
 	<tr class="heading" valign="bottom">
-		<td width="5%">WHO Proposal ID</td>
-		<td width="5%"><span class="disabled">{translate key="submission.date.yyyymmdd"}</span><br />{sort_heading key="submissions.submit" sort="submitDate"}</td>
-		<!-- {* <td width="5%">{sort_heading key="submissions.sec" sort="section"}</td> *} Commented out by MSB, Sept 25, 2011 -->
-		<td width="25%">{sort_heading key="article.authors" sort="authors"}</td>
-		<td width="35%">{sort_heading key="article.title" sort="title"}</td>
-		<td width="25%" align="right">{sort_heading key="common.status" sort="status"}</td>
+		<td width="10%">ລະຫັດບົດສະເຫນີ</td>
+		<td width="10%">{*translate key="submissions.submit"*}ວັນທີສົ່ງໂຄງການສະຫນີຄົ້ນຄວ້າ</td>
+		<td width="20%">{*translate key="article.authors"*}ຜູ້ເຮັດການຄົ້ນຄວ້າ</td>
+		<td width="50%">{*translate key="article.title"*}ຫົວຂໍ້</td>
+		<td width="10%" align="right">{*translate key="common.status"*}ສະຖານະ</td>
 	</tr>
 	<tr><td colspan="6" class="headseparator">&nbsp;</td></tr>
 <p></p>
@@ -34,11 +33,11 @@
             {assign var="whoId" value=$submission->getWhoId($submission->getLocale())}
 			<tr valign="top">
 				<td>{if $whoId}{$whoId|escape}{else}&mdash;{/if}</td>
-				<td>{$submission->getDateSubmitted()|date_format:$dateFormatShort}</td>
+				<td>{$submission->getDateSubmitted()|date_format:$dateFormatLong}</td>
 				<!-- {* <td>{$submission->getSectionAbbrev()|escape}</td> *} Commented out by MSB, Sept 25, 2011  --> 
 				<!-- {* <td>{$submission->getAuthorString(true)|truncate:40:"..."|escape}</td> *}  Commented out by MSB -->
    				<td>{$submission->getFirstAuthor(true)|truncate:40:"..."|escape}</td> <!-- Get first author. Added by MSB, Sept 25, 2011 -->
-				<td><a href="{url op="submissionReview" path=$submission->getId()}" class="action">{$submission->getLocalizedTitle()|strip_unsafe_html|truncate:40:"..."}</a></td>
+				<td><a href="{url op="submission" path=$submission->getId()}" class="action">{$submission->getLocalizedTitle()|strip_unsafe_html}</a></td>
 				<td align="right">
 					{assign var="proposalStatusKey" value=$submission->getProposalStatusKey()}
 					{translate key=$proposalStatusKey}
@@ -54,7 +53,7 @@
 {/iterate}
 {if $count==0}
 	<tr>
-		<td colspan="6" class="nodata">{translate key="submissions.noSubmissions"}</td>
+		<td colspan="6" class="nodata">{*translate key="submissions.noSubmissions"*}ບໍ່ມີຫຍັງ</td>
 	</tr>
 	<tr>
 		<td colspan="6" class="endseparator">&nbsp;</td>
@@ -64,22 +63,20 @@
 		<td colspan="6" class="endseparator">&nbsp;</td>
 	</tr>
 	<tr>
-		<td colspan="6" align="left">{$count} submission(s)</td>
+		<td colspan="6" align="left">{$count} ການສົ່ງບົດ</td>
 	</tr>
 {/if}
 </table>
 <br/><br/>
 <table class="listing" width="100%">
-        <tr><td colspan="7">APPROVED PROPOSALS (Research Ongoing)</td></tr>
+        <tr><td colspan="7"><strong>{*APPROVED PROPOSALS (Research Ongoing)*}ໂຄງການສະຫນີຄົ້ນຄວ້າ​ໄດ້ຮັບການອານຸມັດ</strong></td></tr>
 	<tr><td colspan="7" class="headseparator">&nbsp;</td></tr>
 	<tr class="heading" valign="bottom">
-		<td width="5%">WHO Proposal ID</td>
-		<td width="5%"><span class="disabled">{translate key="submission.date.yyyymmdd"}</span><br />{sort_heading key="submissions.submit" sort="submitDate"}</td>
-		<!-- {*	<td width="5%">{sort_heading key="submissions.sec" sort="section"}</td> *}  Commented out by MSB, Sept25, 2011 -->
-		<td width="25%">{sort_heading key="article.authors" sort="authors"}</td>
-		<td width="35%">{sort_heading key="article.title" sort="title"}</td>
-		<td width="15%" align="right">{sort_heading key="common.status" sort="status"}</td>
-		<td width="10%" align="right">{translate key="editor.submission.dateOfApproval"}</td>
+		<td width="10%">{*Proposal ID / *}ລະຫັດບົດສະເຫນີ</td>
+		<td width="10%">{*sort_heading key="submissions.submit" sort="submitDate"*}ວັນທີສົ່ງໂຄງການສະຫນີຄົ້ນຄວ້າ</td>
+		<td width="20%">{*sort_heading key="article.authors" sort="authors"*}ຜູ້ເຮັດການຄົ້ນຄວ້າ</td>
+		<td width="50%">{*sort_heading key="article.title" sort="title"*}ຫົວຂໍ້</td>
+		<td width="10%" align="right">{*translate key="editor.submission.dateOfApproval"*}ສະຖານະ</td>
 	</tr>
 	<tr><td colspan="7" class="headseparator">&nbsp;</td></tr>
 <p></p>
@@ -94,17 +91,13 @@
             {assign var="whoId" value=$submission->getWhoId($submission->getLocale())}
 			<tr valign="top">
 				<td>{if $whoId}{$whoId|escape}{else}&mdash;{/if}</td>
-				<td>{$submission->getDateSubmitted()|date_format:$dateFormatShort}</td>
+				<td>{$submission->getDateSubmitted()|date_format:$dateFormatLong}</td>
 				<!-- {* <td>{$submission->getSectionAbbrev()|escape}</td>  *}--> <!-- Commented out by MSB -->
                 <!-- {* <td>{$submission->getAuthorString(true)|truncate:40:"..."|escape}</td> *} Commented out by MSB -->
    				<td>{$submission->getFirstAuthor(true)|truncate:40:"..."|escape}</td> <!-- Get first author. Added by MSB, Sept 25, 2011 -->
 
-				<td><a href="{url op="submissionReview" path=$submission->getId()}" class="action">{$submission->getLocalizedTitle()|strip_unsafe_html|truncate:40:"..."}</a></td>
-				<td align="right">
-					{assign var="displayStatus" value=$submission->getEditorDecisionKey()}
-					{translate key=$displayStatus}{if $submission->isSubmissionDue()}&nbsp; ({translate key="submissions.proposal.forContinuingReview"}){/if}
-				</td>
-				<td>{$submission->getApprovalDate($submission->getLocale())|date_format:$dateFormatShort}</td>
+				<td><a href="{url op="submission" path=$submission->getId()}" class="action">{$submission->getLocalizedTitle()|strip_unsafe_html}</a></td>
+				<td>{$submission->getApprovalDate($submission->getLocale())|date_format:$dateFormatLong}</td>
 			</tr>
 			<tr>
 				<td colspan="7" class="separator">&nbsp;</td>
@@ -113,7 +106,7 @@
 {/iterate}
 {if $count==0}
 	<tr>
-		<td colspan="6" class="nodata">{translate key="submissions.noSubmissions"}</td>
+		<td colspan="6" class="nodata">{*translate key="submissions.noSubmissions"*}ບໍ່ມີຫຍັງ</td>
 	</tr>
 	<tr>
 		<td colspan="6" class="endseparator">&nbsp;</td>
@@ -123,22 +116,20 @@
 		<td colspan="6" class="endseparator">&nbsp;</td>
 	</tr>
 	<tr>
-		<td colspan="6" align="left">{$count} submission(s)</td>
+		<td colspan="6" align="left">{$count} ການສົ່ງບົດ</td>
 	</tr>
 {/if}
 </table>
 
 <br/><br/>
 <table class="listing" width="100%">
-        <tr><td colspan="6">NOT APPROVED</td></tr>
+        <tr><td colspan="6"><strong>{*NOT APPROVED*}ໂຄງການສະຫນີຄົ້ນຄວ້າບໍ່ຖືກອະນຸມັດ</strong></td></tr>
 	<tr><td colspan="6" class="headseparator">&nbsp;</td></tr>
 	<tr class="heading" valign="bottom">
-		<td width="5%">WHO Proposal ID</td>
-		<td width="5%"><span class="disabled">{translate key="submission.date.yyyymmdd"}</span><br />{sort_heading key="submissions.submit" sort="submitDate"}</td>
-		<!-- <td width="5%">{sort_heading key="submissions.sec" sort="section"}</td> *} Commented out by MSB, Sept25,2011-->
-		<td width="25%">{sort_heading key="article.authors" sort="authors"}</td>
-		<td width="35%">{sort_heading key="article.title" sort="title"}</td>
-		<td width="25%" align="right">{sort_heading key="common.status" sort="status"}</td>
+		<td width="10%">{*Proposal ID / *}ລະຫັດບົດສະເຫນີ</td>
+		<td width="10%">{*sort_heading key="submissions.submit" sort="submitDate"*}ວັນທີສົ່ງໂຄງການສະຫນີຄົ້ນຄວ້າ</td>
+		<td width="20%">{*sort_heading key="article.authors" sort="authors"*}ຜູ້ເຮັດການຄົ້ນຄວ້າ</td>
+		<td width="60%">{*sort_heading key="article.title" sort="title"*}ຫົວຂໍ້</td>
 	</tr>
 	<tr><td colspan="6" class="headseparator">&nbsp;</td></tr>
 <p></p>
@@ -154,21 +145,11 @@
 			{assign var="count" value=$count+1}
 			<tr valign="top">
 				<td>{if $whoId}{$whoId|escape}{else}&mdash;{/if}</td>
-				<td>{$submission->getDateSubmitted()|date_format:$dateFormatShort}</td>
+				<td>{$submission->getDateSubmitted()|date_format:$dateFormatLong}</td>
 				{* <td>{$submission->getSectionAbbrev()|escape}</td> *}
 				<!-- {* <td>{$submission->getAuthorString(true)|truncate:40:"..."|escape}</td> *}  Commented out by MSB -->
    				<td>{$submission->getFirstAuthor(true)|truncate:40:"..."|escape}</td> <!-- Get first author. Added by MSB, Sept 25, 2011 -->
-                <td><a href="{url op="submissionReview" path=$submission->getId()}" class="action">{$submission->getLocalizedTitle()|strip_unsafe_html|truncate:40:"..."}</a></td>
-				<td align="right">
-					{assign var="proposalStatusKey" value=$submission->getProposalStatusKey()}
-					{if $status == PROPOSAL_STATUS_EXEMPTED}
-						{translate key=$proposalStatusKey}	
-					{else}
-						{assign var="editorDecisionKey" value=$submission->getEditorDecisionKey()}
-						{translate key=$editorDecisionKey}
-					{/if}
-				
-				</td>		
+                <td><a href="{url op="submission" path=$submission->getId()}" class="action">{$submission->getLocalizedTitle()|strip_unsafe_html}</a></td>		
 			</tr>
 			<tr>
 				<td colspan="6" class="separator">&nbsp;</td>
@@ -177,7 +158,7 @@
 {/iterate}
 {if $count==0}
 	<tr>
-		<td colspan="6" class="nodata">{translate key="submissions.noSubmissions"}</td>
+		<td colspan="6" class="nodata">{*translate key="submissions.noSubmissions"*}ບໍ່ມີຫຍັງ</td>
 	</tr>
 	<tr>
 		<td colspan="6" class="endseparator">&nbsp;</td>
@@ -187,7 +168,7 @@
 		<td colspan="6" class="endseparator">&nbsp;</td>
 	</tr>
 	<tr>
-		<td colspan="6" align="left">{$count} submission(s)</td>
+		<td colspan="6" align="left">{$count} ການສົ່ງບົດ</td>
 	</tr>
 {/if}
 </table>
@@ -195,15 +176,13 @@
 
 <br/><br/>
 <table class="listing" width="100%">
-        <tr><td colspan="6">EXEMPT FROM REVIEW</td></tr>
+        <tr><td colspan="6"><strong>{*EXEMPT FROM REVIEW*}ໄດ້ຮັບການຍົກເວັ້ນຈາກການທົບທວນ</strong></td></tr>
 	<tr><td colspan="6" class="headseparator">&nbsp;</td></tr>
 	<tr class="heading" valign="bottom">
-		<td width="5%">WHO Proposal ID</td>
-		<td width="5%"><span class="disabled">{translate key="submission.date.yyyymmdd"}</span><br />{sort_heading key="submissions.submit" sort="submitDate"}</td>
-		<!-- {* <td width="5%">{sort_heading key="submissions.sec" sort="section"}</td> *} Commented out by MSB. Sept25,2011-->
-		<td width="25%">{sort_heading key="article.authors" sort="authors"}</td>
-		<td width="35%">{sort_heading key="article.title" sort="title"}</td>
-		<td width="25%" align="right">{sort_heading key="common.status" sort="status"}</td>
+		<td width="10%">{*Proposal ID / *}ລະຫັດບົດສະເຫນີ</td>
+		<td width="10%">{*sort_heading key="submissions.submit" sort="submitDate"*}ວັນທີສົ່ງໂຄງການສະຫນີຄົ້ນຄວ້າ</td>
+		<td width="20%">{*sort_heading key="article.authors" sort="authors"*}ຜູ້ເຮັດການຄົ້ນຄວ້າ</td>
+		<td width="60%">{*sort_heading key="article.title" sort="title"*}ຫົວຂໍ້</td>
 	</tr>
 	<tr><td colspan="6" class="headseparator">&nbsp;</td></tr>
 <p></p>
@@ -219,21 +198,11 @@
 			{assign var="count" value=$count+1}
 			<tr valign="top">
 				<td>{if $whoId}{$whoId|escape}{else}&mdash;{/if}</td>
-				<td>{$submission->getDateSubmitted()|date_format:$dateFormatShort}</td>
+				<td>{$submission->getDateSubmitted()|date_format:$dateFormatLong}</td>
 				<!-- {* <td>{$submission->getSectionAbbrev()|escape}</td> *} -->
 				<!-- {* <td>{$submission->getAuthorString(true)|truncate:40:"..."|escape}</td> *}Commented out by MSB -->
    				<td>{$submission->getFirstAuthor(true)|truncate:40:"..."|escape}</td> <!-- Get first author. Added by MSB, Sept25, 2011 -->
-                <td><a href="{url op="submissionReview" path=$submission->getId()}" class="action">{$submission->getLocalizedTitle()|strip_unsafe_html|truncate:40:"..."}</a></td>
-				<td align="right">
-					{assign var="proposalStatusKey" value=$submission->getProposalStatusKey()}
-					{if $status == PROPOSAL_STATUS_EXEMPTED}
-						{translate key=$proposalStatusKey}	
-					{else}
-						{assign var="editorDecisionKey" value=$submission->getEditorDecisionKey()}
-						{translate key=$editorDecisionKey}
-					{/if}
-				
-				</td>		
+                <td><a href="{url op="submission" path=$submission->getId()}" class="action">{$submission->getLocalizedTitle()|strip_unsafe_html}</a></td>	
 			</tr>
 			<tr>
 				<td colspan="6" class="separator">&nbsp;</td>
@@ -242,7 +211,7 @@
 {/iterate}
 {if $count==0}
 	<tr>
-		<td colspan="6" class="nodata">{translate key="submissions.noSubmissions"}</td>
+		<td colspan="6" class="nodata">{*translate key="submissions.noSubmissions"*}ບໍ່ມີຫຍັງ</td>
 	</tr>
 	<tr>
 		<td colspan="6" class="endseparator">&nbsp;</td>
@@ -252,17 +221,19 @@
 		<td colspan="6" class="endseparator">&nbsp;</td>
 	</tr>
 	<tr>
-		<td colspan="6" align="left">{$count} submission(s)</td>
+		<td colspan="6" align="left">{$count} ການສົ່ງບົດ</td>
 	</tr>
 {/if}
 
 {if $submissions1->wasEmpty()}
+<!--
 	<tr>
 		<td colspan="6" class="nodata">{translate key="submissions.noSubmissions"}</td>
 	</tr>
 	<tr>
 		<td colspan="6" class="endseparator">&nbsp;</td>
 	</tr>
+-->
 {else}
 	<tr>
 		<td colspan="4" align="left">{page_info iterator=$submissions1}</td>

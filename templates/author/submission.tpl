@@ -9,19 +9,14 @@
  * $Id$
  *}
 {strip}
-{translate|assign:"pageTitleTranslated" key="submission.page.summary" id=$submission->getWhoId($submission->getLocale())} 
+{translate|assign:"pageTitleTranslated" key="submission.page.summaryA" id=$submission->getWhoId($submission->getLocale())} 
 {assign var="pageCrumbTitle" value="submission.summary"}
 {include file="common/header.tpl"}
 {/strip}
 
 <ul class="menu">
-	<li class="current"><a href="{url op="submission" path=$submission->getArticleId()}">{translate key="submission.summary"}</a></li>
-        <li><a href="{url op="submissionReview" path=$submission->getArticleId()}">{translate key="submission.review"}</a></li>
-        <!-- Comment out, AIM, June 21, 201
-        {*
-	<li><a href="{url op="submissionEditing" path=$submission->getArticleId()}">{translate key="submission.editing"}</a></li>
-        *}
-        -->
+	<li class="current"><a href="{url op="submission" path=$submission->getArticleId()}">{translate key="submission.summary"} / {translate key="submission.summaryS"}</a></li>
+    <li><a href="{url op="submissionReview" path=$submission->getArticleId()}">{translate key="submission.review"} / {translate key="submission.reviewS"}</a></li>
 </ul>
 
 {include file="author/submission/management.tpl"}

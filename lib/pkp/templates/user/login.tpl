@@ -9,7 +9,8 @@
  * $Id$
  *}
 {strip}
-{assign var="pageTitle" value="user.login"}
+{assign var="pageTitle" value="user.logInA"}
+{assign var="pageCrumbTitle" value="user.logIn"}
 {include file="common/header.tpl"}
 {/strip}
 
@@ -41,14 +42,16 @@
 <input type="hidden" name="source" value="{$source|escape}" />
 
 {if ! $implicitAuth}
-	<table id="signinTable" class="data">
+	<table id="signinTable" class="data" width="100%">
 	<tr>
-		<td class="label"><label for="loginUsername">{translate key="user.username"}</label></td>
-		<td class="value"><input type="text" id="loginUsername" name="username" value="{$username|escape}" size="20" maxlength="32" class="textField" /></td>
+		<td width="15%" title="ຊື່ຜູ້ໃຊ້" class="label"><label for="loginUsername">[?] {translate key="user.username"}</label></td>
+		<td width="50%" class="value"><input type="text" id="loginUsername" name="username" value="{$username|escape}" size="20" maxlength="32" class="textField" /></td>
+		<td width="35%">{translate key="about.onlineSubmissions.needAccount"}</td>
 	</tr>
 	<tr>
-		<td class="label"><label for="loginPassword">{translate key="user.password"}</label></td>
-		<td class="value"><input type="password" id="loginPassword" name="password" value="{$password|escape}" size="20" maxlength="32" class="textField" /></td>
+		<td title="ລະຫັດຜ່ານ" class="label"><label for="loginPassword">[?] {translate key="user.password"}</label></td>
+		<td class="value"><input type="password" id="loginPassword" name="password" value="{$password|escape}" size="20" maxlength="32" class="textField" />&nbsp;&nbsp;&nbsp;&nbsp;&#187; <a href="{url page="login" op="lostPassword"}">{translate key="user.login.forgotPassword"}</a></td>
+		<td>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&#187; <a href="{url page="user" op="register"}" class="action">{translate key="about.onlineSubmissions.registration"}</a></td>
 	</tr>
 	{if $showRemember}
 	<tr valign="middle">
@@ -62,17 +65,7 @@
 		<td><input type="submit" value="{translate key="user.login"}" class="button" /></td>
 	</tr>
 	</table>
-
-	<p>
-		{if !$hideRegisterLink}&#187; <a href="{url page="user" op=$registerOp}">{translate key=$registerLocaleKey}</a><br />{/if}
-		&#187; <a href="{url page="login" op="lostPassword"}">{translate key="user.login.forgotPassword"}</a>
-	</p>
 	
-	<p>
-	{** Registration link added by EL on April 11 2012 *}
-	<br />{translate key="about.onlineSubmissions.needAccount"}<br /><br />
-	&#187; <a href="{url page="user" op="register"}" class="action">{translate key="about.onlineSubmissions.registration"}</a>
-	</p>
 	
 {/if}{* !$implicitAuth *}
 
@@ -82,6 +75,6 @@
 // -->
 </script>
 </form>
-
+<p><br/><br/><span class="formRequired">{translate key="common.laoTranslation"}</span></p>
 {include file="common/footer.tpl"}
 

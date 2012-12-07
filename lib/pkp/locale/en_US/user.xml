@@ -12,8 +12,16 @@
 
 <locale name="en_US" full_name = "English">
 	<message key="user.affiliation">Affiliation</message>
-	<message key="user.affiliation.description">(Your institution, e.g. "Simon Fraser University")</message>
+    <message key="user.uhsStudent">UHS Student</message>
+    <message key="user.studentId">Student ID</message>
+    <message key="user.tel">Phone number</message>
+	<message key="user.affiliation.description">(Your institution, e.g. "University of Health Sciences, Vientiane, Lao PDR")</message>
 	<message key="user.affiliations">Affiliations</message>
+
+        <!-- Added by EL on May 8, 2012-->
+        <message key="user.fieldOfActivity">Field of Activity</message>
+        <message key="user.fieldOfActivity.description">(e.g. "Noncommunicable Diseases")</message>
+
 	<message key="user.authorization.accessDenied">Access denied.</message>
 	<message key="user.authorization.processAuthenticationTokenRequired">The process authentication token is missing or invalid.</message>
 	<message key="user.authorization.contextRequired">You cannot call this operation without a context (press, journal, conference, etc).</message>
@@ -26,6 +34,7 @@
 	<message key="user.biography.description">(E.g., department and rank)</message>
 	<message key="user.changeMyPassword">Change My Password</message>
 	<message key="user.changePassword">Change Password</message>
+	<message key="user.changePasswordA">Change Password</message>
 	<message key="user.dateLastLogin">Last login</message>
 	<message key="user.dateRegistered">Date registered</message>
 	<message key="user.editMyProfile">Edit My Profile</message>
@@ -51,6 +60,7 @@
 	<message key="user.login.loginError">Invalid username or password. Please try again.</message>
 	<message key="user.login">Log In</message>
 	<message key="user.logIn">Log In</message>
+    <message key="user.logInA">Log In</message>
 	<message key="user.login.lostPassword.confirmationSent">A confirmation has been sent to your email address. Please follow the instructions in the email to reset your password.</message>
 	<message key="user.login.lostPassword.invalidHash">Sorry, the link you clicked on has expired or is not valid. Please try resetting your password again.</message>
 	<message key="user.login.lostPassword.invalidUser">No user exists with the specified email address.</message>
@@ -58,7 +68,8 @@
 	<message key="user.login.registeredEmail">Registered user's email</message>
 	<message key="user.login.rememberUsernameAndPassword">Remember my username and password</message>
 	<message key="user.login.resetPassword">Reset Password</message>
-	<message key="user.logOut">Log Out</message>
+	<message key="user.login.resetPasswordA">Reset Password</message>
+    <message key="user.logOut">Log Out</message>
 	<message key="user.mailingAddress">Mailing address</message>
 	<message key="user.masculine">M</message>
 	<message key="user.middleName">Middle name</message>
@@ -112,11 +123,13 @@
 	<message key="user.register.passwordLengthRestriction">The password must be at least {$length} characters.</message>
 	<message key="user.register.registerAs">Register as</message>
 	<message key="user.register">Register</message>
+    <message key="user.registerA">Register / ຜູ້ລົງທະບຽນ</message>
 	<message key="user.register.usernameRestriction">The username must contain only lowercase letters, numbers, and hyphens/underscores.</message>
 	<message key="user.role.reader">Reader</message>
 	<message key="user.role.readers">Readers</message>
-	<message key="user.role.reviewer">ERC Member</message>/*MSB replaced Reviewers with ERC Member*/)
-	<message key="user.role.reviewers">ERC Members</message> /*From reviewers*/
+	<message key="user.role.reviewer">ERC Member / ຄະນະກຳມະການທົບທວນຈັນຍາທຳ</message>
+	<message key="user.role.reviewers">Ethical Committees Members</message> /*From reviewers*/
+    <message key="user.role.reviewersS">ເພີ່ມຜູ້ທົບທວນອື່ນໆ</message>
 	<message key="user.role.siteAdmin">Site Administrator</message>
 	<message key="user.role.siteAdmins">Site Administrators</message>
 	<message key="user.roles">Roles</message>
@@ -127,7 +140,8 @@
 	<message key="user.title">Title</message>
 	<message key="user.url">URL</message>
 	<message key="user.userHome">User Home</message>
+	<message key="user.userHomeA">User Home</message>
 	<message key="user.username">Username</message>
 	<message key="user.workingLanguages">Working languages</message>
-	<message key="user.register.completeForm">Fill in this form to register with this journal.</message>
+	<message key="user.register.completeForm">Fill in this form to register to the Lao PDR. Health Research Portal.</message>
 </locale>

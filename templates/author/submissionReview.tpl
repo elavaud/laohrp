@@ -9,15 +9,14 @@
  * $Id$
  *}
 {strip}
-{translate|assign:"pageTitleTranslated" key="submission.page.review" id=$submission->getId()}
+{translate|assign:"pageTitleTranslated" key="submission.page.reviewA" id=$submission->getWhoId($submission->getLocale())}
 {assign var="pageCrumbTitle" value="submission.review"}
 {include file="common/header.tpl"}
 {/strip}
 
 <ul class="menu">
-	<li><a href="{url op="submission" path=$submission->getId()}">{translate key="submission.summary"}</a></li>
-	<li class="current"><a href="{url op="submissionReview" path=$submission->getId()}">{translate key="submission.review"}</a></li>
-	<!-- {* <li><a href="{url op="submissionEditing" path=$submission->getId()}">{translate key="submission.editing"}</a></li> *} -->
+	<li><a href="{url op="submission" path=$submission->getId()}">{translate key="submission.summary"} / {translate key="submission.summaryS"}</a></li>
+	<li class="current"><a href="{url op="submissionReview" path=$submission->getId()}">{translate key="submission.review"} / {translate key="submission.reviewS"}</a></li>
 </ul>
 
 
@@ -25,7 +24,10 @@
 
 <div class="separator"></div>
 
-<!-- {* {include file="author/submission/peerReview.tpl"} *} -->
+{include file="author/submission/peerReview.tpl"}
+
+<div class="separator"></div>
+
 {include file="author/submission/status.tpl"}
 
 <div class="separator"></div>

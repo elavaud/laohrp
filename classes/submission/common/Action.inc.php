@@ -16,7 +16,6 @@
  * @brief Application-specific submission actions.
  */
 
-
 /* These constants correspond to editing decision "decision codes". */
 define('SUBMISSION_EDITOR_DECISION_ACCEPT', 1);		//APPROVED
 define('SUBMISSION_EDITOR_DECISION_RESUBMIT', 2);	//REVISE AND RESUBMIT
@@ -42,11 +41,13 @@ define('SUBMISSION_FIELD_REVIEWER', 4);
 define('SUBMISSION_FIELD_COPYEDITOR', 5);
 define('SUBMISSION_FIELD_LAYOUTEDITOR', 6);
 define('SUBMISSION_FIELD_PROOFREADER', 7);
+define('SUBMISSION_FIELD_ID', 8);
 
 define('SUBMISSION_FIELD_DATE_SUBMITTED', 4);
 define('SUBMISSION_FIELD_DATE_COPYEDIT_COMPLETE', 5);
 define('SUBMISSION_FIELD_DATE_LAYOUT_COMPLETE', 6);
 define('SUBMISSION_FIELD_DATE_PROOFREADING_COMPLETE', 7);
+define('SUBMISSION_FIELD_DATE_APPROVED', 8);
 
 import('lib.pkp.classes.submission.common.PKPAction');
 

@@ -37,26 +37,21 @@ class SubmissionReviewHandler extends ReviewerHandler {
 	function submission($args) {
 		$journal =& Request::getJournal();
 		$reviewId = $args[0];
-
 		$this->validate($reviewId);
 		$user =& $this->user;
 		$submission =& $this->submission;
 
 		$reviewAssignmentDao =& DAORegistry::getDAO('ReviewAssignmentDAO');
 		$reviewAssignment = $reviewAssignmentDao->getById($reviewId);
-
 		$reviewFormResponseDao =& DAORegistry::getDAO('ReviewFormResponseDAO');
-
 		if ($submission->getDateConfirmed() == null) {
 			$confirmedStatus = 0;
 		} else {
 			$confirmedStatus = 1;
 		}
-
 		$this->setupTemplate(true, 0, $reviewAssignment->getSubmissionId(), $reviewId);
 
 		$templateMgr =& TemplateManager::getManager();
-
 		$templateMgr->assign_by_ref('user', $user);
 		$templateMgr->assign_by_ref('submission', $submission);
 		$templateMgr->assign_by_ref('reviewAssignment', $reviewAssignment);
@@ -68,14 +63,37 @@ class SubmissionReviewHandler extends ReviewerHandler {
 		$templateMgr->assign_by_ref('suppFiles', $submission->getSuppFiles());
 		$templateMgr->assign_by_ref('journal', $journal);
 		$templateMgr->assign_by_ref('reviewGuidelines', $journal->getLocalizedSetting('reviewGuidelines'));
-
 		import('classes.submission.reviewAssignment.ReviewAssignment');
 		$templateMgr->assign_by_ref('reviewerRecommendationOptions', ReviewAssignment::getReviewerRecommendationOptions());
 
-		$templateMgr->assign('helpTopicId', 'editorial.reviewersRole.review');		
+		$templateMgr->assign('helpTopicId', 'editorial.reviewersRole.review');
 		$templateMgr->display('reviewer/submission.tpl');
+		
 	}
 
+	/**
+	 * Display a submission for full review page.
+	 * @param $args array
+	 */
+	function submissionForFullReview($args) {
+		$journal =& Request::getJournal();
+		$articleId = $args[0];
+		//$this->validate();
+		$ReviewerSubmissionDao = DAORegistry::getDAO('ReviewerSubmissionDAO');
+		
+		$submission =& $ReviewerSubmissionDao->getSubmissionForFullReview($articleId);
+		
+		$this->setupTemplate(true);
+		$templateMgr =& TemplateManager::getManager();
+		
+		$templateMgr->assign_by_ref('submission', $submission);
+
+		$templateMgr->assign_by_ref('reviewerFile', $submission->getReviewerFile());
+		$templateMgr->assign_by_ref('suppFiles', $submission->getSuppFiles());
+		$templateMgr->assign_by_ref('journal', $journal);
+		$templateMgr->display('reviewer/submissionFullReview.tpl');
+	}
+	
 	/**
 	 * Confirm whether the review has been accepted or not.
 	 * @param $args array optional
@@ -172,7 +190,7 @@ class SubmissionReviewHandler extends ReviewerHandler {
 		$reviewerSubmission =& $this->submission;
 
 		$this->setupTemplate(true, 0, $articleId, $reviewId);
-
+		
 		ReviewerAction::viewMetadata($reviewerSubmission, $journal);
 	}
 
@@ -279,7 +297,7 @@ class SubmissionReviewHandler extends ReviewerHandler {
 		$newKey = Request::getUserVar('key');
 
 		$reviewerSubmission =& $reviewerSubmissionDao->getReviewerSubmission($reviewId);
-
+		
 		if (!$reviewerSubmission || $reviewerSubmission->getJournalId() != $journal->getId()) {
 			$isValid = false;
 		} elseif ($user && empty($newKey)) {
@@ -290,14 +308,15 @@ class SubmissionReviewHandler extends ReviewerHandler {
 			$user =& SubmissionReviewHandler::validateAccessKey($reviewerSubmission->getReviewerId(), $reviewId, $newKey);
 			if (!$user) $isValid = false;
 		}
-
+		
 		if (!$isValid) {
 			Request::redirect(null, Request::getRequestedPage());
 		}
-
+		
 		$this->submission =& $reviewerSubmission;
 		$this->user =& $user;
 		return true;
 	}
+	
 }
 ?>

@@ -31,8 +31,12 @@ class EditorDecisionCommentForm extends CommentForm {
 	 * Display the form.
 	 */
 	function display() {
+		
+		$showReviewLetters = ($this->roleId == ROLE_ID_EDITOR || $this->roleId == ROLE_ID_SECTION_EDITOR) ? true : false;	
 		$templateMgr =& TemplateManager::getManager();
-		$templateMgr->assign('pageTitle', 'submission.comments.editorAuthorCorrespondence');
+		$templateMgr->assign('showReviewLetters', $showReviewLetters);
+		if ($showReviewLetters) $templateMgr->assign('pageTitle', 'submission.comments.editorAuthorCorrespondenceS');
+		else $templateMgr->assign('pageTitle', 'submission.comments.editorAuthorCorrespondence');
 		$templateMgr->assign('articleId', $this->article->getArticleId());
 		$templateMgr->assign('commentAction', 'postEditorDecisionComment');
 		$templateMgr->assign('hiddenFormParams', 

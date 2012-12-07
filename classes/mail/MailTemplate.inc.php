@@ -121,7 +121,6 @@ class MailTemplate extends PKPMailTemplate {
 			$paramArray['principalContactSignature'] = $site->getLocalizedContactName();
 		}
 		if (!isset($paramArray['journalUrl'])) $paramArray['journalUrl'] = Request::url(Request::getRequestedJournalPath());
-
 		return parent::assignParams($paramArray);
 	}
 

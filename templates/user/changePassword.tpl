@@ -9,7 +9,8 @@
  * $Id$
  *}
 {strip}
-{assign var="pageTitle" value="user.changePassword"}
+{assign var="pageTitle" value="user.changePasswordA"}
+{assign var="pageCrumbTitle" value="user.changePassword"}
 {url|assign:"currentUrl" page="user" op="changePassword"}
 {include file="common/header.tpl"}
 {/strip}
@@ -32,10 +33,10 @@
 </tr>
 <tr valign="top">
 	<td></td>
-	<td><span class="instruct">{translate key="user.register.passwordLengthRestriction" length=$minPasswordLength}</span></td>
+	<td><span title="ລະຫັດຜ່ານຢ່າງຫນ້ອຍຕ້ອງມີ 6 ຕົວອັກສອນ" class="instruct">[?] {translate key="user.register.passwordLengthRestriction" length=$minPasswordLength}</span></td>
 </tr>
 <tr valign="top">
-	<td class="label">{fieldLabel name="password2" key="user.profile.repeatNewPassword"}</td>
+	<td class="label">{fieldLabel name="password2" key="user.profile.repeatNewPassword"} / ພິມລະຫັດຜ່ານອີກຄັ້ງ</td>
 	<td class="value"><input type="password" name="password2" id="password2" value="{$password2|escape}" size="20" maxlength="32" class="textField" /></td>
 </tr>
 </table>
@@ -43,5 +44,6 @@
 <p><input type="submit" value="{translate key="common.save"}" class="button defaultButton" /> <input type="button" value="{translate key="common.cancel"}" class="button" onclick="document.location.href='{url page="user" escape=false}'" /></p>
 </form>
 </div>
+<p><span class="formRequired">{translate key="common.laoTranslation"}</span></p>
 {include file="common/footer.tpl"}
 

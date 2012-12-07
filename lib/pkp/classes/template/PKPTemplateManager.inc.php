@@ -240,10 +240,10 @@ class PKPTemplateManager extends Smarty {
 	 * @see Smarty::fetch()
 	 */
     function fetch($resource_name, $cache_id = null, $compile_id = null, $display = false) {
+
     	if (!$this->initialized) {
 			$this->initialize();
 		}
-
     	// Add additional java script URLs
 		if (!empty($this->javaScripts)) {
 			$baseUrl = $this->get_template_vars('baseUrl');
@@ -268,6 +268,7 @@ class PKPTemplateManager extends Smarty {
 	 * Display the template.
 	 */
 	function display($template, $sendContentType = null, $hookName = null, $display = true) {
+
 		// Set the defaults
 		// N.B: This was moved from method signature to allow calls such as: ->display($template, null, null, false)
 		if ( is_null($sendContentType) ) {
@@ -339,6 +340,7 @@ class PKPTemplateManager extends Smarty {
 		if ($instance === null) {
 			$instance = new TemplateManager($request);
 		}
+
 		return $instance;
 	}
 

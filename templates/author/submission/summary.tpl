@@ -9,30 +9,30 @@
  * $Id$
  *}
 <div id="submission">
-<h3>{translate key="article.submission"}</h3>
+<h3>{translate key="article.submission"} / ການສົ່ງບົດສະຫນີ</h3>
 
 <table width="100%" class="data">
 	<tr>
-		<td width="20%" class="label">{translate key="article.authors"}</td>
-		<td width="80%">
+		<td width="30%" class="label">{translate key="article.authors"} / {translate key="article.authorsS"}</td>
+		<td width="70%">
                         
 			{url|assign:"url" page="user" op="email" redirectUrl=$currentUrl to=$submission->getAuthorEmails() subject=$submission->getLocalizedTitle() articleId=$submission->getArticleId()}
 			{$submission->getAuthorString()|escape} {icon name="mail" url=$url}
                         
                         
-			{$submission->getFirstAuthor()|escape}
+			{*{$submission->getFirstAuthor()|escape}*}
 		</td>
 	</tr>
 	<tr>
-		<td class="label">{translate key="article.title"}</td>
+		<td class="label">{translate key="article.title"} / {translate key="article.titleS"}</td>
 		<td>{$submission->getLocalizedTitle()|strip_unsafe_html}</td>
 	</tr>
-	{** <tr>
-		<td class="label">{translate key="section.section"}</td>
-		<td>{$submission->getSectionTitle()|escape}</td>
-	</tr> *}
 	<tr>
-		<td class="label">{translate key="user.role.editor"}</td>
+		<td class="label">{translate key="section.section"} / ຄະນະກຳມະການຈັນຍາທຳ</td>
+		<td>{$submission->getSectionTitle()|escape}</td>
+	</tr>
+	<tr>
+		<td class="label">{translate key="user.role.editor"} / ເລຂາ</td>
 		<td>
 			{assign var=editAssignments value=$submission->getEditAssignments()}
 			{foreach from=$editAssignments item=editAssignment}

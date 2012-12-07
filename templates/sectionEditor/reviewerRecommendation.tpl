@@ -9,7 +9,8 @@
  * $Id$
  *}
 {strip}
-{assign var="pageTitle" value="submission.recommendation"}
+{assign var="pageTitle" value="submission.recommendationS"}
+{assign var="pageCrumbTitle" value="submission.recommendation"}
 {include file="common/header.tpl"}
 {/strip}
 <div id="reviewerRecommendation">
@@ -22,7 +23,7 @@
 <input type="hidden" name="reviewId" value="{$reviewId|escape}" />
 <table width="100%" class="data">
 <tr valign="top">
-	<td width="20%" class="label">{translate key="editor.article.recommendation"}</td>
+	<td width="20%" class="label">{*translate key="editor.article.recommendation"*}ຂໍ້​ສະ​ເໜີ​ແນະ</td>
 	<td width="80%" class="value">
 		<select name="recommendation" size="1" class="selectMenu">
 			{html_options_translate options=$reviewerRecommendationOptions}
@@ -30,7 +31,7 @@
 	</td>
 </tr>
 </table>
-<p><input type="submit" value="{translate key="common.save"}" class="button defaultButton" /> <input type="button" value="{translate key="common.cancel"}" class="button" onclick="document.location.href='{url op="submissionReview" path=$articleId escape=false}';"/></p>
+<p><input type="submit" value="{translate key="common.saveS"}" class="button defaultButton" /> <input type="button" value="{translate key="common.cancelS"}" class="button" onclick="document.location.href='{url op="submissionReview" path=$articleId escape=false}';"/></p>
 </form>
 </div>
 {include file="common/footer.tpl"}

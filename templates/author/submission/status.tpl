@@ -9,15 +9,15 @@
  * $Id$
  *}
 <div id="status">
-<h3>{translate key="common.status"}</h3>
+<h3>{translate key="common.status"} / ສະຖານະ</h3>
 
 {* When editing this page, edit templates/sectionEditor/submission/status.tpl as well *}
 
 <table width="100%" class="data">
 	<tr>
 		{assign var="status" value=$submission->getSubmissionStatus()}
-		<td width="20%" class="label">{translate key="common.status"}</td>
-		<td width="80%" class="value">
+		<td width="30%" class="label">{translate key="common.status"} / ສະຖານະ</td>
+		<td width="70%" class="value">
                         {*
 			{if $status == STATUS_ARCHIVED}{translate key="submissions.archived"}
 			{elseif $status==STATUS_QUEUED_UNASSIGNED}{translate key="submissions.queuedUnassigned"}
@@ -43,27 +43,36 @@
                         {elseif $status==PROPOSAL_STATUS_EXPEDITED}{translate key="submissions.proposal.expedited"}
                         {elseif $status==PROPOSAL_STATUS_ASSIGNED}{translate key="submissions.proposal.assigned"}
                         {elseif $status==PROPOSAL_STATUS_RETURNED}{translate key="submissions.proposal.returned"}
+                        <br/><a href="{url op="resubmit" path=$submission->getId()}" class="action">Resubmit</a>
                         {elseif $status==PROPOSAL_STATUS_EXEMPTED}{translate key="submissions.proposal.exempted"}
                         {elseif $status==PROPOSAL_STATUS_REVIEWED}
                             {assign var="decision" value=$submission->getMostRecentDecision()}
                             {if $decision==SUBMISSION_EDITOR_DECISION_RESUBMIT}{translate key="submissions.proposal.resubmit"}
+                            <a href="{url op="resubmit" path=$submission->getId()}" class="action">Resubmit</a>
                             {elseif $decision==SUBMISSION_EDITOR_DECISION_ACCEPT}{translate key="submissions.proposal.approved"}
                             {elseif $decision==SUBMISSION_EDITOR_DECISION_DECLINE}{translate key="submissions.proposal.decline"}
                             
                             {/if}
                         {/if}
+    
 		</td>
 	</tr>
+	{if $status == PROPOSAL_STATUS_WITHDRAWN}
+		<tr>
+			<td class="label">&nbsp;</td>
+			<td class="value">Reason: {$submission->getWithdrawReason(en_US)}</td>
+		</tr>
+		{if $submission->getWithdrawComments(en_US)}
+			<tr>
+				<td class="label">&nbsp;</td>
+				<td class="value">Comments: {$submission->getWithdrawComments(en_US)}</td>
+			</tr>
+		{/if}
+	{/if}
 	<tr>
-		<td class="label">Date</td>
+		<td class="label">Date / ວັນທີ</td>
 		<td colspan="2" class="value">{$submission->getDateStatusModified()|date_format:$dateFormatShort}</td>
 	</tr>
-        {*
-	<tr>
-		<td class="label">{translate key="submission.lastModified"}</td>
-		<td colspan="2" class="value">{$submission->getLastModified()|date_format:$dateFormatShort}</td>
-	</tr>
-        *}
 </table>
 </div>
 {if $articleComments}

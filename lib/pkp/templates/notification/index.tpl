@@ -8,7 +8,8 @@
  *
  *}
 {strip}
-{assign var="pageTitle" value="notification.notifications"}
+{assign var="pageTitle" value="notification.notificationsA"}
+{assign var="pageCrumbTitle" value="notification.notifications"}
 {include file="common/header.tpl"}
 {/strip}
 
@@ -20,11 +21,13 @@
 				<p>{translate key="notification.notificationsPublicDescription" emailUrl=$emailUrl}</p>
 			{/if}
 		</td>
+		<!--
 		<td><ul class="plain">
 			<li><a href="{url op="getNotificationFeedUrl" path="rss"}" class="icon"><img src="{$baseUrl}/lib/pkp/templates/images/rss10_logo.gif" alt="RSS 1.0"/></a></li>
 			<li><a href="{url op="getNotificationFeedUrl" path="rss2"}" class="icon"><img src="{$baseUrl}/lib/pkp/templates/images/rss20_logo.gif" alt="RSS 2.0"/></a></li>
 			<li><a href="{url op="getNotificationFeedUrl" path="atom"}" class="icon"><img src="{$baseUrl}/lib/pkp/templates/images/atom10_logo.gif" alt="Atom 1.0"/></a></li>
 		</ul></td>
+		-->
 	</tr>
 </table>
 
@@ -36,7 +39,7 @@
 		<tr>
 			<td width="25"><img src="{$notification->getIconLocation()}" alt="&#187;"/></td>
 			<td class="notificationContent" colspan="2" width="80%">
-				{$notification->getDateCreated()}
+				{$notification->getDateCreated()|date_format:$datetimeFormatLong}
 			</td>
 			{if $notification->getLocation() != null}
 				<td class="notificationFunction" style="min-width:60px"><a href="{$notification->getLocation()}">{translate key="notification.location"}</a></td>

@@ -10,7 +10,8 @@
  *}
 {strip}
 {**assign var="pageTitle" value="sectionEditor.review.createReviewer"*}
-{assign var="pageTitle" value="sectionEditor.review.createExternalReviewer"}
+{assign var="pageTitle" value="sectionEditor.review.createExternalReviewerS"}
+{assign var="pageCrumbTitle" value="sectionEditor.review.createExternalReviewer"}
 {include file="common/header.tpl"}
 {/strip}
 
@@ -71,27 +72,27 @@
 	</tr>
 {/if}
 	<tr valign="top">
-		<td class="label">{fieldLabel name="salutation" key="user.salutation"}</td>
+		<td class="label">{*{fieldLabel name="salutation" key="user.salutation"}*}ການທັກທາຍ</td>
 		<td class="value"><input type="text" name="salutation" id="salutation" value="{$salutation|escape}" size="20" maxlength="40" class="textField" /></td>
 	</tr>
 	<tr valign="top">
-		<td class="label">{fieldLabel name="firstName" required="true" key="user.firstName"}</td>
+		<td class="label">{*{fieldLabel name="firstName" required="true" key="user.firstName"}*}ຊື່ *</td>
 		<td class="value"><input type="text" name="firstName" id="firstName" value="{$firstName|escape}" size="20" maxlength="40" class="textField" /></td>
 	</tr>
 	<tr valign="top">
-		<td class="label">{fieldLabel name="middleName" key="user.middleName"}</td>
+		<td class="label">{*{fieldLabel name="middleName" key="user.middleName"}*}ຊື່(ກາງ)</td>
 		<td class="value"><input type="text" name="middleName" id="middleName" value="{$middleName|escape}" size="20" maxlength="40" class="textField" /></td>
 	</tr>
 	<tr valign="top">
-		<td class="label">{fieldLabel name="lastName" required="true" key="user.lastName"}</td>
+		<td class="label">{*{fieldLabel name="lastName" required="true" key="user.lastName"}*}ນາມສະກຸນ *</td>
 		<td class="value"><input type="text" name="lastName" id="lastName" value="{$lastName|escape}" size="20" maxlength="90" class="textField" /></td>
 	</tr>
 	<tr valign="top">
-		<td class="label">{fieldLabel name="initials" key="user.initials"}</td>
+		<td class="label">{*{fieldLabel name="initials" key="user.initials"}*}ຊື່ຫຍໍ້</td>
 		<td class="value"><input type="text" name="initials" id="initials" value="{$initials|escape}" size="5" maxlength="5" class="textField" />&nbsp;&nbsp;{translate key="user.initialsExample"}</td>
 	</tr>
 	<tr valign="top">
-		<td class="label">{fieldLabel name="gender" key="user.gender"}</td>
+		<td class="label">{*{fieldLabel name="gender" key="user.gender"}*}ເພດ</td>
 		<td class="value">
 			<select name="gender" id="gender" size="1" class="selectMenu">
 				{html_options_translate options=$genderOptions selected=$gender}
@@ -99,11 +100,11 @@
 		</td>
 	</tr>
 	<tr valign="top">
-		<td class="label">{fieldLabel name="username" required="true" key="user.username"}</td>
+		<td class="label">{*{fieldLabel name="username" required="true" key="user.username"}*}ຊື່ຜູ້ໃຊ້ *</td>
 		<td class="value">
 			<input type="text" name="username" id="username" value="{$username|escape}" size="20" maxlength="32" class="textField" />&nbsp;&nbsp;<input type="button" class="button" value="{translate key="common.suggest"}" onclick="generateUsername()" />
 			<br />
-			<span class="instruct">{translate key="user.register.usernameRestriction"}</span>
+			<span class="instruct">{*{translate key="user.register.usernameRestriction"}*}ຊື່ຜູ້ໃຊ້ຕ້ອງພິມຕົວອັກສອນນ້ອຍ, ຕົວເລກ ແລະ ເຄື່ອງຫມາຍຂິດເທົ່ານັ້ນ</span>
 		</td>
 	</tr>
 	<tr valign="top">
@@ -111,42 +112,46 @@
 		<td class="value"><input type="checkbox" name="sendNotify" id="sendNotify" value="1"{if $sendNotify} checked="checked"{/if} /> <label for="sendNotify">{translate key="manager.people.createUserSendNotify"}</label></td>
 	</tr>
 	<tr valign="top">
-		<td class="label">{fieldLabel name="affiliation" key="user.affiliation"}</td>
+		<td class="label">{*{fieldLabel name="affiliation" key="user.affiliation"}*}ການຕິດຕໍ່</td>
 		<td class="value">
 			<textarea name="affiliation[{$formLocale|escape}]" id="affiliation" rows="5" cols="40" class="textArea">{$affiliation[$formLocale]|escape}</textarea><br/>
-			<span class="instruct">{translate key="user.affiliation.description"}</span>
+			<span class="instruct">{*{translate key="user.affiliation.description"}*}(ສະຖາບັນຂອງທ່ານ, ຕົວຢ່າງ ມະຫາວິທະຍາໄລວິທະຍາສາດສຸຂະພາບ, ວຽງຈັນ)</span>
 		</td>
 	</tr>
 	<tr valign="top">
-		<td class="label">{fieldLabel name="email" required="true" key="user.email"}</td>
+		<td class="label">{*{fieldLabel name="email" required="true" key="user.email"}*}ອິເມວ *</td>
 		<td class="value"><input type="text" name="email" id="email" value="{$email|escape}" size="30" maxlength="90" class="textField" /></td>
 	</tr>
+	{*
 	<tr valign="top">
 		<td class="label">{fieldLabel name="userUrl" key="user.url"}</td>
 		<td class="value"><input type="text" name="userUrl" id="userUrl" value="{$userUrl|escape}" size="30" maxlength="255" class="textField" /></td>
 	</tr>
+	*}
 	<tr valign="top">
-		<td class="label">{fieldLabel name="phone" key="user.phone"}</td>
+		<td class="label">{*{fieldLabel name="phone" key="user.phone"}*}ເບີໂທລະສັບ</td>
 		<td class="value"><input type="text" name="phone" id="phone" value="{$phone|escape}" size="15" maxlength="24" class="textField" /></td>
 	</tr>
 	<tr valign="top">
-		<td class="label">{fieldLabel name="fax" key="user.fax"}</td>
+		<td class="label">{*{fieldLabel name="fax" key="user.fax"}*}ແຟກ</td>
 		<td class="value"><input type="text" name="fax" id="fax" value="{$fax|escape}" size="15" maxlength="24" class="textField" /></td>
 	</tr>
 	<tr valign="top">
 		<td class="label">{fieldLabel for="interests" key="user.interests"}</td>
 		<td class="value"><ul id="interests"><li></li></ul><br /><textarea name="interests" id="interestsTextOnly" rows="5" cols="40" class="textArea">{foreach name=currentInterests from=$interestsKeywords item=interest}{$interest|urldecode}{if !$smarty.foreach.currentInterests.last}, {/if}{/foreach}</textarea></td>
 	</tr>
+	{*
 	<tr valign="top">
 		<td class="label">{fieldLabel name="gossip" key="user.gossip"}</td>
 		<td class="value"><textarea name="gossip[{$formLocale|escape}]" id="gossip" rows="3" cols="40" class="textArea">{$gossip[$formLocale]|escape}</textarea></td>
 	</tr>
+	*}
 	<tr valign="top">
-		<td class="label">{fieldLabel name="mailingAddress" key="common.mailingAddress"}</td>
+		<td class="label">{*{fieldLabel name="mailingAddress" key="common.mailingAddress"}*}ທີ່ຢູ່ທາງໄປສະນີ</td>
 		<td class="value"><textarea name="mailingAddress" id="mailingAddress" rows="3" cols="40" class="textArea">{$mailingAddress|escape}</textarea></td>
 	</tr>
 <tr valign="top">
-	<td class="label">{fieldLabel name="country" key="common.country"}</td>
+	<td class="label">{*{fieldLabel name="country" key="common.country"}*}ສັນຊາດ</td>
 	<td class="value">
 		<select name="country" id="country" class="selectMenu">
 			<option value=""></option>
@@ -155,7 +160,7 @@
 	</td>
 </tr>
 	<tr valign="top">
-		<td class="label">{fieldLabel name="biography" key="user.biography"}<br />{translate key="user.biography.description"}</td>
+		<td class="label">{*{fieldLabel name="biography" key="user.biography"}*}ການລາຍງານສະຖານທີ່ເຮັດວຽກ <br />(ຕົວຢ່າງ ກົມກອງ ແລະ ຊັ້ນຂັ້ນ){*{translate key="user.biography.description"}*}</td>
 		<td class="value"><textarea name="biography[{$formLocale|escape}]" id="biography" rows="5" cols="40" class="textArea">{$biography[$formLocale]|escape}</textarea></td>
 	</tr>
 	{if count($availableLocales) > 1}
@@ -168,9 +173,9 @@
 	{/if}
 </table>
 
-<p><input type="submit" value="{translate key="common.save"}" class="button defaultButton" /> <input type="button" value="{translate key="common.cancel"}" class="button" onclick="document.location.href='{url op="selectReviewer" path=$articleId escape=false}'" /></p>
+<p><input type="submit" value="{translate key="common.saveS"}" class="button defaultButton" /> <input type="button" value="{translate key="common.cancelS"}" class="button" onclick="document.location.href='{url op="submissionReview" path=$articleId escape=false}'" /></p>
 
-<p><span class="formRequired">{translate key="common.requiredField"}</span></p>
+<p><span class="formRequired">{translate key="common.requiredFieldS"}</span></p>
 </div>
 </form>
 

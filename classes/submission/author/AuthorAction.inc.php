@@ -446,6 +446,20 @@ class AuthorAction extends Action {
 	}
 
 	/**
+	 * View peerReview comments.
+	 * @param $article object
+	 */
+	function viewPeerReviewComments($article) {
+		if (!HookRegistry::call('AuthorAction::viewPeerReviewComments', array(&$article))) {
+			import('classes.submission.form.comment.PeerReviewCommentForm');
+
+			$commentForm = new PeerReviewCommentForm($article, ROLE_ID_AUTHOR);
+			$commentForm->initData();
+			$commentForm->display();
+		}
+	}
+
+	/**
 	 * Post proofread comment.
 	 * @param $article object
 	 * @param $emailComment boolean
@@ -592,6 +606,47 @@ class AuthorAction extends Action {
 			}
 		}
 		return $result;
+	}
+
+	/**
+	 * Post editor decision comment.
+	 * @param $article int
+	 * @param $emailComment boolean
+	 */
+	function postEditorDecisionComment($article, $emailComment) {
+		if (HookRegistry::call('AuthorAction::postEditorDecisionComment', array(&$article, &$emailComment))) return;
+
+		$user =& Request::getUser();
+
+		import('classes.submission.form.comment.EditorDecisionCommentForm');
+
+		$commentForm = new EditorDecisionCommentForm($article, ROLE_ID_AUTHOR);
+		$commentForm->readInputData();
+
+		if ($commentForm->validate()) {
+			$commentForm->execute();
+
+			// Send a notification to associated users
+			import('lib.pkp.classes.notification.NotificationManager');
+			$notificationManager = new NotificationManager();
+			$notificationUsers = $article->getAssociatedUserIds(false, false);
+			$param = $article->getLocalizedWhoId().': <br/>'.$user->getFullName().', <i>'.$user->getFunctions().'</i>,';
+			foreach ($notificationUsers as $userRole) {
+				$url = Request::url(null, $userRole['role'], 'submissionReview', $article->getId(), null, 'editorDecision');
+				$notificationManager->createNotification(
+					$userRole['id'], 'notification.type.editorDecisionComment',
+					$param, $url, 1, NOTIFICATION_TYPE_EDITOR_DECISION_COMMENT
+				);
+			}
+
+			if ($emailComment) {
+				$commentForm->email();
+			}
+		} else {
+			$commentForm->display();
+			return false;
+		}
+		return true;
 	}
 }
 

@@ -101,7 +101,6 @@ class SubmissionCommentsHandler extends SectionEditorHandler {
 		if (SectionEditorAction::postEditorDecisionComment($submission, $emailComment)) {
 			SectionEditorAction::viewEditorDecisionComments($submission);
 		}
-
 	}
 
 	/**

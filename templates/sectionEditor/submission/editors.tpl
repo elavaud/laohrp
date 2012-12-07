@@ -9,16 +9,16 @@
  * $Id$
  *}
 <div id="editors">
-<h3>{translate key="user.role.editors"}</h3>
+<h3>{translate key="user.role.editorsS"}</h3>
 <form action="{url op="setEditorFlags"}" method="post">
 <input type="hidden" name="articleId" value="{$submission->getId()}"/>
 <table width="100%" class="listing">
 	<tr class="heading" valign="bottom">
 		<td width="{if $isEditor}20%{else}25%{/if}">&nbsp;</td>
 		<td width="30%">&nbsp;</td>
-		<td width="10%">{translate key="submission.review"}</td>
-		<td width="10%">{translate key="submission.editing"}</td>
-		<td width="{if $isEditor}20%{else}25%{/if}">{translate key="submission.request"}</td>
+		<td width="10%">{translate key="submission.reviewS"}</td>
+		<td width="10%">{translate key="submission.editingS"}</td>
+		<td width="{if $isEditor}20%{else}25%{/if}">{translate key="submission.requestS"}</td>
 		{if $isEditor}<td width="10%">{translate key="common.action"}</td>{/if}
 	</tr>
 	{assign var=editAssignments value=$submission->getEditAssignments()}
@@ -27,7 +27,7 @@
 		{assign var=selfAssigned value=1}
 	{/if}
 		<tr valign="top">
-			<td>{if $editAssignment->getIsEditor()}{translate key="user.role.editor"}{else}{translate key="user.role.sectionEditor"}{/if}</td>
+			<td>{if $editAssignment->getIsEditor()}{translate key="user.role.editor"}{else}{translate key="user.role.sectionEditorS"}{/if}</td>
 			<td>
 				{assign var=emailString value=$editAssignment->getEditorFullName()|concat:" <":$editAssignment->getEditorEmail():">"}
 				{url|assign:"url" page="user" op="email" redirectUrl=$currentUrl to=$emailString|to_array subject=$submission->getLocalizedTitle|strip_tags articleId=$submission->getId()}
@@ -59,7 +59,7 @@
 					{/if}
 				/>
 			</td>
-			<td>{if $editAssignment->getDateNotified()}{$editAssignment->getDateNotified()|date_format:$dateFormatShort}{else}&mdash;{/if}</td>
+			<td>{if $editAssignment->getDateNotified()}{$editAssignment->getDateNotified()|date_format:$dateFormatLong}{else}&mdash;{/if}</td>
 			{if $isEditor}
 				<td><a href="{url op="deleteEditAssignment" path=$editAssignment->getEditId()}" class="action">{translate key="common.delete"}</a></td>
 			{/if}

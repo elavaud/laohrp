@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+    Document   : provincesOfLaos.xml
+    Created on : May 2012
+    Author     : Edouard Lavaud
+    Description:
+        For use in country where proposal is submitted.
+-->
+
+<countries>
+    <country code="ATT" name="Attapeu"/>
+    <country code="BOK" name="Bokeo"/>
+    <country code="BOL" name="Bolikhamsai"/>
+    <country code="CHA" name="Champasak"/>
+    <country code="HUA" name="Huaphanh"/>
+    <country code="KHA" name="Khammouane"/>
+    <country code="LNA" name="Luangnamtha"/>
+    <country code="LPH" name="Luangphrabang"/>
+    <country code="OUD" name="Oudomxay"/>
+    <country code="PHO" name="Phongsaly"/>
+    <country code="SAY" name="Sayabouly"/>
+    <country code="SAL" name="Salavan"/>
+    <country code="SAV" name="Savannakhet"/>
+    <country code="SEK" name="Sekong"/>
+    <country code="VIE" name="Vientiane (Capital)"/>
+    <country code="VMP" name="Vientiane (Province)"/>
+    <country code="XIE" name="Xiengkhouang"/>
+</countries>

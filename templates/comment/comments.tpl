@@ -151,6 +151,7 @@
 {if $postingAllowed}
 	<p><a class="action" href="{url op="add" path=$articleId|to_array:$galleyId}" target="_parent">{translate key="rt.addComment"}</a></p>
 {/if}
+
 </div>
 {include file="common/footer.tpl"}
 

@@ -66,7 +66,7 @@ class PKPLoginHandler extends Handler {
 		if ($wayf_url == "")
 			die("Error in implicit authentication. WAYF URL not set in config file.");
 
-		$url = $wayf_url . "?target=https://" . Request::getServerHost() . Request::getBasePath() . '/index.php/whorrp/login/implicitAuthReturn';
+		$url = $wayf_url . "?target=https://" . Request::getServerHost() . Request::getBasePath() . '/index.php/laohrp/login/implicitAuthReturn';
 
 		PKPRequest::redirectUrl($url);
 	}
@@ -188,7 +188,9 @@ class PKPLoginHandler extends Handler {
 			import('classes.mail.MailTemplate');
 			$mail = new MailTemplate('PASSWORD_RESET_CONFIRM');
 			$this->_setMailFrom($mail);
+			
 			$mail->assignParams(array(
+				'userFullName' => $user->getFullName(),
 				'url' => PKPRequest::url(null, 'login', 'resetPassword', $user->getUsername(), array('confirm' => $hash)),
 				'siteTitle' => $site->getLocalizedTitle()
 			));
@@ -252,7 +254,9 @@ class PKPLoginHandler extends Handler {
 			import('classes.mail.MailTemplate');
 			$mail = new MailTemplate('PASSWORD_RESET');
 			$this->_setMailFrom($mail);
+			
 			$mail->assignParams(array(
+				'userFullName' => $user->getFullName(),
 				'username' => $user->getUsername(),
 				'password' => $newPassword,
 				'siteTitle' => $site->getLocalizedTitle()

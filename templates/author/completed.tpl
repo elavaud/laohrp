@@ -12,14 +12,11 @@
 <table class="listing" width="100%">
 	<tr><td class="headseparator" colspan="{if $statViews}7{else}6{/if}">&nbsp;</td></tr>
 	<tr valign="bottom" class="heading">
-		<td width="10%">WHO Proposal ID</td>
-		<td width="10%">{*<span class="disabled">{translate key="submission.date.yyyymmdd"}</span><br />*}{sort_heading key="submissions.submit" sort="submitDate"}</td>
-		<!--<td width="5%">{sort_heading key="submissions.sec" sort="section"}</td>-->
-		{* Commented out by EL on May 3, 2012: not useful*}
-		{*<td width="23%">{sort_heading key="article.authors" sort="authors"}</td>*}
-		<td width="45%">{sort_heading key="article.title" sort="title"}</td>
+		<td title="ລະຫັດບົດສະເຫນີ" width="10%">[?] Proposal ID</td>
+		<td title="ວັນທີສົ່ງໂຄງການສະຫນີຄົ້ນຄວ້າ" width="10%">[?] {*<span class="disabled">{translate key="submission.date.yyyymmdd"}</span><br />*}{sort_heading key="submissions.submit" sort="submitDate"}</td>
+		<td title="ຫົວຂໍ້" width="45%">[?] {sort_heading key="article.title" sort="title"}</td>
 		{if $statViews}<td width="5%">{sort_heading key="submission.views" sort="views"}</td>{/if}
-		<td width="25%" align="right">{sort_heading key="common.status" sort="status"}</td>
+		<td title="ສະຖານະ" width="25%" align="right">[?] {sort_heading key="common.status" sort="status"}</td>
 	</tr>
 	<tr><td class="headseparator" colspan="{if $statViews}7{else}6{/if}">&nbsp;</td></tr>
 {iterate from=submissions1 item=submission}
@@ -27,11 +24,8 @@
         {assign var="whoId" value=$submission->getWhoId($submission->getLocale())}
 	<tr valign="top">
 		<td>{$whoId|escape}</td>
-		<td>{$submission->getDateSubmitted()|date_format:$dateFormatShort}</td>
-		<!--<td>{$submission->getSectionAbbrev()|escape}</td>-->
-		{* Commented out by EL on May 3, 2012: not useful *}
-		{*<td>{$submission->getAuthorString(true)|truncate:40:"..."|escape}</td>*}
-		<td><a href="{url op="submission" path=$articleId}" class="action">{$submission->getLocalizedTitle()|strip_unsafe_html|truncate:60:"..."}</a></td>
+		<td>{$submission->getDateSubmitted()|date_format:$dateFormatLong}</td>
+		<td><a href="{url op="submission" path=$articleId}" class="action">{$submission->getLocalizedTitle()|escape}</a></td>
 		{assign var="status" value=$submission->getSubmissionStatus()}
 		{if $statViews}
 			<td>
@@ -82,7 +76,7 @@
 	</tr>
 {else}
 	<tr>
-		<td colspan="{if $statViews}5{else}4{/if}" align="left">{page_info iterator=$submissions1}</td>
+		<td colspan="{if $statViews}5{else}4{/if}" align="left">{page_info iterator=$submissions1} / ການສົ່ງບົດ</td>
 		<td colspan="2" align="right">{page_links anchor="submissions" name="submissions" iterator=$submissions1 sort=$sort sortDirection=$sortDirection}</td>
 	</tr>
 {/if}

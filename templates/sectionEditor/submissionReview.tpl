@@ -9,15 +9,15 @@
  * $Id$
  *}
 {strip}
-{translate|assign:"pageTitleTranslated" key="submission.page.review" id=$submission->getWhoId($submission->getLocale())}{assign var="pageCrumbTitle" value="submission.review"}
+{translate|assign:"pageTitleTranslated" key="submission.page.reviewS" id=$submission->getWhoId($submission->getLocale())}{assign var="pageCrumbTitle" value="submission.reviewS"}
 {include file="common/header.tpl"}
 {/strip}
 
 <ul class="menu">
-	<li><a href="{url op="submission" path=$submission->getId()}">{translate key="submission.summary"}</a></li>
-	<li class="current"><a href="{url op="submissionReview" path=$submission->getId()}">{translate key="submission.review"}</a></li>
+	<li><a href="{url op="submission" path=$submission->getId()}">{translate key="submission.summaryS"}</a></li>
+	<li class="current"><a href="{url op="submissionReview" path=$submission->getId()}">{translate key="submission.reviewS"}</a></li>
 {**	{if $canEdit}<li><a href="{url op="submissionEditing" path=$submission->getId()}">{translate key="submission.editing"}</a></li>{/if} *}
-	<li><a href="{url op="submissionHistory" path=$submission->getId()}">{translate key="submission.history"}</a></li>
+<!--<li><a href="{url op="submissionHistory" path=$submission->getId()}">{translate key="submission.historyS"}</a></li>-->
 <!-- Removed References Link - 12Apr2012 - spf
 	<li><a href="{url op="submissionCitations" path=$submission->getId()}">{translate key="submission.citations"}</a></li>
 -->

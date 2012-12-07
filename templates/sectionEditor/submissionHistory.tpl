@@ -47,19 +47,9 @@
 {/literal}
 
 <ul class="menu">
-	<li><a href="{url op="submission" path=$submission->getArticleId()}">{translate key="submission.summary"}</a></li>
-	{if $canReview}<li><a href="{url op="submissionReview" path=$submission->getArticleId()}">{translate key="submission.review"}</a></li>{/if}
-
-{* Edited out "Editing" - 12Apr2012 - spf
-	{if $canEdit}<li><a href="{url op="submissionEditing" path=$submission->getArticleId()}">{translate key="submission.editing"}</a></li>{/if}
-*}
-
-	<li class="current"><a href="{url op="submissionHistory" path=$submission->getArticleId()}">{translate key="submission.history"}</a></li>
-
-{* Edited out "References" - 12Apr2012 - spf
-	<li><a href="{url op="submissionCitations" path=$submission->getId()}">{translate key="submission.citations"}</a></li>
-*}
-
+	<li><a href="{url op="submission" path=$submission->getArticleId()}">{*{translate key="submission.summary"}*}ສະຫລຸບ/ສັງລວມຫຍໍ້</a></li>
+	{if $canReview}<li><a href="{url op="submissionReview" path=$submission->getArticleId()}">{*{translate key="submission.review"}*}ທົບທວນ</a></li>{/if}
+	<li class="current"><a href="{url op="submissionHistory" path=$submission->getArticleId()}">{*{translate key="submission.history"}*}ປະຫວັດ</a></li>
 </ul>
 
 <ul class="menu">

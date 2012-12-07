@@ -125,7 +125,6 @@ class PKPMailTemplate extends Mail {
 				$body = str_replace('{$' . $key . '}', $value, $body);
 			}
 		}
-
 		$this->setSubject($subject);
 		$this->setBody($body);
 	}

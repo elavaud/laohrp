@@ -16,21 +16,19 @@
 	<message key="about.aboutSite">About the Site</message>
     
         <!-- Changed "Contact" by "Secretariat". EL April 3 2012-->
-        <message key="about.contact">WPRO-ERC Secretariat</message>
+        <message key="about.contact">The National Ethical Committee for Health Research</message>
         
 	<message key="about.contact.email">Email</message>
 	<message key="about.contact.fax">Fax</message>
 	<message key="about.contact.phone">Phone</message>
-    
-        <!-- Changed "Principal Contact" by "Secretary" and added subPrincipalContact for "Secretary Administrative Assistant". EL April 3 2012-->
+
         <message key="about.contact.principalContact">Secretary</message>
         <message key="about.contact.subPrincipalContact">Secretary Administrative Assistant</message>
         
 	<message key="about.contact.supportContact">Support Contact</message>
 	<message key="about.other">Other</message>
-    
-        <!-- Changed "People" by "The Ethics Review Committee". EL April 3 2012-->
-        <message key="about.people">The Ethics Review Committee</message>
+
+        <message key="about.people">Institutional Review Boards</message>
         
 	<message key="about.policies">Policies</message>
 	<message key="about.siteMap">Site Map</message>
@@ -62,7 +60,8 @@
 	<message key="common.assigned">Assigned</message>
 	<message key="common.back">Back</message>
 	<message key="common.between">between</message>
-	<message key="common.cancel">Cancel</message>
+	<message key="common.cancel">Cancel / ປິດ</message>
+    <message key="common.cancelS">ປິດ</message>
 	<message key="common.cancelled">Cancelled</message>
 	<message key="common.captchaField.altText">Validation image</message>
 	<message key="common.captchaField.badCaptcha">The characters you entered did not match the characters in the image. Please check the characters and try again.</message>
@@ -86,14 +85,15 @@
 	]]></message>
 	<message key="common.changesSaved">Your changes have been saved.</message>
 	<message key="common.chooseOne">Choose One</message>
-	<message key="common.close">Close</message>
-	<message key="common.closeWindow">Close Window</message>
+	<message key="common.close">Close / ປິດ</message>
+	<message key="common.closeWindow">Close Window / ປິດ</message>
 	<message key="common.complete">Complete</message>
 	<message key="common.completed">Completed</message>
 	<message key="common.continue">Continue</message>
 	<message key="common.copy">Copy</message>
 	<message key="common.country">Country</message>
-    
+    <message key="common.area">Geographical Area</message>
+
         <!-- Added by EL, April 13, 2012-->
        <message key="common.picountry"> Country of usual Residence</message>
        
@@ -108,6 +108,7 @@
 	<message key="common.deactivate">Deactivate</message>
 	<message key="common.default">Default</message>
 	<message key="common.delete">Delete</message>
+    <message key="common.deleteS">Delete</message>
 
         <!-- Added by Anne Ivy Mirasol, June 6, 2011  -->
         <message key="common.withdraw">Withdraw</message>
@@ -183,10 +184,13 @@
 	<message key="common.replaced">Replaced</message>
 	<message key="common.replaceFile">Replace file</message>
 	<message key="common.requiredField">* Denotes required field</message>
+    <message key="common.requiredFieldS">* Denotes required field</message>
+    <message key="common.laoTranslation">[?] Information &amp; translation in Lao on mouse over. <![CDATA[<br/>&nbsp;&nbsp;&nbsp;&nbsp;]]> ແປເປັນພາສາລາວຈະປະກົດເມື່ອເລື່ອນເມົາໄປຕຳແຫນ່ງທີ່ຕ້ອງການ</message>
 	<message key="common.required">Required</message>
-	<message key="common.saveAndContinue">Save and continue</message>
+	<message key="common.saveAndContinue">Save and continue / ເຊບ</message>
 	<message key="common.saveAndEmail">Save and email</message>
-	<message key="common.save">Save</message>
+	<message key="common.save">Save / ເຊບ</message>
+    <message key="common.saveS">ເຊບ</message>
 	<message key="common.search">Search</message>
 	<message key="common.second">Second(s)</message>
 	<message key="common.selectAll">Select All</message>
@@ -195,6 +199,7 @@
 	<message key="common.size">Size</message>
 	<message key="common.source">Source</message>
 	<message key="common.status">Status</message>
+    <message key="common.statusS">ສະຖານະ</message>
 	<message key="common.subject">Subject</message>
 	<message key="common.suggest">Suggest</message>
 	<message key="common.title">Title</message>
@@ -206,6 +211,7 @@
 	<message key="common.updated">Updated</message>
 	<message key="common.uploadedFile">Uploaded file</message>
 	<message key="common.upload">Upload</message>
+    <message key="common.uploadS">Upload</message>
 	<message key="common.uploadFailed">The file could not be uploaded. Please try again or contact the administrator if the problem persists.</message>
 	<message key="common.up">Up</message>
 	<message key="common.url">URL</message>
@@ -229,13 +235,13 @@
 	<message key="email.addToRecipient">Add Recipient</message>
 	<message key="email.attachments">Attachments</message>
 	<message key="email.bcc">BCC</message>
-	<message key="email.bccSender">Send a copy of this message to my address ({$address})</message>
+	<message key="email.bccSender">Send a copy of this message to my address ({$address}) <![CDATA[<br/>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]]> ສົ່ງສຳເນົາຂໍ້ຄວາມນີ້ໄປຫາ​ທີ່ຢູ່​ຂອງ​ຂ້າພະ​ເຈົ້າ({$address})</message>
 	<message key="email.body">Body</message>
 	<message key="email.cc">CC</message>
 	<message key="email.compose">Send Email</message>
 	<message key="email.compose.tooManyRecipients">The message you are attempting to send has too many recipients.</message>
 	<message key="email.compose.tooSoon">You are attempting to send a message too recently after your last message was sent. Please wait before sending another message.</message>
-	<message key="email.email">Email</message>
+	<message key="email.email">Email / ອິເມວ</message>
 	<message key="email.from">From</message>
 	<message key="email.invalid">The email address {$email} is invalid.</message>
 	<message key="email.multipart">This is a multi-part message in MIME format.</message>
@@ -244,7 +250,7 @@
 	<message key="email.sender">Sender</message>
 	<message key="email.send">Send</message>
 	<message key="email.skip">Skip Email</message>
-	<message key="email.subject">Subject</message>
+	<message key="email.subject">Subject / ຫົວຂໍ້</message>
 	<message key="email.to">To</message>
 	<message key="form.errorsOccurred">Errors occurred processing this form</message>
 	<message key="form.formLanguage.description">To enter the information below in additional languages, first select the language.</message>
@@ -285,7 +291,7 @@
 	<message key="icon.view.alt">View</message>
 	<message key="locale.primary">Primary locale</message>
 	<message key="locale.supported">Supported locales</message>
-	<message key="navigation.about">About</message>
+	<message key="navigation.about">Ethics Committees</message>
 	<message key="navigation.browse">Browse</message>
 	<message key="navigation.browseByTitle">By Title</message>
 	<message key="navigation.dashboard">Dashboard</message>
@@ -299,7 +305,7 @@
 	<message key="navigation.previousPage"><![CDATA[&lt;&lt;]]></message>
 	<message key="navigation.previousStep">Previous Step</message>
 	<message key="navigation.register">Register</message>
-	<message key="navigation.search">Past Proposals</message>
+	<message key="navigation.search">Past &amp; Ongoing Research</message>
 	<message key="navigation.stepNumber">Step {$step}</message>
 	<message key="navigation.userHome">User Home</message>
 	<message key="navigation.user">User</message>
@@ -307,7 +313,7 @@
 	<message key="notification.confirmError">There was an error confirming your subscription.</message>
 	<message key="notification.confirmSuccess">You have been successfully subscribed.</message>
 	<message key="notification.email">Send me an email for these types of notifications.</message>
-	<message key="notification.location">Go To URL</message>
+	<message key="notification.location">View</message>
 	<message key="notification.mailList">Notification mailing list</message>
 	<message key="notification.mailList.emailInvalid">Please enter a valid email address.</message>
 	<message key="notification.mailList.privacyProtection">Privacy protection policy</message>
@@ -318,8 +324,9 @@
 	<message key="notification.noneExist">You have no notifications at this time.</message>
 	<message key="notification.notification">Notification</message>
 	<message key="notification.notifications">Notifications</message>
+	<message key="notification.notificationsA">Notifications</message>
 	<message key="notification.notificationsNew">({$numNew} new)</message>
-	<message key="notification.notificationsDescription">You have {$unreadCount} unread notifications and {$readCount} read notifications.<![CDATA[  <a href="{$settingsUrl}">Click here</a> to change your notification settings.]]></message>
+	<message key="notification.notificationsDescription">You have {$unreadCount} unread notifications and {$readCount} read notifications.</message>
 	<message key="notification.settings">Notification Settings</message>
 	<message key="notification.settingsDescription">Select the system events that you wish to be notified about.  Unchecking an item will prevent notifications of the event from showing up in your notification feed.</message>
 	<message key="notification.subscribe">Subscribe</message>
@@ -367,7 +374,10 @@
 	<message key="editor.article.decision.exempted">Exempt From Review</message>
 	<message key="editor.article.decision.expedited">For Expedited Review</message>
 	<message key="editor.article.decision.assigned">For Full Review</message>
-	
+    <message key="search.investigator">Investigator</message>
+    <message key="search.investigatorAffiliation">Investigator Affiliation</message>
+    <message key="search.investigatorEmail">Investigator e-mail</message>
+    
 		<!--  Added by MSB July 7 2011 -->
 		<message key="common.update">Update</message>
 		<message key="common.setFinal">Set Final</message>

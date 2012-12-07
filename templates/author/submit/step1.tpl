@@ -17,7 +17,7 @@
 	{assign var="howToKeyName" value="author.submit.howToSubmitNoPhone"}
 {/if}
 
-<p>{translate key=$howToKeyName supportName=$journalSettings.supportName supportEmail=$journalSettings.supportEmail supportPhone=$journalSettings.supportPhone}</p>
+<p title="ພົບບັນຫາ?">[?] {translate key=$howToKeyName supportName=$journalSettings.supportName supportEmail=$journalSettings.supportEmail supportPhone=$journalSettings.supportPhone}</p>
 
 <div class="separator"></div>
 
@@ -38,7 +38,7 @@
 {else}{* if count($sectionOptions) == 2 *}
 <div id="section">
 
-<h3>{translate key="author.submit.journalSection"}</h3>
+<h3>{translate key="author.submit.journalSection"} / ຄະນະກຳມະການຈັນຍາທຳ</h3>
 
 {url|assign:"url" page="about"}
 <p>{translate key="author.submit.journalSectionDescription" aboutUrl=$url}</p>
@@ -47,7 +47,8 @@
 
 <table class="data" width="100%">
 	<tr valign="top">	
-		<td width="20%" class="label">{fieldLabel name="sectionId" required="true" key="section.section"}</td>
+		<td width="20%" title="ຄະນະກຳມະການຈັນຍາທຳ" class="label">
+		[?] {fieldLabel name="sectionId" required="true" key="section.section"}</td>
 		<td width="80%" class="value"><select name="sectionId" id="sectionId" size="1" class="selectMenu">{html_options options=$sectionOptions selected=$sectionId}</select></td>
 	</tr>
 </table>
@@ -121,7 +122,7 @@ function checkSubmissionChecklist() {
 		{/if}
 		<tr valign="top">
 			<td width="5%"><input type="checkbox" id="checklist-{$smarty.foreach.checklist.iteration}" name="checklist[]" value="{$checklistId|escape}"{if $articleId || $submissionChecklist} checked="checked"{/if} /></td>
-			<td width="95%"><label for="checklist-{$smarty.foreach.checklist.iteration}">{$checklistItem.content|nl2br}</label></td>
+			<td width="95%"><label title="ຂ້າພະເຈົ້າຕົກລົງເຫັນດີທີ່ຈະສົ່ງບົດລາຍງນ ການຄົ້ນຄວ້າລ້າສຸດ (ທັງເປັນປື້ມບົດລາຍງານ ແລະຮູບແບບເອເລັກໂຕນິກ)" for="checklist-{$smarty.foreach.checklist.iteration}">[?] {$checklistItem.content|nl2br}</label></td>
 		</tr>
 	{/if}
 {/foreach}
@@ -178,7 +179,7 @@ function checkSubmissionChecklist() {
 <p><input type="submit" value="{translate key="common.saveAndContinue"}" class="button defaultButton" /> <input type="button" value="{translate key="common.cancel"}" class="button" onclick="{if $articleId}confirmAction('{url page="author"}', '{translate|escape:"jsparam" key="author.submit.cancelSubmission"}'){else}document.location.href='{url page="author" escape=false}'{/if}" /></p>
 
 <p><span class="formRequired">{translate key="common.requiredField"}</span></p>
-
+<p><span class="formRequired">{translate key="common.laoTranslation"}</span></p>
 </form>
 
 {/if}{* If not accepting submissions *}

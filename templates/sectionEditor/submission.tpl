@@ -9,33 +9,25 @@
  * $Id$
  *}
 {strip}
-{translate|assign:"pageTitleTranslated" key="submission.page.summary" id=$submission->getWhoId($submission->getLocale())}
-{assign var="pageCrumbTitle" value="submission.summary"}
+{translate|assign:"pageTitleTranslated" key="submission.page.summaryS" id=$submission->getWhoId($submission->getLocale())}
+{assign var="pageCrumbTitle" value="submission.summaryS"}
 {include file="common/header.tpl"}
 {/strip}
 
 <ul class="menu">
-	<li class="current"><a href="{url op="submission" path=$submission->getId()}">{translate key="submission.summary"}</a></li>
-	{if $canReview}<li><a href="{url op="submissionReview" path=$submission->getId()}">{translate key="submission.review"}</a></li>{/if}
-{**  {if $canEdit}<li><a href="{url op="submissionEditing" path=$submission->getId()}">{translate key="submission.editing"}</a></li>{/if} *}
-	<li><a href="{url op="submissionHistory" path=$submission->getId()}">{translate key="submission.history"}</a></li>
-	<li><a href="{url op="submissionCitations" path=$submission->getId()}">{translate key="submission.citations"}</a></li>
+	<li class="current"><a href="{url op="submission" path=$submission->getId()}">{translate key="submission.summaryS"}</a></li>
+{if !$isEditor}	{if $canReview}<li><a href="{url op="submissionReview" path=$submission->getId()}">{translate key="submission.reviewS"}</a></li>{/if}{/if}
+	<!--<li><a href="{url op="submissionHistory" path=$submission->getId()}">{translate key="submission.historyS"}</a></li>-->
 </ul>
 
 {include file="sectionEditor/submission/management.tpl"}
 
-{if $authorFees}
 <div class="separator"></div>
 
-{include file="sectionEditor/submission/authorFees.tpl"}
-{/if}
-
+{*include file="sectionEditor/submission/editors.tpl"*}
+<!--
 <div class="separator"></div>
-
-{include file="sectionEditor/submission/editors.tpl"}
-
-<div class="separator"></div>
-
+-->
 {include file="sectionEditor/submission/status.tpl"}
 
 <div class="separator"></div>
