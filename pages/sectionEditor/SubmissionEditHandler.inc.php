@@ -73,6 +73,7 @@ class SubmissionEditHandler extends SectionEditorHandler {
 		$templateMgr->assign('userId', $user->getId());
 		$templateMgr->assign('isSectionEditor', $isSectionEditor);
 		$templateMgr->assign('isEditor', $isEditor);
+		$templateMgr->assign('isSectionEditor', $isSectionEditor);
 		$templateMgr->assign('enableComments', $enableComments);
 
 		$sectionDao =& DAORegistry::getDAO('SectionDAO');
@@ -250,6 +251,7 @@ class SubmissionEditHandler extends SectionEditorHandler {
 
 		$templateMgr->assign_by_ref('suppFiles', $suppFiles);
 		$templateMgr->assign_by_ref('reviewFile', $submission->getReviewFile());
+		$templateMgr->assign_by_ref('previousFiles', $submission->getPreviousFiles());
 		$templateMgr->assign_by_ref('copyeditFile', $submission->getFileBySignoffType('SIGNOFF_COPYEDITING_INITIAL'));
 		$templateMgr->assign_by_ref('revisedFile', $submission->getRevisedFile());
 		$templateMgr->assign_by_ref('editorFile', $submission->getEditorFile());
@@ -438,7 +440,7 @@ class SubmissionEditHandler extends SectionEditorHandler {
 		
 		$fileName = "finalDecisionFile";
 		if(($submission->getSubmissionStatus() == PROPOSAL_STATUS_EXPEDITED || $submission->getSubmissionStatus() == PROPOSAL_STATUS_ASSIGNED) && isset($_FILES[$fileName])) {			
-			SectionEditorAction::uploadDecisionFile($articleId, $fileName);
+			if (SectionEditorAction::uploadDecisionFile($articleId, $fileName) == '0') Request::redirect(null, null, 'submissionReview', $articleId);
 		}
 		
 		$decision = Request::getUserVar('decision');
@@ -472,6 +474,7 @@ class SubmissionEditHandler extends SectionEditorHandler {
 		switch ($decision) {
 			case SUBMISSION_EDITOR_DECISION_ACCEPT:
 			case SUBMISSION_EDITOR_DECISION_DECLINE:
+			case SUBMISSION_EDITOR_DECISION_INCOMPLETE:
 			case SUBMISSION_EDITOR_DECISION_EXEMPTED:
 				SubmissionCommentsHandler::emailEditorDecisionComment($articleId);
 				break;			

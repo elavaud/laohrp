@@ -9,6 +9,20 @@
  * $Id$
  *}
 
+{literal}
+<script type="text/javascript">
+function checkSize(){
+	var fileToUpload = document.getElementById('uploadReview');
+	var check = fileToUpload.files[0].fileSize;
+	var valueInKb = Math.ceil(check/1024);
+	if (check > 5242880){
+		alert ('The file is too big ('+valueInKb+' Kb). It should not exceed 5 Mb.');
+		return false
+	} 
+}
+</script>
+{/literal}
+
 <div id="peerReview">
 
 <table class="data" width="100%">
@@ -164,11 +178,11 @@
 					<a href="{url op="confirmReviewForReviewer" path=$submission->getId()|to_array:$reviewAssignment->getId() accept=1}" class="action">{translate key="reviewer.article.canDoReview"}</a>&nbsp;&nbsp;&nbsp;&nbsp;<a href="{url op="confirmReviewForReviewer" path=$submission->getId()|to_array:$reviewAssignment->getId() accept=0}" class="action">{translate key="reviewer.article.cannotDoReview"}</a><br />
 				{/if}
 				{if $reviewAssignment->getDateConfirmed() && !$reviewAssignment->getDeclined()}
-				<form method="post" action="{url op="uploadReviewForReviewer"}" enctype="multipart/form-data">
+				<form method="post" action="{url op="uploadReviewForReviewer"}" onSubmit="return checkSize()" enctype="multipart/form-data">
 					{translate key="editor.article.uploadReviewForReviewer"}
 					<input type="hidden" name="articleId" value="{$submission->getId()}" />
 					<input type="hidden" name="reviewId" value="{$reviewAssignment->getId()}"/>
-					<input type="file" name="upload" class="uploadField" />
+					<input type="file" name="upload" class="uploadField" id="uploadReview" />
 					<input type="submit" name="submit" value="{translate key="common.upload"}" class="button" />
 				</form>				
 				{/if}

@@ -27,6 +27,15 @@ $(document).ready(function() {
 		}
 	);
 });
+function checkSize(){
+	var fileToUpload = document.getElementById('finalDecisionFile');
+	var check = fileToUpload.files[0].fileSize;
+	var valueInKb = Math.ceil(check/1024);
+	if (check > 5242880){
+		alert ('The file is too big ('+valueInKb+' Kb). It should not exceed 5 Mb.');
+		return false
+	} 
+}
 </script>
 {/literal}
  
@@ -62,7 +71,7 @@ $(document).ready(function() {
 			({translate key="submissions.proposal.forContinuingReview"})
 		{/if}</td>
 </tr>
-	<form method="post" action="{url op="recordDecision"}" enctype="multipart/form-data">
+	<form method="post" action="{url op="recordDecision"}" onSubmit="return checkSize()" enctype="multipart/form-data">
 		<input type="hidden" name="articleId" value="{$submission->getId()}" />
 		<input type="hidden" name="lastDecisionId" value="{$lastDecisionArray.editDecisionId}" />
 		<input type="hidden" name="resubmitCount" value="{$lastDecisionArray.resubmitCount}" />

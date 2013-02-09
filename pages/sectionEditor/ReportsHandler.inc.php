@@ -149,7 +149,7 @@ class ReportsHandler extends Handler {
 		import ('lib.pkp.classes.who.form.SubmissionsReportForm');
 		parent::validate();
 		$this->setupTemplate();
-		$submissionsReportForm= new SubmissionsReportForm($args, $request);
+		$submissionsReportForm= new SubmissionsReportForm($args);
 		$isSubmit = Request::getUserVar('generateSubmissionsReport') != null ? true : false;
 	
 		if ($isSubmit) {

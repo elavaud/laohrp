@@ -1310,6 +1310,7 @@ Validation may fail on search URLs that require posted form data.]]></message>
     <message key="notification.type.otherSuppResearchOutput">Some other supplementary research output have been submitted for the proposal "{$param}"</message>
     <message key="notification.type.progressReport">A progress report has been submitted for the proposal "{$param}"</message>
     <message key="notification.type.completionReport">A completion report has been submitted for the proposal "{$param}"</message>
+    <message key="notification.type.suppFile">A new supplementary file has been added to the proposal "{$param}"</message>
     <message key="notification.type.extensionRequest">An extension request has been submitted for the proposal "{$param}"</message>
 	<message key="notification.type.reviewAssignment">You have been assigned to review the proposal: "{$param}". Please specify if you are able to do the review.</message>
     <message key="notification.type.reviewerFile">Proposal {$param} uploaded a file concerning his/her review.</message>

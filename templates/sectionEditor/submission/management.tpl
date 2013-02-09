@@ -34,6 +34,20 @@
 			{/if}
 		</td>
 	</tr>
+	{if count($previousFiles)>1}
+	{assign var="count" value=0}
+	<tr>
+		<td title="In case of a re-submission, here are the main proposal files previously submitted." class="label">[?] Previous proposal files</td>
+		<td width="80%" class="value">
+			{foreach name="previousFiles" from=$previousFiles item=previousFile}
+				{assign var="count" value=$count+1}
+				{if $count > 1}
+            		<a href="{url op="downloadFile" path=$submission->getArticleId()|to_array:$previousFile->getFileId()}" class="file">{$previousFile->getFileName()|escape}</a><br />
+				{/if}
+			{/foreach}
+		</td>
+	</tr>
+	{/if}
 	<tr>
 		<td title="Supplementary files submitted by the Investigator. Please click on a title (blue link) for downloading the concerned proposal." class="label">{*{translate key="article.suppFilesAbbrev"}*}[?] ຟາຍປະກອບເພີ້ມເຕີມ</td>
 		<td width="80%" class="value">

@@ -187,6 +187,7 @@
         <message key="author.submit.form.wordCountAlert">You have exceeded the maximum word limit for abstracts.</message>
 
         <message key="author.submit.submissionFile">Submission File</message>
+        <message key="author.submit.previousSubmissionFile">Previous Submission File</message>
 	    <message key="author.submit.uploadSubmissionFile">Upload file</message>
 	<message key="author.submit.replaceSubmissionFile">Replace submission file</message>
 	<message key="author.submit.noSubmissionFile">No file uploaded. You need to upload your main proposal for going to step 4</message>

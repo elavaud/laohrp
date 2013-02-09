@@ -54,7 +54,7 @@ class SubmitHandler extends AuthorHandler {
                 $submissionFile =& $authorSubmission->getSubmissionFile();
                 if(!empty($submissionFile)) {
                     $articleFileDao =& DAORegistry::getDAO('ArticleFileDAO');
-                    $articleFileDao->deleteArticleFileBySourceFileId($submissionFile->getFileId());
+                    //$articleFileDao->deleteArticleFileBySourceFileId($submissionFile->getFileId());
                 }
 
                 

@@ -44,9 +44,18 @@ class AuthorSubmitStep5Form extends AuthorSubmitForm {
 		$user =& Request::getUser();
 		$templateMgr =& TemplateManager::getManager();
 
-                // Get article file for this article
+        // Get article file for this article
 		$articleFileDao =& DAORegistry::getDAO('ArticleFileDAO');
 		$articleFiles =& $articleFileDao->getArticleFilesByArticle($this->articleId);			
+		
+		$previousFiles =& $articleFileDao->getPreviousFilesByArticleId($this->articleId);
+		foreach ($articleFiles as $articleFile) {
+			foreach ($previousFiles as $previousFile) {
+				if ($articleFile->getFileId() == $previousFile->getFileId()) {
+					$articleFile->setType('previous');
+				}
+			}
+		}
 		
 		$templateMgr->assign_by_ref('files', $articleFiles);		
 		$templateMgr->assign_by_ref('journal', Request::getJournal());

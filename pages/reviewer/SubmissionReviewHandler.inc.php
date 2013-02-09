@@ -58,7 +58,7 @@ class SubmissionReviewHandler extends ReviewerHandler {
 		$templateMgr->assign('confirmedStatus', $confirmedStatus);
 		$templateMgr->assign('declined', $submission->getDeclined());
 		$templateMgr->assign('reviewFormResponseExists', $reviewFormResponseDao->reviewFormResponseExists($reviewId));
-		$templateMgr->assign_by_ref('reviewFile', $reviewAssignment->getReviewFile());
+		$templateMgr->assign_by_ref('reviewFile', $submission->getSubmissionFile());
 		$templateMgr->assign_by_ref('reviewerFile', $submission->getReviewerFile());
 		$templateMgr->assign_by_ref('suppFiles', $submission->getSuppFiles());
 		$templateMgr->assign_by_ref('journal', $journal);
@@ -88,7 +88,7 @@ class SubmissionReviewHandler extends ReviewerHandler {
 		
 		$templateMgr->assign_by_ref('submission', $submission);
 
-		$templateMgr->assign_by_ref('reviewerFile', $submission->getReviewerFile());
+		$templateMgr->assign_by_ref('reviewFile', $submission->getReviewFile());
 		$templateMgr->assign_by_ref('suppFiles', $submission->getSuppFiles());
 		$templateMgr->assign_by_ref('journal', $journal);
 		$templateMgr->display('reviewer/submissionFullReview.tpl');
@@ -244,6 +244,22 @@ class SubmissionReviewHandler extends ReviewerHandler {
 		}
 	}
 
+	/**
+	 * Download a file.
+	 * @param $args array ($articleId, $fileId, [$revision])
+	 */
+	function downloadFileFullReview($args) {
+		$reviewId = isset($args[0]) ? $args[0] : 0;
+		$articleId = isset($args[1]) ? $args[1] : 0;
+		$fileId = isset($args[2]) ? $args[2] : 0;
+		$revision = isset($args[3]) ? $args[3] : null;
+
+		$reviewerSubmission =& $this->submission;
+		if (!Action::downloadFile($articleId, $fileId, $revision)) {
+			Request::redirect(null, null, 'submission', $reviewId);
+		}
+	}
+	
 	//
 	// Review Form
 	//

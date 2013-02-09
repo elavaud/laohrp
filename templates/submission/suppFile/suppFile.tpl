@@ -74,6 +74,31 @@ function checkSize(){
 <input type="hidden" name="type" value="{$type|escape}" /> <!-- Added by AIM, June 15 2011 -->
 {include file="common/formErrors.tpl"}
 
+{if $type == "Supp File"}
+{literal}
+<script type="text/javascript">
+$(document).ready(function() {
+    // Add filter of sudent research
+    if ($('#fileType').val() == null){
+        $('#saveButton').hide();
+    } else {
+        $('#saveButton').show();
+	}
+
+    $('#fileType').change(
+        function(){
+            var answer = $('#fileType').val();
+            if(answer == null) {
+		        $('#saveButton').hide();
+            } else {
+		        $('#saveButton').show();
+            }
+    	}
+    );
+});
+</script>
+{/literal}
+{/if}
 
 <div id="supplementaryFileUpload">
 
@@ -164,7 +189,10 @@ function checkSize(){
 <div class="separator"></div>
 
 
-<p><input type="submit" value="{translate key="common.save"}" class="button defaultButton" /> <input type="button" value="{translate key="common.cancel"}" class="button" onclick="history.go(-1)" /></p>
+<p>
+<input type="submit" value="{translate key="common.save"}" class="button defaultButton" id="saveButton" /> 
+<input type="button" value="{translate key="common.cancel"}" class="button" onclick="history.go(-1)" />
+</p>
 
 <p><span class="formRequired">{translate key="common.requiredField"}</span></p></form>
 <p><span class="formRequired">{translate key="common.laoTranslation"}</span></p>

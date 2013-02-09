@@ -6,8 +6,14 @@
  *
  * Subtemplate defining the submission metadata table. Non-form implementation.
  *}
-<div id="metadata">
+{assign var="status" value=$submission->getSubmissionStatus()}
+{assign var="decision" value=$submission->getMostRecentDecision()}
 
+<div id="metadata">
+{if $canEditMetadata && $isSectionEditor && $status!=PROPOSAL_STATUS_COMPLETED && $status!=PROPOSAL_STATUS_ARCHIVED && $decision!=SUBMISSION_EDITOR_DECISION_EXEMPTED && $decision!=SUBMISSION_EDITOR_DECISION_ACCEPT}
+	<p><a href="{url op="viewMetadata" path=$submission->getId()}" class="action">{translate key="submission.editMetadata"}</a></p>
+	{call_hook name="Templates::Submission::Metadata::Metadata::AdditionalEditItems"}
+{/if}
 <div id="authors">
 <h4>{*translate key="article.authorsS"*}Investigator(s)</h4>
 	

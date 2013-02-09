@@ -42,6 +42,7 @@ switch ($op) {
 	//
 	
 	case 'downloadFile':
+	case 'downloadFileFullReview':
 	//
 	// Submission Review Form
 	//

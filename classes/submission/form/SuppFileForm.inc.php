@@ -285,7 +285,9 @@ class SuppFileForm extends Form {
         if ($suppFile->getData('type') == 'Progress Report') $message = 'notification.type.progressReport';
         if ($suppFile->getData('type') == 'Completion Report') $message = 'notification.type.completionReport';
         if ($suppFile->getData('type') == 'Extension Request') $message = 'notification.type.extensionRequest';
-        if ($message){
+        if ($this->getData('type') == "Supp File") $message = 'notification.type.suppFile';
+                    
+        if (isset($message)){
         	foreach ($notificationSectionEditors as $userRole) {
             	$notificationManager->createNotification(
                 	$userRole['id'], $message,

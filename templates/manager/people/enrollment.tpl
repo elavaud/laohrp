@@ -209,14 +209,14 @@ function confirmAndPrompt(userId) {
 			{if $roleId}
 			<a href="{url op="unEnroll" path=$roleId userId=$extreviewer->getId() journalId=$currentJournal->getId()}" onclick="return confirm('{translate|escape:"jsparam" key="manager.people.confirmUnenroll"}')" class="action">{translate key="manager.people.unenroll"}</a>&nbsp;|
 			{/if}
-			<a href="{url op="editUser" path=$user->getId()}" class="action">{translate key="common.edit"}</a>
+			<a href="{url op="editUser" path=$extreviewer->getId()}" class="action">{translate key="common.edit"}</a>
 			{if $thisUser->getId() != $extreviewer->getId()}
 				|&nbsp;<a href="{url page="login" op="signInAsUser" path=$extreviewer->getId()}" class="action">{translate key="manager.people.signInAs"}</a>
 				{if !$roleId}|&nbsp;<a href="{url op="removeUser" path=$extreviewer->getId()}" onclick="return confirm('{translate|escape:"jsparam" key="manager.people.confirmRemove"}')" class="action">{translate key="manager.people.remove"}</a>{/if}
 				{if $extreviewer->getDisabled()}
-					|&nbsp;<a href="{url op="enableUser" path=$user->getId()}" class="action">{translate key="manager.people.enable"}</a>
+					|&nbsp;<a href="{url op="enableUser" path=$extreviewer->getId()}" class="action">{translate key="manager.people.enable"}</a>
 				{else}
-					|&nbsp;<a href="javascript:confirmAndPrompt({$user->getId()})" class="action">{translate key="manager.people.disable"}</a>
+					|&nbsp;<a href="javascript:confirmAndPrompt({$extreviewer->getId()})" class="action">{translate key="manager.people.disable"}</a>
 				{/if}
 			{/if}
 		</td>

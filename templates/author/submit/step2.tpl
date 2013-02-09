@@ -773,23 +773,6 @@ Significant or descriptive words." width="20%" class="label">[?] {fieldLabel nam
                 <td title="ວັນທີສີ້ນສຸດ" width="20%" class="label">[?] {fieldLabel name="endDate" required="true" key="proposal.endDate"}</td>
                 <td width="80%" class="value"><input type="text" class="textField" name="endDate[{$formLocale|escape}]" id="endDate" value="{$endDate[$formLocale]|escape}" size="20" maxlength="255" /></td>
             </tr>
-
-            <tr valign="top">
-                <td title="ງົບປະມານທີຄາດວ່າຈະໃຊ້ໃນການຄົ້ນຄວ້າ" width="20%" class="label">[?] {fieldLabel name="fundsRequired" required="true" key="proposal.fundsRequired"}</td>
-                <td width="80%" class="value"><input type="text" class="textField" name="fundsRequired[{$formLocale|escape}]" id="fundsRequired" value="{$fundsRequired[$formLocale]|escape}" size="20" maxlength="255" /></td>
-            </tr>
-            <tr valign="top">
-                <td width="20%" class="label">&nbsp;</td>
-                <td width="80%" class="value"><span><i>Please enter a whole number (no cents).</i></span></td>
-            </tr>
-			<tr valign="top">
-                <td width="20%" class="label"></td>
-                <td width="80%" class="value">
-                	<input type="radio" name="selectedCurrency[{$formLocale|escape}]" value="US Dollar(s)" {if  $selectedCurrency[$formLocale] == "US Dollar(s)" } checked="checked"{/if}  />US Dollar(s)
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="radio" name="selectedCurrency[{$formLocale|escape}]" value="Kip" {if  $selectedCurrency[$formLocale] == "Kip" } checked="checked"{/if} />Kip
-                </td>
-            </tr>
             
 {assign var="isOtherPrimarySponsorSelected" value=false}
 {foreach from=$primarySponsor[$formLocale] key=i item=sponsor}           
@@ -1055,6 +1038,26 @@ Is it a nationwide research?" width="20%" class="label">[?] {fieldLabel name="na
     <div id="sourcesOfGrant">
         <h3>{translate key="proposal.sourceOfMonetary"} / ການສະຫນັບສະຫນຸນແຫລ່ງທຶນແລະດ້ານອຸປະກອນເຄື່ອງໄຊ້</h3>
         <table width="100%" class="data">
+        
+            <tr><td><br/></td></tr>
+            <tr valign="top">
+                <td title="ງົບປະມານທີຄາດວ່າຈະໃຊ້ໃນການຄົ້ນຄວ້າ" width="20%" class="label">[?] {fieldLabel name="fundsRequired" required="true" key="proposal.fundsRequired"}</td>
+                <td width="80%" class="value"><input type="text" class="textField" name="fundsRequired[{$formLocale|escape}]" id="fundsRequired" value="{$fundsRequired[$formLocale]|escape}" size="20" maxlength="255" /></td>
+            </tr>
+            <tr valign="top">
+                <td width="20%" class="label">&nbsp;</td>
+                <td width="80%" class="value"><span><i>Please enter a whole number without any comma or other separator.</i></span></td>
+            </tr>
+			<tr valign="top">
+                <td width="20%" class="label"></td>
+                <td width="80%" class="value">
+                	<input type="radio" name="selectedCurrency[{$formLocale|escape}]" value="US Dollar(s)" {if  $selectedCurrency[$formLocale] == "US Dollar(s)" } checked="checked"{/if}  />US Dollar(s)
+                    &nbsp;&nbsp;&nbsp;&nbsp;
+                    <input type="radio" name="selectedCurrency[{$formLocale|escape}]" value="Kip" {if  $selectedCurrency[$formLocale] == "Kip" } checked="checked"{/if} />Kip
+                </td>
+            </tr>
+            <tr><td><br/></td></tr>
+
         	<tr valign="top">
                 <td title="ທືນຊ່ວຍເຫລືອລ້າຈາກພາກສ່ວນອຸດສາຫະກຳ" width="20%" class="label">[?] {fieldLabel name="industryGrant" required="true" key="proposal.industryGrant"}</td>
                 <td width="80%" class="value">

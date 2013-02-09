@@ -455,7 +455,9 @@ class ReviewerAction extends Action {
 		$journal =& Request::getJournal();
 
 		$canDownload = false;
-
+		
+		$submissionFile = $article->getSubmissionFile();
+		
 		// Reviewers have access to:
 		// 1) The current revision of the file to be reviewed.
 		// 2) Any file that he uploads.
@@ -467,6 +469,8 @@ class ReviewerAction extends Action {
 				$canDownload = ($reviewAssignment->getReviewRevision() == $revision);
 			}
 		} else if ($reviewAssignment->getReviewerFileId() == $fileId) {
+			$canDownload = true;
+		} else if ($submissionFile->getFileId() == $fileId) {
 			$canDownload = true;
 		} else {
 			foreach ($reviewAssignment->getSuppFiles() as $suppFile) {

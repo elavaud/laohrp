@@ -2104,6 +2104,7 @@ class SectionEditorAction extends Action {
 		$decisionTemplateMap = array(
 		SUBMISSION_EDITOR_DECISION_ACCEPT => 'EDITOR_DECISION_ACCEPT',
 		SUBMISSION_EDITOR_DECISION_RESUBMIT => 'EDITOR_DECISION_RESUBMIT',
+		SUBMISSION_EDITOR_DECISION_INCOMPLETE => 'EDITOR_DECISION_INCOMPLETE',
 		SUBMISSION_EDITOR_DECISION_DECLINE => 'EDITOR_DECISION_DECLINE',
 		SUBMISSION_EDITOR_DECISION_EXEMPTED => 'EDITOR_DECISION_EXEMPT'
 		);
@@ -2128,7 +2129,7 @@ class SectionEditorAction extends Action {
 			$articleComment->setCommentType(COMMENT_TYPE_EDITOR_DECISION);
 			$articleComment->setRoleId(Validation::isEditor()?ROLE_ID_EDITOR:ROLE_ID_SECTION_EDITOR);
 			$articleComment->setArticleId($sectionEditorSubmission->getArticleId());
-			$articleComment->setAuthorId($sectionEditorSubmission->getUserId());
+			$articleComment->setAuthorId($user->getUserId());
 			$articleComment->setCommentTitle($email->getSubject());
 			$articleComment->setComments($email->getBody());
 			$articleComment->setDatePosted(Core::getCurrentDate());
@@ -2144,7 +2145,6 @@ class SectionEditorAction extends Action {
 				$email->assignParams(array(
 					'editorialContactSignature' => $user->getContactSignature(),
 					'authorName' => $authorUser->getFullName(),
-					'proposalId' => $sectionEditorSubmission->getWhoId(Locale::getLocale()),
 					'url' => Request::url(null, 'author', 'submission', $sectionEditorSubmission->getArticleId()),
 					'journalTitle' => $journal->getLocalizedTitle()
 				));
