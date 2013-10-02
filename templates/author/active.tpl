@@ -8,9 +8,7 @@
  *
  * $Id$
  *}
-<head>
-{popup_init src="lib/pkp/js/overlib.js"}
-</head>
+
 
 <div id="submissions">
 <table class="listing" width="100%">

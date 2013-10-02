@@ -223,13 +223,6 @@ class ReportsHandler extends Handler {
 			$adegree,
 			$primarySponsorField,
 			$secondarySponsorField,
-			$editorId,
-			$searchField,
-			$searchMatch,
-			$search,
-			$dateSearchField,
-			$fromDate,
-			$toDate,
 			$researchFieldField,
 			$proposalTypeField,
 			$dataCollection,
@@ -245,7 +238,6 @@ class ReportsHandler extends Handler {
 			$approvedBefore,
 			$approvedAfter,
 			$decisionField,
-			$rangeInfo,
 			$sort,
 			$sortDirection
 		);
