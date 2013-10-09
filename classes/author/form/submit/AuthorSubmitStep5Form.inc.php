@@ -257,12 +257,19 @@ class AuthorSubmitStep5Form extends AuthorSubmitForm {
 		// Send author notification email
 		import('classes.mail.ArticleMailTemplate');
 		$mail = new ArticleMailTemplate($article, 'SUBMISSION_ACK', null, null, null, false);
+		$userSettingsDao =& DAORegistry::getDAO('UserSettingsDAO');
 		foreach ($sectionEditors as $sectionEditorEntry) {
 			$sectionEditor =& $sectionEditorEntry['user'];
-			$mail->setFrom($sectionEditor->getEmail(), $sectionEditor->getFullName());
+                        if (($userSettingsDao->getSetting($sectionEditor->getId(), "secretaryStatus") == "UHS Secretary") || ($userSettingsDao->getSetting($sectionEditor->getId(), "secretaryStatus") == "NIOPH Secretary")){
+                            $mail->setFrom($sectionEditor->getEmail(), $sectionEditor->getFullName());
+                            $mainSectionEditor =& $sectionEditor; 
+                        }
 			$mail->addBcc($sectionEditor->getEmail(), $sectionEditor->getFullName());
 			//unset($sectionEditor);
 		}
+                
+                if ($mainSectionEditor) $sectionEditor =& $mainSectionEditor;
+                
 		if ($mail->isEnabled()) {
 			$mail->addRecipient($user->getEmail(), $user->getFullName());
 			if($journal->getSetting('copySubmissionAckSpecified')) {
@@ -290,13 +297,13 @@ class AuthorSubmitStep5Form extends AuthorSubmitForm {
 		import('lib.pkp.classes.notification.NotificationManager');
 		$notificationManager = new NotificationManager();
 		$url = Request::url($journal->getPath(), 'sectionEditor', 'submissionReview', array($article->getId()));
-        foreach ($sectionEditors as $sectionEditorEntry) {
-        	$sectionEditor =& $sectionEditorEntry['user'];
-            $notificationManager->createNotification(
-            	$sectionEditor->getId(), $message,
-            	$article->getLocalizedTitle(), $url, 1, NOTIFICATION_TYPE_ARTICLE_SUBMITTED
-        	);
-        }
+                foreach ($sectionEditors as $sectionEditorEntry) {
+                    $sectionEditor =& $sectionEditorEntry['user'];
+                    $notificationManager->createNotification(
+                        $sectionEditor->getId(), $message,
+                        $article->getLocalizedTitle(), $url, 1, NOTIFICATION_TYPE_ARTICLE_SUBMITTED
+                    );
+                }
         
         
 		import('classes.article.log.ArticleLog');

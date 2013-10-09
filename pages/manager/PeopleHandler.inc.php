@@ -619,7 +619,7 @@ class PeopleHandler extends ManagerHandler {
 								$role->setRoleId(0x00000200);
 								$userSettingsDao->updateSetting($users[$i], 'secretaryStatus', 'UHS Secretary');
 								$roleDao->insertRole($role);
-								$sectionEditorsDAO->insertEditor($journal->getId(), '2', $users[$i], '1', '0');
+								$sectionEditorsDAO->insertEditor($journal->getId(), '2', $users[$i], '1', '1');
 							}
 						}						
 					}
@@ -644,7 +644,7 @@ class PeopleHandler extends ManagerHandler {
 								$role->setRoleId(0x00000200);
 								$userSettingsDao->updateSetting($users[$i], 'secretaryStatus', 'UHS Secretary Assistant');
 								$roleDao->insertRole($role);
-								$sectionEditorsDAO->insertEditor($journal->getId(), '2', $users[$i], '1', '0');
+								$sectionEditorsDAO->insertEditor($journal->getId(), '2', $users[$i], '1', '1');
 							}
 						}						
 					}
@@ -654,9 +654,10 @@ class PeopleHandler extends ManagerHandler {
 					$uhsChair =& $uhsChair->toArray();
 					if(count($uhsChair)<'1'){
 						for ($i=0; $i<count($users); $i++) {
-							if (($userSettingsDao->getSetting($users[$i], 'secretaryStatus', '4')) == ("UHS Secretary" || "UHS Secretary Assistant")){
+							if (($userSettingsDao->getSetting($users[$i], 'secretaryStatus', '4') == "UHS Secretary" ) || ($userSettingsDao->getSetting($users[$i], 'secretaryStatus', '4') == "UHS Secretary Assistant")){
 								$userSettingsDao->updateSetting($users[$i], 'secretaryStatus', 'Retired', 'string', 0, 0);
 								$roleDao->deleteRoleByUserId($users[$i], '4', '512');
+								$sectionEditorsDAO->deleteEditor($journal->getId(), '2', $users[$i]);
 							}
 							if (!$roleDao->roleExists($journal->getId(), $users[$i], $roleId)) {
 								$role = new Role();
@@ -674,9 +675,10 @@ class PeopleHandler extends ManagerHandler {
 					$uhsViceChair =& $uhsViceChair->toArray();
 					if(count($uhsViceChair)<'1'){
 						for ($i=0; $i<count($users); $i++) {
-							if (($userSettingsDao->getSetting($users[$i], 'secretaryStatus', '4')) == ("UHS Secretary" || "UHS Secretary Assistant")){
+							if (($userSettingsDao->getSetting($users[$i], 'secretaryStatus', '4') == "UHS Secretary" ) || ($userSettingsDao->getSetting($users[$i], 'secretaryStatus', '4') == "UHS Secretary Assistant")){
 								$userSettingsDao->updateSetting($users[$i], 'secretaryStatus', 'Retired', 'string', 0, 0);
 								$roleDao->deleteRoleByUserId($users[$i], '4', '512');
+								$sectionEditorsDAO->deleteEditor($journal->getId(), '2', $users[$i]);
 							}
 							if (!$roleDao->roleExists($journal->getId(), $users[$i], $roleId)) {
 								$role = new Role();
@@ -694,9 +696,10 @@ class PeopleHandler extends ManagerHandler {
 					$uhsMember =& $uhsMember->toArray();
 					if(count($uhsMember)<'15'){
 						for ($i=0; $i<count($users); $i++) {
-							if (($userSettingsDao->getSetting($users[$i], 'secretaryStatus', '4')) == ("UHS Secretary" || "UHS Secretary Assistant")){
+							if (($userSettingsDao->getSetting($users[$i], 'secretaryStatus', '4') == "UHS Secretary" ) || ($userSettingsDao->getSetting($users[$i], 'secretaryStatus', '4') == "UHS Secretary Assistant")){
 								$userSettingsDao->updateSetting($users[$i], 'secretaryStatus', 'Retired', 'string', 0, 0);
 								$roleDao->deleteRoleByUserId($users[$i], '4', '512');
+								$sectionEditorsDAO->deleteEditor($journal->getId(), '2', $users[$i]);
 							}
 							if (!$roleDao->roleExists($journal->getId(), $users[$i], $roleId)) {
 								$role = new Role();
@@ -731,7 +734,7 @@ class PeopleHandler extends ManagerHandler {
 								$role->setRoleId(0x00000200);
 								$userSettingsDao->updateSetting($users[$i], 'secretaryStatus', 'NIOPH Secretary');
 								$roleDao->insertRole($role);
-								$sectionEditorsDAO->insertEditor($journal->getId(), '1', $users[$i], '1', '0');
+								$sectionEditorsDAO->insertEditor($journal->getId(), '1', $users[$i], '1', '1');
 							}
 						}						
 					}
@@ -756,7 +759,7 @@ class PeopleHandler extends ManagerHandler {
 								$role->setRoleId(0x00000200);
 								$userSettingsDao->updateSetting($users[$i], 'secretaryStatus', 'NIOPH Secretary Assistant');
 								$roleDao->insertRole($role);
-								$sectionEditorsDAO->insertEditor($journal->getId(), '1', $users[$i], '1', '0');
+								$sectionEditorsDAO->insertEditor($journal->getId(), '1', $users[$i], '1', '1');
 							}
 						}						
 					}
@@ -766,9 +769,10 @@ class PeopleHandler extends ManagerHandler {
 					$niophChair =& $niophChair->toArray();
 					if(count($niophChair)<'1'){
 						for ($i=0; $i<count($users); $i++) {
-							if (($userSettingsDao->getSetting($users[$i], 'secretaryStatus', '4')) == ("NIOPH Secretary" || "NIOPH Secretary Assistant")){
+							if (($userSettingsDao->getSetting($users[$i], 'secretaryStatus', '4') == "NIOPH Secretary" ) || ($userSettingsDao->getSetting($users[$i], 'secretaryStatus', '4') == "NIOPH Secretary Assistant")){
 								$userSettingsDao->updateSetting($users[$i], 'secretaryStatus', 'Retired', 'string', 0, 0);
 								$roleDao->deleteRoleByUserId($users[$i], '4', '512');
+								$sectionEditorsDAO->deleteEditor($journal->getId(), '1', $users[$i]);
 							}
 							if (!$roleDao->roleExists($journal->getId(), $users[$i], $roleId)) {
 								$role = new Role();
@@ -786,9 +790,10 @@ class PeopleHandler extends ManagerHandler {
 					$niophViceChair =& $niophViceChair->toArray();
 					if(count($niophViceChair)<'1'){
 						for ($i=0; $i<count($users); $i++) {
-							if (($userSettingsDao->getSetting($users[$i], 'secretaryStatus', '4')) == ("NIOPH Secretary" || "NIOPH Secretary Assistant")){
+							if (($userSettingsDao->getSetting($users[$i], 'secretaryStatus', '4') == "NIOPH Secretary" ) || ($userSettingsDao->getSetting($users[$i], 'secretaryStatus', '4') == "NIOPH Secretary Assistant")){
 								$userSettingsDao->updateSetting($users[$i], 'secretaryStatus', 'Retired', 'string', 0, 0);
 								$roleDao->deleteRoleByUserId($users[$i], '4', '512');
+								$sectionEditorsDAO->deleteEditor($journal->getId(), '1', $users[$i]);
 							}
 							if (!$roleDao->roleExists($journal->getId(), $users[$i], $roleId)) {
 								$role = new Role();
@@ -806,9 +811,10 @@ class PeopleHandler extends ManagerHandler {
 					$niophMember =& $niophMember->toArray();
 					if(count($niophMember)<'15'){
 						for ($i=0; $i<count($users); $i++) {
-							if (($userSettingsDao->getSetting($users[$i], 'secretaryStatus', '4')) == ("NIOPH Secretary" || "NIOPH Secretary Assistant")){
+							if (($userSettingsDao->getSetting($users[$i], 'secretaryStatus', '4') == "NIOPH Secretary" ) || ($userSettingsDao->getSetting($users[$i], 'secretaryStatus', '4') == "NIOPH Secretary Assistant")){
 								$userSettingsDao->updateSetting($users[$i], 'secretaryStatus', 'Retired', 'string', 0, 0);
 								$roleDao->deleteRoleByUserId($users[$i], '4', '512');
+								$sectionEditorsDAO->deleteEditor($journal->getId(), '1', $users[$i]);
 							}
 							if (!$roleDao->roleExists($journal->getId(), $users[$i], $roleId)) {
 								$role = new Role();
