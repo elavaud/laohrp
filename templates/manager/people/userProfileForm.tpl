@@ -136,20 +136,13 @@
 	
 	{if not $userId}
 	
-	<!-- Commented out by EL on May 8, 2012: This part is now only done in "Enroll a user as" -->
-	<!--
 	<tr valign="top">
 		<td class="label">{fieldLabel name="enrollAs" key="manager.people.enrollUserAs"}</td>
 		<td class="value">
-			<select name="enrollAs[]" id="enrollAs" multiple="multiple" size="6" class="selectMenu">
-			{html_options_translate options=$roleOptions selected=$enrollAs}
-			</select>
-			<br />
-			<span class="instruct">{translate key="manager.people.enrollUserAsDescription"}</span>
+			<input type="checkbox" name="enrollAs" id="enrollAs" value="1" checked="checked" /> <label for="registerAsAuthor">{translate key="user.role.author"}</label>
 		</td>
 	</tr>
-	-->
-	
+
 	<tr valign="top">
 		<td class="label">{fieldLabel name="username" required="true" key="user.username"}</td>
 		<td class="value">
@@ -274,6 +267,7 @@
 		<td class="label">{fieldLabel name="biography" key="user.biography"}<br />{translate key="user.biography.description"}</td>
 		<td class="value"><textarea name="biography[{$formLocale|escape}]" id="biography" rows="5" cols="40" class="textArea">{$biography[$formLocale]|escape}</textarea></td>
 	</tr>
+	
 	{if count($availableLocales) > 1}
 	<tr valign="top">
 		<td class="label">{translate key="user.workingLanguages"}</td>

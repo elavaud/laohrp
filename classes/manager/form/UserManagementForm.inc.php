@@ -364,20 +364,14 @@ class UserManagementForm extends Form {
 
 			$isManager = Validation::isJournalManager();
 
-			if (!empty($this->_data['enrollAs'])) {
-				foreach ($this->getData('enrollAs') as $roleName) {
-					// Enroll new user into an initial role
-					$roleDao =& DAORegistry::getDAO('RoleDAO');
-					$roleId = $roleDao->getRoleIdFromPath($roleName);
-					if (!$isManager && $roleId != ROLE_ID_READER) continue;
-					if ($roleId != null) {
-						$role = new Role();
-						$role->setJournalId($journal->getId());
-						$role->setUserId($userId);
-						$role->setRoleId($roleId);
-						$roleDao->insertRole($role);
-					}
-				}
+			if ($this->getData('enrollAs') == '1') {
+                                // Enroll new user as an investigator
+                                $roleDao =& DAORegistry::getDAO('RoleDAO');
+                                $role = new Role();
+                                $role->setJournalId($journal->getId());
+                                $role->setUserId($userId);
+                                $role->setRoleId('65536');
+                                $roleDao->insertRole($role);       
 			}
 
 			if ($sendNotify) {
