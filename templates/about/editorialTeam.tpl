@@ -56,6 +56,21 @@
 	</div>
 {/if}
 
+{if count($secretaryAssistants) > 0}
+{if count($secretaryAssistants) == 1}
+<h3>Secretariat Assistant</h4>
+{else}
+<h4>Secretariat Assistants</h4>
+{/if}
+	<div id="secretary">
+	<ol class="contact">
+		{foreach from=$secretaryAssistants item=secretaryAssistant} 
+			<strong>{$secretaryAssistant->getFullName()|escape}</strong>{if $secretaryAssistant->getLocalizedAffiliation()}, {$secretaryAssistant->getLocalizedAffiliation()|escape}{/if}<br /> &#187; {translate key="about.contact.email"}: {if $secretaryAssistant->getEmail()}{mailto address=$secretaryAssistant->getEmail()|escape}<br />{/if}
+		{/foreach}
+	</ol>
+	</div>
+{/if}
+
 {if count($ercMembers) > 0}
 <h4>Members</h4>
 	<div id="ercMembers">

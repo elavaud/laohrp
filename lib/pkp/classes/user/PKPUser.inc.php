@@ -593,8 +593,8 @@ class PKPUser extends DataObject {
 		foreach ($roles as $role){
 			$roleId =& $role->getRoleId();
 			if ($roleId == '512'){
-				if($userSettingsDao->getSetting($this->getId(), 'secretaryStatus', '4') && ($userSettingsDao->getSetting($this->getId(), 'secretaryStatus', '4') != "Retired")){
-					if ($functions != null){
+				if($userSettingsDao->getSetting($this->getId(), 'secretaryStatus', '4') && ($userSettingsDao->getSetting($this->getId(), 'secretaryStatus', '4') != "Retired")){    
+                                        if ($functions != null){
 						$functions = $functions . ' & ' . $userSettingsDao->getSetting($this->getId(), 'secretaryStatus', '4');
 					}
 					else {

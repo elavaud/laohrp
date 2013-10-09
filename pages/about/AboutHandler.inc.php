@@ -121,7 +121,10 @@ class AboutHandler extends Handler {
 		
 		$secretary =& $userSettingsDao->getUsersBySetting("secretaryStatus", "NIOPH Secretary");
 		$secretary =& $secretary->toArray();
-		
+
+                $secretaryAssistants =& $userSettingsDao->getUsersBySetting("secretaryStatus", "NIOPH Secretary Assistant");
+		$secretaryAssistants =& $secretaryAssistants->toArray();
+
 		$ercChair =& $userSettingsDao->getUsersBySetting("niophMemberStatus", "NIOPH Chair");
 		$ercChair =& $ercChair->toArray();
 		
@@ -135,6 +138,7 @@ class AboutHandler extends Handler {
 		$templateMgr->assign_by_ref('ercViceChair', $ercViceChair);	
 		$templateMgr->assign_by_ref('ercMembers', $ercMembers);
 		$templateMgr->assign_by_ref('secretary', $secretary);
+		$templateMgr->assign_by_ref('secretaryAssistants', $secretaryAssistants);
 
 		
 		$templateMgr->display('about/contact.tpl');
@@ -227,7 +231,10 @@ class AboutHandler extends Handler {
 		$secretary =& $userSettingsDao->getUsersBySetting("secretaryStatus", "UHS Secretary");
 		$secretary =& $secretary->toArray();
 
-		$ercChair =& $userSettingsDao->getUsersBySetting("uhsMemberStatus", "UHS Chair");
+		$secretaryAssistants =& $userSettingsDao->getUsersBySetting("secretaryStatus", "UHS Secretary Assistant");
+		$secretaryAssistants =& $secretaryAssistants->toArray();
+
+                $ercChair =& $userSettingsDao->getUsersBySetting("uhsMemberStatus", "UHS Chair");
 		$ercChair =& $ercChair->toArray();
 		
 		$ercViceChair =& $userSettingsDao->getUsersBySetting("uhsMemberStatus", "UHS Vice-Chair");
@@ -237,12 +244,12 @@ class AboutHandler extends Handler {
 		$ercMembers =& $ercMembers->toArray();
 		
 		$templateMgr->assign_by_ref('ercChair', $ercChair);
-		$templateMgr->assign_by_ref('ercViceChair', $ercViceChair);
-	
+		$templateMgr->assign_by_ref('ercViceChair', $ercViceChair);	
 		$templateMgr->assign_by_ref('ercMembers', $ercMembers);
 		$templateMgr->assign_by_ref('secretary', $secretary);
-		
-		$templateMgr->display('about/editorialTeam.tpl');
+		$templateMgr->assign_by_ref('secretaryAssistants', $secretaryAssistants);
+
+                $templateMgr->display('about/editorialTeam.tpl');
 	}
 
 	/**

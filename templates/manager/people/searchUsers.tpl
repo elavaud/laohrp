@@ -91,19 +91,34 @@ function showOrHideEthicsCommitteeField() {ldelim}
     {rdelim}
     
     $('#uhsChairErrorMessage').hide();
+
     $('#uhsViceChairErrorMessage').hide();
+
     $('#uhsSecretaryErrorMessage').hide();
     $('#uhsSecretaryTooManySelected').hide();
     $('#placesAvailableForUhsSecretary').hide();
+
+    $('#uhsSecretaryAssistantsErrorMessage').hide();
+    $('#uhsSecretaryAssistantsTooManySelected').hide();
+    $('#placesAvailableForUhsSecretaryAssistants').hide();
+
     $('#uhsMembersErrorMessage').hide();
     $('#uhsMembersTooManySelected').hide();
     $('#placesAvailableForUhsMember').hide();
 
+
     $('#niophChairErrorMessage').hide();
-    $('#niophViceChairErrorMessage').hide();    
+    
+    $('#niophViceChairErrorMessage').hide(); 
+    
     $('#niophSecretaryErrorMessage').hide();
     $('#niophSecretaryTooManySelected').hide();
     $('#placesAvailableForNiophSecretary').hide();
+
+    $('#niophSecretaryAssistantsErrorMessage').hide();
+    $('#niophSecretaryAssistantsTooManySelected').hide();
+    $('#placesAvailableForNiophSecretaryAssistants').hide();
+    
     $('#niophMembersErrorMessage').hide();
     $('#niophMembersTooManySelected').hide();
     $('#placesAvailableForNiophMember').hide();
@@ -160,19 +175,34 @@ function showOrHideErcMemberStatusField() {ldelim}
     {rdelim}
     
     $('#uhsChairErrorMessage').hide();
+    
     $('#uhsViceChairErrorMessage').hide();
+    
     $('#uhsSecretaryErrorMessage').hide();
     $('#uhsSecretaryTooManySelected').hide();
     $('#placesAvailableForUhsSecretary').hide();
+
+    $('#uhsSecretaryAssistantsErrorMessage').hide();
+    $('#uhsSecretaryAssistantsTooManySelected').hide();
+    $('#placesAvailableForUhsSecretaryAssistants').hide();
+    
     $('#uhsMembersErrorMessage').hide();
     $('#uhsMembersTooManySelected').hide();
     $('#placesAvailableForUhsMember').hide();
 
+
     $('#niophChairErrorMessage').hide();
-    $('#niophViceChairErrorMessage').hide();    
+    
+    $('#niophViceChairErrorMessage').hide();
+    
     $('#niophSecretaryErrorMessage').hide();
     $('#niophSecretaryTooManySelected').hide();
     $('#placesAvailableForNiophSecretary').hide();
+
+    $('#niophSecretaryAssistantsErrorMessage').hide();
+    $('#niophSecretaryAssistantsTooManySelected').hide();
+    $('#placesAvailableForNiophSecretaryAssistants').hide();
+    
     $('#niophMembersErrorMessage').hide();
     $('#niophMembersTooManySelected').hide();
     $('#placesAvailableForNiophMember').hide();
@@ -196,6 +226,7 @@ function showOrHideButtons() {ldelim}
 	var isChairSelected = false;
 	var isViceChairSelected = false;
     var isSecretarySelected = false;  
+    var isSecretaryAssistantSelected = false;  
     var isMemberSelected = false;
     
     var checkCheckbox = checkSelected();
@@ -225,6 +256,9 @@ function showOrHideButtons() {ldelim}
                 else if(value == "ERC, Secretary") {ldelim}
                     isSecretarySelected = true;                   
                 {rdelim}
+                else if(value == "ERC, Secretary Assistant") {ldelim}
+                    isSecretaryAssistantSelected = true;                   
+                {rdelim}
                 else if(value == "ERC, Member") {ldelim}
                     isMemberSelected = true;                   
                 {rdelim}
@@ -233,19 +267,34 @@ function showOrHideButtons() {ldelim}
     {rdelim}
     
     $('#uhsChairErrorMessage').hide();
+    
     $('#uhsViceChairErrorMessage').hide();
+    
     $('#uhsSecretaryErrorMessage').hide();
     $('#uhsSecretaryTooManySelected').hide();
     $('#placesAvailableForUhsSecretary').hide();
+
+    $('#uhsSecretaryAssistantsErrorMessage').hide();
+    $('#uhsSecretaryAssistantsTooManySelected').hide();
+    $('#placesAvailableForUhsSecretaryAssistants').hide();
+    
     $('#uhsMembersErrorMessage').hide();
     $('#uhsMembersTooManySelected').hide();
     $('#placesAvailableForUhsMember').hide();
 
+
     $('#niophChairErrorMessage').hide();
-    $('#niophViceChairErrorMessage').hide();    
+    
+    $('#niophViceChairErrorMessage').hide();  
+    
     $('#niophSecretaryErrorMessage').hide();
     $('#niophSecretaryTooManySelected').hide();
     $('#placesAvailableForNiophSecretary').hide();
+
+    $('#niophSecretaryAssistantsErrorMessage').hide();
+    $('#niophSecretaryAssistantsTooManySelected').hide();
+    $('#placesAvailableForNiophSecretaryAssistants').hide();
+    
     $('#niophMembersErrorMessage').hide();
     $('#niophMembersTooManySelected').hide();
     $('#placesAvailableForNiophMember').hide();
@@ -293,6 +342,21 @@ function showOrHideButtons() {ldelim}
         	{rdelim}        
         	else {ldelim}
         		$('#placesAvailableForUhsSecretary').show();
+        		$('#submit').show();
+        	{rdelim}        
+    	{rdelim}        
+    	else if(isSecretaryAssistantSelected) {ldelim}
+    		$('#noMemberStatusSelected').hide();
+    		if({$areUhsSecretaryAssistants}=='1'){ldelim}
+        		$('#submit').hide();
+        		$('#uhsSecretaryAssistantsErrorMessage').show();
+        	{rdelim}
+       		else if (checkCheckbox>{$freeUhsSecretaryAssistantPlaces}) {ldelim}
+        		$('#submit').hide();
+        		$('#uhsSecretaryAssistantsTooManySelected').show();
+        	{rdelim}        
+        	else {ldelim}
+        		$('#placesAvailableForUhsSecretaryAssistants').show();
         		$('#submit').show();
         	{rdelim}        
     	{rdelim}
@@ -353,6 +417,21 @@ function showOrHideButtons() {ldelim}
         	{rdelim}        
         	else {ldelim}
         		$('#placesAvailableForNiophSecretary').show();
+        		$('#submit').show();
+        	{rdelim}        
+    	{rdelim}
+        else if(isSecretaryAssistantSelected) {ldelim}
+    		$('#noMemberStatusSelected').hide();
+    		if({$areNiophSecretaryAssistants}=='1'){ldelim}
+        		$('#submit').hide();
+        		$('#niophSecretaryAssistantsErrorMessage').show();
+        	{rdelim}
+       		else if (checkCheckbox>{$freeNiophSecretaryAssistantPlaces}) {ldelim}
+        		$('#submit').hide();
+        		$('#niophSecretaryAssistantsTooManySelected').show();
+        	{rdelim}        
+        	else {ldelim}
+        		$('#placesAvailableForNiophSecretaryAssistants').show();
         		$('#submit').show();
         	{rdelim}        
     	{rdelim}
@@ -438,10 +517,11 @@ function showOrHideButtons() {ldelim}
     <tr valign="top" id="ercMemberStatusField" style="display: none;">
         <td width="20%" class="label"><strong>Status :</strong></td>
         <td width="80%" class="value">
-			<select name="ercMemberStatus" multiple="multiple" size="4" id="ercMemberStatus" class="selectMenu">
+			<select name="ercMemberStatus" multiple="multiple" size="5" id="ercMemberStatus" class="selectMenu">
 				<option value="ERC, Chair">Chair</option>
 				<option value="ERC, Vice-Chair">Vice-Chair</option>
 				<option value="ERC, Secretary">Secretary</option>
+				<option value="ERC, Secretary Assistant">Secretary Assistant</option>
 				<!--<option value="ERC, Secretary Administrative Assistant">Secretary Administrative Assistant</option>-->
 				<option value="ERC, Member">Member</option>
 				<!--<option value="ERC, External Member">External Member</option>-->
@@ -539,6 +619,16 @@ A Secretary is already set in the UHS Ethics Committee:<br />
 <font color=#FF0000>
 Please unenroll him/her before enrolling someone else.
 </font></p>
+<p id="uhsSecretaryAssistantsErrorMessage" style="display: none;"><font color=#FF0000>
+<strong>ATTENTION :</strong><br />
+Some secretary assistants are already set in the UHS Ethics Committee:<br />
+</font>
+{foreach from=$uhsSecretaryAssistants item=uhsSecretaryAssistant}
+{$uhsSecretaryAssistant->getFullName()|escape}<br />
+{/foreach}
+<font color=#FF0000>
+Please unenroll them before enrolling someone else.
+</font></p>
 <p id="niophSecretaryErrorMessage" style="display: none;"><font color=#FF0000>
 <strong>ATTENTION :</strong><br />
 A secretary already is set in the NIOPH Ethics Committee:<br />
@@ -548,6 +638,16 @@ A secretary already is set in the NIOPH Ethics Committee:<br />
 {/foreach}
 <font color=#FF0000>
 Please unenroll him/her before enrolling someone else.
+</font></p>
+<p id="niophSecretaryAssistantsErrorMessage" style="display: none;"><font color=#FF0000>
+<strong>ATTENTION :</strong><br />
+Some secretary assistants are already set in the NIOPH Ethics Committee:<br />
+</font>
+{foreach from=$niophSecretaryAssistants item=niophSecretaryAssistant}
+{$niophSecretaryAssistant->getFullName()|escape}<br />
+{/foreach}
+<font color=#FF0000>
+Please unenroll them before enrolling someone else.
 </font></p>
 <p id="uhsMembersErrorMessage" style="display: none;"><font color=#FF0000>
 <strong>ATTENTION :</strong><br />
@@ -584,6 +684,16 @@ Only {$freeUhsSecretaryPlaces} place(s) available.
 Too many secretaries selected for the NIOPH Ethics Committee.<br />
 Only {$freeNiophSecretaryPlaces} place(s) available.
 </font></p>
+<p id="uhsSecretaryAssistantsTooManySelected" style="display: none;"><font color=#FF0000>
+<strong>ATTENTION :</strong><br />
+Too many secretary assistants selected for the UHS Ethics Committee.<br />
+Only {$freeUhsSecretaryAssistantPlaces} place(s) available.
+</font></p>
+<p id="niophSecretaryAssistantsTooManySelected" style="display: none;"><font color=#FF0000>
+<strong>ATTENTION :</strong><br />
+Too many secretary assistants selected for the NIOPH Ethics Committee.<br />
+Only {$freeNiophSecretaryAssistantPlaces} place(s) available.
+</font></p>
 <p id="uhsMembersTooManySelected" style="display: none;"><font color=#FF0000>
 <strong>ATTENTION :</strong><br />
 Too many members selected for the UHS Ethics Committee.<br />
@@ -605,6 +715,12 @@ UHS-ERC Secretary: {$freeUhsSecretaryPlaces} place(s) available.<br />
 </font></p>
 <p id="placesAvailableForNiophSecretary" style="display: none;"><font color=#1e7fb8>
 NIOPH-ERC Secretary: {$freeNiophSecretaryPlaces} place(s) available.<br />
+</font></p>
+<p id="placesAvailableForUhsSecretaryAssistants" style="display: none;"><font color=#1e7fb8>
+UHS-ERC Secretary Assistant: {$freeUhsSecretaryAssistantPlaces} place(s) available.<br />
+</font></p>
+<p id="placesAvailableForNiophSecretaryAssistants" style="display: none;"><font color=#1e7fb8>
+NIOPH-ERC Secretary Assistant: {$freeNiophSecretaryAssistantPlaces} place(s) available.<br />
 </font></p>
 <!-- End of management of the ERC Status -->
 
