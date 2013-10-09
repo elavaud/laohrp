@@ -14,9 +14,8 @@
 {/strip}
 <div id="aboutPeople">
 <p>
-<b>Head,</b><br/>
-National Health Research Coordination Office<br/>
-&#187; {mailto text="Dr. Sengchanh Kounnavong" address=sengchanhkounnavong@hotmail.com}
+<b>General Director of the National Institute of Public Health</b><br/>
+&#187; {mailto text="Dr. Kongsap Akkhavong" address=kgfwef@hotmail.com}
 </p>
 
 <h3>{translate key="about.people"}</h3>

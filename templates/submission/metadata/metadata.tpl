@@ -14,6 +14,7 @@
 	<p><a href="{url op="viewMetadata" path=$submission->getId()}" class="action">{translate key="submission.editMetadata"}</a></p>
 	{call_hook name="Templates::Submission::Metadata::Metadata::AdditionalEditItems"}
 {/if}
+</div>
 <div id="authors">
 <h4>{*translate key="article.authorsS"*}Investigator(s)</h4>
 	
