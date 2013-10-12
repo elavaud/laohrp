@@ -5,14 +5,33 @@ import('classes.lib.fpdf.fpdf');
 class PDF extends FPDF {
 	function Header()
 	{
-		$this->SetFont('Times','B',15);
-		// Calculate width of title and position
-		$w = $this->GetStringWidth($title)+6;
-		$this->SetX((210-$w)/2);
-		// Title
-		$this->Cell($w,9,$title,0,1,'C');
-		// Line break
-		$this->Ln(10);
+		$this->SetFont('Times','B',14);
+		
+                // Logo
+                $this->Image("public/site/images/mainlogo.png", 85, 5, 40);
+		$this->Ln(20);
+                
+                // First line title
+                $title = "Lao People's Democratic Republic";
+		$w = $this->GetStringWidth($title);
+		$this->SetX(105-($w/2));
+		$this->Cell($w,6,$title,0,1,'C');
+
+                // Second line title
+		$this->SetFont('Times','',14);
+                $title = "Peace Independence Democracy Unity Prosperity";
+		$w = $this->GetStringWidth($title);
+		$this->SetX(105-($w/2));
+		$this->Cell($w,6,$title,0,1,'C');
+
+                // Third line title
+                $title = "===  000  ===";
+		$w = $this->GetStringWidth($title);
+		$this->SetX(105-($w/2));
+		$this->Cell($w,6,$title,0,1,'C');
+
+                // Line break
+		$this->Ln(5);
 	}
 
 	function Footer()

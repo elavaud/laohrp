@@ -61,9 +61,6 @@ class Session extends DataObject {
 			unset($_SESSION[$key]);
 		}
 
-		if (session_is_registered($key)) {
-			session_unregister($key);
-		}
 	}
 
 	//

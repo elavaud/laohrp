@@ -2994,6 +2994,133 @@ class SectionEditorAction extends Action {
 		$suppFileId = $suppFileForm->execute($fileName);
 		*/		
 	}
+        
+        
+        function automaticDecisionLetter($sectionEditorSubmission, $decision){
+		$this->validate($sectionEditorSubmission->getId());
+                
+		$articleDao =& DAORegistry::getDAO('ArticleDAO');
+		$sectionDao =& DAORegistry::getDAO('SectionDAO');
+
+                $section =& $sectionDao->getSection($sectionEditorSubmission->getSectionId());
+
+                import('classes.lib.fpdf.pdf');
+                $pdf = new PDF();
+                $pdf->AddPage();
+                
+                $pdf->SetFont('Times','B',12);
+		$pdf->Cell(0,6, 'Ministry of Health',0,1);
+		$pdf->Cell(0,6, $section->getSectionTitle().' ('.$section->getLocalizedAbbrev().')',0,1);
+                
+                $pdf->SetFont('Times','',12);
+		$pdf->Cell(0,6,'No        /'.date('Y', time()).' '.$section->getLocalizedAbbrev(),0,1,'R');
+                $pdf->Ln(5);
+                
+                $pdf->SetFont('Times','B',14);
+		$pdf->Cell(0,6,'Approval Notice',0,1,'C');
+                $pdf->Ln(5);
+                
+                $pdf->SetFont('Times','',12);
+                $submitter =& $sectionEditorSubmission->getUser();
+		$pdf->Cell(0,4,$submitter->getFullName(),0,1);
+		$pdf->Cell(0,4,'Email: '.$submitter->getEmail(),0,1);
+                if ($submitter->getPhone()) $pdf->Cell(0,4,'Phone: '.$submitter->getPhone(),0,1);
+                $pdf->Ln(5);
+                
+                $pdf->SetFont('Times','U',12);
+		$pdf->MultiCell(0,6,'Research proposal: '.$sectionEditorSubmission->getLocalizedTitle());
+                $pdf->Ln(5);
+                
+                $pdf->SetFont('Times','',12);
+		$pdf->Cell(0,6,'Dear '.$submitter->getFullName().',',0,1);
+                $pdf->Ln(5);
+                
+                if ($decision == "Approved") {
+                    $pdf->MultiCell(0,4,'The '.$section->getSectionTitle().' decided to approve your research proposal "'.$sectionEditorSubmission->getLocalizedTitle().'".');
+                    $pdf->Ln(5);
+                    $pdf->MultiCell(0,4,'Please note the following information about your approved research:');
+                    $pdf->Ln(5);
+
+                    $pdf->SetFont('Times','U',12);
+                    $title = 'Unique Proposal ID:';
+                    $w = $pdf->GetStringWidth($title);
+                    $pdf->Cell($w,6,$title);
+                    $pdf->SetFont('Times','',12);
+                    $pdf->SetX($w+10);
+                    $pdf->Cell(0,6,' '.$sectionEditorSubmission->getLocalizedWhoId(),0,1);
+
+
+                    $pdf->SetFont('Times','U',12);
+                    $title = 'Approval period:';
+                    $w = $pdf->GetStringWidth($title);
+                    $pdf->Cell($w,6,$title);
+                    $pdf->SetFont('Times','',12);
+                    $pdf->SetX($w+10);
+                    $pdf->Cell(0,6,' '.$sectionEditorSubmission->getLocalizedStartDate().' to '.$sectionEditorSubmission->getLocalizedEndDate(),0,1);
+
+                    $pdf->SetFont('Times','U',12);
+                    $title = 'Primary sponsor:';
+                    $w = $pdf->GetStringWidth($title);
+                    $pdf->Cell($w,6,$title);
+                    $pdf->SetFont('Times','',12);
+                    $pdf->SetX($w+10);
+                    $primarySponsor = $sectionEditorSubmission->getLocalizedPrimarySponsor();
+                    $pdf->Cell(0,6,' '.$articleDao->getAgencySingle($primarySponsor),0,1);
+
+                    $pdf->SetFont('Times','U',12);
+                    $authors =& $sectionEditorSubmission->getAuthors();
+                    if (count($authors)>1) {
+                        $title = 'Investigators:';
+                        $w = $pdf->GetStringWidth($title);
+                    } else {
+                        $title = 'Investigator:';
+                        $w = $pdf->GetStringWidth($title);
+                    }
+                    $pdf->Cell($w,6,$title);
+                    $pdf->SetFont('Times','',12);
+                    $pdf->SetX($w+10);
+                    $investigators = '';
+                    foreach ($authors as $author) {
+                        if ($investigators == '') $investigators = $author->getFullName();
+                        else $investigators .= ', '.$author->getFullName();
+                    }
+                    $pdf->MultiCell(0,6,' '.$investigators);
+                    $pdf->Ln(5);
+
+                    $pdf->MultiCell(0,4,'The investigator shall submit the following documents to the Secretariat of '.$section->getLocalizedAbbrev().' through Lao Health Research Portal:');
+                    $bulletpoints = array();
+                    $bulletpoints['bullet'] = chr(149);
+                    $bulletpoints['margin'] = ' ';
+                    $bulletpoints['indent'] = 10;
+                    $bulletpoints['spacer'] = 0;
+                    $bulletpoints['text'] = array();                   
+                    $bulletpoints['text'][0] = 'Annual progress report';
+                    $bulletpoints['text'][1] = 'Final scientific report';
+                    $bulletpoints['text'][2] = 'Immediate notification of serious adverse events (if any)';
+                    $bulletpoints['text'][3] = 'Patient/participant feedback (if any)';
+                    $pdf->MultiCellBltArray(190, 4, $bulletpoints);    
+                    $pdf->Ln(5);
+
+                    $pdf->SetFont('Times','B',12);
+                    $pdf->MultiCell(0,4,'Please note that the '.$section->getSectionTitle().' reserves the right to ask for further questions, seek additional informations or monitor the conduct of the research and consent process.');
+                } elseif ($decision == "Revise & Resubmit") {
+                    $pdf->MultiCell(0,4,'The '.$section->getSectionTitle().' considered that the research proposal, "'.$sectionEditorSubmission->getLocalizedTitle().'", should be revised and resubmitted.');
+                } elseif ($decision == "Not Approved") {
+                    $pdf->MultiCell(0,4,'We are in the regret to inform you that the '.$section->getSectionTitle().' did not approve the research proposal, "'.$sectionEditorSubmission->getLocalizedTitle().'".');
+                }
+                $pdf->Ln(10);
+                
+                
+                $pdf->SetFont('Times','',12);
+		$pdf->Cell(0,4,'Vientiane Capital, the '.date('l jS F Y', time()),0,1,'R');
+
+                if ($section->getSectionId() == '1') $secondResponsiblePerson = 'Director General of NIOPH';
+		else $secondResponsiblePerson = 'President of UHS';
+                $pdf->Cell(0,4, 'Chairman of the '.$section->getLocalizedAbbrev().' or '.$secondResponsiblePerson,0,1,'R');
+                
+                $pdf->Output($sectionEditorSubmission->getLocalizedWhoId().' - Approval Notice.pdf',"D");   
+
+        }
 }
 
 ?>

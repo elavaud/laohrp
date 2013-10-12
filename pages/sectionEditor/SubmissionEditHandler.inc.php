@@ -2829,6 +2829,14 @@ class SubmissionEditHandler extends SectionEditorHandler {
 		$this->submission =& $sectionEditorSubmission;
 		return true;
 	}
+        
+        function downloadDecisionLetter($args){
+		$articleId = isset($args[0]) ? (int)$args[0] : 0;
+		$decision = isset($args[1]) ? (string)$args[1] : 'Approved';
+		$this->validate($articleId);
+		$submission =& $this->submission;
+		SectionEditorAction::automaticDecisionLetter($submission, $decision);
+        }
 
 }
 ?>

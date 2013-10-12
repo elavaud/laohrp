@@ -21,7 +21,10 @@ switch ($op) {
 	//
 	// Submission Tracking
 	//
-	case 'enrollSearch':
+	case 'downloadDecisionLetter':
+
+    
+        case 'enrollSearch':
 	case 'createReviewer':
 	case 'createExternalReviewer':
 	case 'suggestUsername':

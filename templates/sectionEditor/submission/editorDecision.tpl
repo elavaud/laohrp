@@ -63,6 +63,17 @@ function checkSize(){
 <h3>{*{translate key="submission.editorDecision"}*}ການຕັດສິນ ຂອງຄະນະກຳມະການຈັນຍາທຳແລະການທົບທວນ </h3>
 
 <table id="table1" width="100%" class="data">
+{if $proposalStatus == PROPOSAL_STATUS_EXPEDITED || $proposalStatus == PROPOSAL_STATUS_ASSIGNED}	
+	<tr>
+		<td title="Please click on one of the following link for automatically downloading the corresponding decision letter about this proposal." class="label" width="20%">[?] Automatic decision letter</td>
+		<td width="80%" class="value">
+			<a href="{url op="downloadDecisionLetter" path=$submission->getId()|to_array:'Approved'}" class="file">Approved</a>&nbsp;|&nbsp;
+			<a href="{url op="downloadDecisionLetter" path=$submission->getId()|to_array:'Revise & Resubmit'}" class="file">Revise & Resubmit</a>&nbsp;|&nbsp;
+			<a href="{url op="downloadDecisionLetter" path=$submission->getId()|to_array:'Not Approved'}" class="file">Not Approved</a>
+		</td>
+	</tr>
+{/if}
+
 <tr valign="top">
 	<td title="Current status of the proposal." class="label" width="20%">{*{translate key="submission.proposalStatus"}*}[?] ສະຖານະ</td>
 	<td width="80%" class="value">
@@ -129,14 +140,11 @@ function checkSize(){
 {if $proposalStatus == PROPOSAL_STATUS_EXPEDITED || $proposalStatus == PROPOSAL_STATUS_ASSIGNED}	
 	<tr>
 		<td title="Please select the final decision. This decision can't be undone." class="label" width="20%">{*{translate key="editor.article.selectDecision"}*}[?] ເລືອກການຕັດສິນ</td>
-		<td width="80%" class="value">
+		<td width="30%" class="value">
 			<select id="decision" name="decision" {if $authorFees && !$submissionPayment && $submission->getLocalizedStudentInitiatedResearch() != 'Yes'}disabled="disabled"{/if} size="1" class="selectMenu">
 				{html_options_translate options=$editorDecisionOptions selected=0}
-			</select> {if $authorFees && !$submissionPayment && $submission->getLocalizedStudentInitiatedResearch() != 'Yes'}<i>Please confirm the payment of the proposal review fee.</i>{/if}
-{*			
-			<input type="submit" onclick="return confirm('{translate|escape:"jsparam" key="editor.submissionReview.confirmDecision"}')" name="submit" value="{translate key="editor.article.uploadRecordDecisionS"}"  class="button" />				
-*}			
-		</td>		
+			</select> {if $authorFees && !$submissionPayment && $submission->getLocalizedStudentInitiatedResearch() != 'Yes'}<i>Please confirm the payment of the proposal review fee.</i>{/if}			
+		</td>
 	</tr>
 {/if}
 	<tr id="approvalDateRow">
