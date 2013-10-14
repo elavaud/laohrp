@@ -3114,9 +3114,7 @@ class SectionEditorAction extends Action {
                 $pdf->SetFont('Times','',12);
 		$pdf->Cell(0,4,'Vientiane Capital, the '.date('l jS F Y', time()),0,1,'R');
 
-                if ($section->getSectionId() == '1') $secondResponsiblePerson = 'Director General of NIOPH';
-		else $secondResponsiblePerson = 'President of UHS';
-                $pdf->Cell(0,4, 'Chairman of the '.$section->getLocalizedAbbrev().' or '.$secondResponsiblePerson,0,1,'R');
+                $pdf->Cell(0,4, 'Chairperson of the '.$section->getLocalizedAbbrev(),0,1,'R');
                 
                 $pdf->Output($sectionEditorSubmission->getLocalizedWhoId().' - Approval Notice.pdf',"D");   
 
