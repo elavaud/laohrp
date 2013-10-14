@@ -115,6 +115,7 @@ class Application extends PKPApplication {
 			'ReviewFormDAO' => 'lib.pkp.classes.reviewForm.ReviewFormDAO',
 			'ReviewFormElementDAO' => 'lib.pkp.classes.reviewForm.ReviewFormElementDAO',
 			'ReviewFormResponseDAO' => 'lib.pkp.classes.reviewForm.ReviewFormResponseDAO',
+                        'RiskAssessmentDAO' => 'classes.article.RiskAssessmentDAO',
 			'RoleDAO' => 'classes.security.RoleDAO',
 			'RTDAO' => 'classes.rt.ojs.RTDAO',
 			'ScheduledTaskDAO' => 'lib.pkp.classes.scheduledTask.ScheduledTaskDAO',

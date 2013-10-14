@@ -235,6 +235,74 @@
         <message key="proposal.specifyOtherGrantField">If yes, please specify:</message>
 
 
+        <!-- Risk Assesment -->
+        <!-- EL on March 9th 2013-->
+        <message key="proposal.riskAssessment">Risk Assessment</message>
+        <message key="proposal.researchIncludesHumanSubject">Does the proposed research include research subjects:</message>
+        <message key="proposal.identityRevealed">Whose identity may be revealed during the research process?</message>
+        <message key="proposal.unableToConsent">Unable to consent?</message>
+        <message key="proposal.under18">Under 18 years old?</message>
+        <message key="proposal.dependentRelationship">In a dependent relationship with any of the research team members?</message>
+        <message key="proposal.dependentRelationshipInstruct">(e.g. a researcher is the treating physician of one of the research participants)</message>
+        <message key="proposal.ethnicMinority">From an ethnic minority group?</message>
+        <message key="proposal.impairment">With intellectual or mental impairment?</message>
+        <message key="proposal.pregnant">Who are pregnant?</message>
+        <message key="proposal.researchIncludes">Does the research include:</message>
+        <message key="proposal.newTreatment">A new treatment, medical procedure or test?</message>
+        <message key="proposal.bioSamples">Collection of biological samples including<![CDATA[<br/>]]> tissue extraction?</message>
+        <message key="proposal.radiation">Use of ionizing radiation?</message>
+        <message key="proposal.distress">Pain or psychological distress?</message><message key="proposal.inducements">Inducements?</message>
+        <message key="proposal.sensitiveInfo">Collection of sensitive information?</message>
+        <message key="proposal.deception">Deception?</message>
+        <message key="proposal.reproTechnology">Assisted reproductive technology?</message>
+        <message key="proposal.genetic">Human genetic or genomic studies?</message>
+        <message key="proposal.stemCell">Stem cell research?</message>
+        <message key="proposal.biosafety">Biosafety issue?</message>
+        <message key="proposal.potentialRisk">Potential risks</message>
+        <message key="proposal.riskLevel">Level of the risk involved in Research:</message>
+        <message key="proposal.riskLevelNoMore">No more than minimal risk</message>
+        <message key="proposal.riskLevelMinore">Minor increase over minimal risk</message>
+        <message key="proposal.riskLevelMore">More than minor increase over minimal risk</message>
+        <message key="proposal.listRisks">Briefly list the risks:</message>
+        <message key="proposal.howRisksMinimized">How are risks minimized / managed?</message>
+        <message key="proposal.riskApplyTo">Risks apply to:</message>
+        <message key="proposal.researchTeam">Research Team</message>
+        <message key="proposal.researchSubjects">Research Subjects</message>
+        <message key="proposal.widerCommunity">Wider Community</message> 
+        <message key="proposal.nobody">Nobody</message>        
+        <message key="proposal.potentialBenefits">Potential Benefits</message>
+        <message key="proposal.directBenefits">Direct benefit to participants</message>
+        <message key="proposal.participantCondition">Generalizable knowledge about participants' condition or disorder</message>
+        <message key="proposal.diseaseOrCondition">Generalizable knowledge about disease or condition under study </message>
+        <message key="proposal.benefitsFromTheProject">Benefits from the research project:</message>
+        <message key="proposal.noBenefits">No benefits</message>
+        <message key="proposal.conflictOfInterest">Conflict of Interest:</message>
+        <message key="proposal.conflictOfInterestInstruct">Does any member of the research team has any financial or technical conflict of interest in the proposed research (i.e. whether any member of the research team is likely to be affected, positively or negatively, by the outcomes of the research in financial or technical terms)</message>
+        <message key="proposal.identityRevealedAbb">Identity revealed</message>
+        <message key="proposal.unableToConsentAbb">Unable to consent</message>
+        <message key="proposal.under18Abb">Under 18</message>
+        <message key="proposal.dependentRelationshipAbb">Dependent relationship</message>
+        <message key="proposal.ethnicMinorityAbb">Ethnic minority group</message>
+        <message key="proposal.impairmentAbb">Intellectual or mental impairment</message>
+        <message key="proposal.pregnantAbb">Pregnant</message>
+        <message key="proposal.newTreatmentAbb">New treatment</message>
+        <message key="proposal.bioSamplesAbb">Biological samples</message>
+        <message key="proposal.radiationAbb">Radiation</message>
+        <message key="proposal.distressAbb">Distress</message>
+        <message key="proposal.inducementsAbb">Inducements</message>
+        <message key="proposal.sensitiveInfoAbb">Sensitive information</message>
+        <message key="proposal.deceptionAbb">Deception</message>
+        <message key="proposal.reproTechnologyAbb">Reproductive technology</message>
+        <message key="proposal.geneticsAbb">Human genetic or genomic</message>
+        <message key="proposal.stemCellAbb">Stem cell</message>
+        <message key="proposal.biosafetyAbb">Biosafety</message>
+        <message key="proposal.riskLevelAbb">Risk level</message>
+        <message key="proposal.riskApplyToAbb">Risks apply to</message>
+                
+        <message key="proposal.benefitsFromTheProjectAbb">Benefits</message>
+        <message key="proposal.conflictOfInterestAbb">Conflict of Interest</message>
+        <!-- End of Risk Assessment  -->
+
 
 	<!-- Submission Tracking - Common -->
 	<!-- ************************************

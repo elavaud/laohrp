@@ -86,6 +86,9 @@ class AuthorSubmitForm extends Form {
 		$settingsDao =& DAORegistry::getDAO('JournalSettingsDAO');
 		$templateMgr->assign_by_ref('journalSettings', $settingsDao->getJournalSettings($journal->getId()));
 
+                $riskAssessmentDao =& DAORegistry::getDAO('RiskAssessmentDAO');
+		$templateMgr->assign('riskAssessmentVersion', $riskAssessmentDao->riskAssessmentExists($this->articleId));
+
 		parent::display();
 	}
 

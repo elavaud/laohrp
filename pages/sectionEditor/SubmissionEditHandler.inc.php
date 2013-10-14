@@ -99,6 +99,10 @@ class SubmissionEditHandler extends SectionEditorHandler {
 
 		$templateMgr->assign('canEditMetadata', true);
 
+                $riskAssessmentDao =& DAORegistry::getDAO('RiskAssessmentDAO');
+		$templateMgr->assign('riskAssessmentVersion', $riskAssessmentDao->riskAssessmentExists($articleId));
+                $templateMgr->assign_by_ref('riskAssessment', $submission->getRiskAssessment());
+            
 		$templateMgr->display('sectionEditor/submission.tpl');
 	}
 

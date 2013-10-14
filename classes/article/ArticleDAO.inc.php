@@ -19,7 +19,7 @@ import('classes.submission.common.Action');
 
 class ArticleDAO extends DAO {
 	var $authorDao;
-
+        var $riskAssessmentDao;
 	var $cache;
 
 	function _cacheMiss(&$cache, $id) {
@@ -42,6 +42,7 @@ class ArticleDAO extends DAO {
 	function ArticleDAO() {
 		parent::DAO();
 		$this->authorDao =& DAORegistry::getDAO('AuthorDAO');
+		$this->riskAssessmentDao =& DAORegistry::getDAO('RiskAssessmentDAO');
 	}
 
 	/**
@@ -181,37 +182,11 @@ class ArticleDAO extends DAO {
 		if (isset($row['email'])) $article->setAuthorEmail($row['email']);
 
 		$article->setAuthors($this->authorDao->getAuthorsByArticle($row['article_id']));
-
-		$this->getDataObjectSettings('article_settings', 'article_id', $row['article_id'], $article);
+		$article->setRiskAssessment($this->riskAssessmentDao->getRiskAssessmentByArticleId($row['article_id']));
+		
+                $this->getDataObjectSettings('article_settings', 'article_id', $row['article_id'], $article);
 
 		HookRegistry::call('ArticleDAO::_returnArticleFromRow', array(&$article, &$row));
-/*
-		$article->setWhoId($row['whoid']);
-		$article->setDateSubmitted($this->datetimeFromDB($row['date_submitted']));
-		$article->setScientificTitle($row['scientifictitle']);
-		$article->setProposalCountry($row['country']);
-		$article->setPrimaryEditor($row['efname']." ".$row['elname']);
-		$article->setPrimaryAuthor($row['afname']." ".$row['alname']);
-		$article->setStartDate($this->datetimeFromDB($row['start_date']));
-		$article->setEndDate($this->datetimeFromDB($row['end_date']));
-		$article->setProposalStatus($row['decision']);
-		$article->setDateStatusModified($this->datetimeFromDB($row['date_decided']));
-		$article->setAuthorEmail($row['email']);
-		$article->setMultiCountryResearch($row['multicountryresearch']);
-		$article->setNationwide($row['nationwide']);
-		$article->setPrimarySponsor($row['primarysponsor']);
-		$article->setOtherPrimarySponsor($row['otherprimarysponsor']);
-		$article->setResearchField($row['researchfield']);
-		$article->setInvestigatorAffiliation($row['investigatoraffiliation']);
-		$article->setProposalType($row['proposaltype']);
-		$article->setDataCollection($row['datacollection']);
-		$article->setStudentInstitution($row['studentinstitution']);
-		$article->setAcademicDegree($row['academicdegree']);
-		$article->setPrimarySponsor($row['primarysponsor']);
-		$article->setOtherPrimarySponsor($row['otherprimarysponsor']);
-		$article->setFundsRequired($row['funds']);
-		$article->setSelectedCurrency($row['currency']);
-*/
 	}
 
 	/**
@@ -327,6 +302,14 @@ class ArticleDAO extends DAO {
 				$this->authorDao->insertAuthor($authors[$i]);
 			}
 		}
+                
+                // update risk assessment for this article
+                $riskAssessment =& $article->getRiskAssessment();
+                if ($this->riskAssessmentDao->riskAssessmentExists($article->getId())) {
+                        $this->riskAssessmentDao->updateRiskAssessment($riskAssessment);	
+                } elseif ($riskAssessment->getArticleId() != null) {
+                        $this->riskAssessmentDao->insertRiskAssessment($riskAssessment);
+                }
 
 		// Remove deleted authors
 		$removedAuthors = $article->getRemovedAuthors();
@@ -409,6 +392,9 @@ class ArticleDAO extends DAO {
 
 		$suppFileDao =& DAORegistry::getDAO('SuppFileDAO');
 		$suppFileDao->deleteSuppFilesByArticle($articleId);
+
+                $riskAssessmentDao =& DAORegistry::getDAO('RiskAssessmentDAO');
+                $riskAssessmentDao->deleteRiskAssessment($articleId);
 
 		// Delete article files -- first from the filesystem, then from the database
 		import('classes.file.ArticleFileManager');

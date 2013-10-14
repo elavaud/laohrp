@@ -158,6 +158,7 @@
 	<message key="common.notApplicable">Not applicable</message>
 	<message key="common.notApplicableShort">N/A</message>
 	<message key="common.notAvailable">Not available</message>
+    <message key="common.notSure">Not sure</message>
 	<message key="common.note">Note</message>
 	<message key="common.notes">Notes</message>
 	<message key="common.notify">Notify</message>

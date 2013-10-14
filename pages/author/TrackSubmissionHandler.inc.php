@@ -171,6 +171,10 @@ class TrackSubmissionHandler extends AuthorHandler {
                 $templateMgr->assign('canEditMetadata', $canEditMetadata);
                 $templateMgr->assign('canEditFiles', $canEditFiles);
 
+                $riskAssessmentDao =& DAORegistry::getDAO('RiskAssessmentDAO');
+		$templateMgr->assign('riskAssessmentVersion', $riskAssessmentDao->riskAssessmentExists($submission->getId()));
+                $templateMgr->assign_by_ref('riskAssessment', $submission->getRiskAssessment());
+
 		$templateMgr->display('author/submission.tpl');
                 
 	}

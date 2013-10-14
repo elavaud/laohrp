@@ -56,7 +56,6 @@
 	<message key="author.submit.howToSubmitNoPhone"><![CDATA[Encountering difficulties? Contact <a href="mailto:{$supportEmail}">{$supportName}</a> for assistance.]]></message>
 	<message key="author.submit.journalSection">Ethical Committees</message>
 	<message key="author.submit.journalSectionDescription">If the proposal is submitted by a student enrolled in UHS (University of Health Sciences) or affiliated with UHS or if the research is conducted by UHS staff, please select the Ethical Committee of the University of Health Sciences, but if the research is conducted with an external partner (not in collaboration with UHS) or ministry of health staff including NIOPH staff, please select National Ethical Committee for Health Research. <![CDATA[<br/><br/>]]> ຖ້າບົດສະເຫນີໄດ້ຍື່ນໂດຍນັກສຶກສາທີ່ລົງທະບຽນຢູ່ມວສ ຫລື ສັງກັດກັບມວສ ຫລື ຖ້າການຄົ້ນຄວ້າ ທີ່ໄດ້ເຮັດໂດຍ ພະນັກງານຂອງມວສ, ກະລຸນາເລືອກຄະນະກຳມະການດ້ານ ຈັນຍາທຳຂອງມະຫາວິທະຍາໄລວິທະຍາສາດ ສຸຂະພາບ "Ethical Committee of the University of Health Sciences” ແຕ່ຖ້າການຄົ້ນຄວ້າ ທີ່ໄດ້ເຮັດກັບຄູ່ຮ່ວມງານ ພາຍນອກຫລື ພະນັກງານ ຂອງກະຊວງສາທາລະນະສຸກ, (ບໍ່ໄດ້ມີການພົວພັນກັບມວສ) ກະລຸນາເລືອກຄະນະ ກຳມະການແຫ່ງຊາດດ້ານຈັນຍາທຳເພື່ອການຄົ້ນຄວ້າວິທະຍາສາດສາທາລະນະສຸກ “National Ethical Committee for Health Research</message>
-    <!---->
 	<message key="author.submit.selectSection">Please select an Ethical Committee...</message>
 	<message key="author.submit.submissionLocale">Submission Language</message>
 	<message key="author.submit.submissionLocaleDescription">This site accepts submissions in several languages. Choose the primary language of the submission from the pulldown below.</message>
@@ -145,6 +144,33 @@
         
        <message key="author.submit.form.withdrawReasonRequired">Withdraw reason required</message>
         <message key="author.submit.form.otherReasonRequired">Other reason of withdraw  required</message>
+
+            <!-- Risk Assessment -->
+            <message key="author.submit.form.completeRiskAssessmentFormNeeded">Please verify that the risk assessment section is complete</message>
+            <message key="author.submit.form.identityRevealedRequired">Please indicate if the identity of the research subject(s) may be revealed during the research process.</message>
+            <message key="author.submit.form.unableToConsentRequired">Please indicate if the research subject(s) are (or may be) unable to consent.</message>
+            <message key="author.submit.form.under18Required">Please indicate if the research subject(s) are (or may be) under 18 years old.</message>
+            <message key="author.submit.form.dependentRelationshipRequired">Please indicate if the research subject(s) are (or may be) in a dependent relationship with any of the research team members.</message>
+            <message key="author.submit.form.ethnicMinorityRequired">Please indicate if the research subject(s) are (or may be) from an ethnic minority group.</message>
+            <message key="author.submit.form.impairmentRequired">Please indicate if the research subject(s) are (or may be) with intellectual or mental impairment.</message>
+            <message key="author.submit.form.pregnantRequired">Please indicate if the research subject(s) are (or may be) pregnant.</message>
+            <message key="author.submit.form.newTreatmentRequired">Please indicate if the research includes new treatment(s), medical procedure(s) or test(s).</message>
+            <message key="author.submit.form.bioSamplesRequired">Please indicate if the research includes collection(s) of biological sample(s) including tissue extraction.</message>
+            <message key="author.submit.form.radiationRequired">Please indicate if the research includes the use of ionizing radiation.</message>
+            <message key="author.submit.form.distressRequired">Please indicate if the research includes pain or psychological distress.</message>
+            <message key="author.submit.form.inducementsRequired">Please indicate if the research includes inducements.</message>
+            <message key="author.submit.form.sensitiveInfoRequired">Please indicate if the research includes collection of sensitive informations.</message>
+            <message key="author.submit.form.deceptionRequired">Please indicate if the research includes deception.</message>
+            <message key="author.submit.form.reproTechnologyRequired">Please indicate if the research includes assisted reproductive technology.</message>
+            <message key="author.submit.form.geneticsRequired">Please indicate if the research includes human genetic or genomic studies.</message>
+            <message key="author.submit.form.stemCellRequired">Please indicate if the research includes stem cell.</message>
+            <message key="author.submit.form.biosafetyRequired">Please indicate if the research includes biosafety issue(s).</message>
+            <message key="author.submit.form.riskLevelRequired">Please indicate the level of risk of the research.</message>
+            <message key="author.submit.form.listRisksRequired">Please briefly lists the risks.</message>
+            <message key="author.submit.form.howRisksMinimizedRequired">Please indicate how are the risks minimized/managed.</message>
+            
+            <!-- End of Risk Assessment -->
+
 
         <message key="author.submit.addProgressReport">Submit Interim Progress Report / ຍື່ນບົດລາຍງານຄວາມຄືບຫນ້າ ໄລຍະກາງຂອງ ການ ຄົ້ນຄວ້າ</message>
         <message key="author.submit.addCompletionReport">Submit Final Report / ຍື່ນບົດລາຍງານລ້າສຸດຂອງການຄົ້ນຄວ້າ</message>

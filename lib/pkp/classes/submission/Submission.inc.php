@@ -33,6 +33,9 @@ class Submission extends DataObject {
 	/** @var array Authors of this submission */
 	var $authors;
 
+        /** @var array of the risk assessment of this submission */
+        var $riskAssessment;
+
 	/** @var array IDs of Authors removed from this submission */
 	var $removedAuthors;
 	
@@ -189,7 +192,16 @@ class Submission extends DataObject {
 	function &getAuthors() {
 		return $this->authors;
 	}
-
+        
+        /**
+	 * Get the risk assessment of this submission.
+	 * @return object riskAssessment
+	 * EL on March 10th 2013
+	 */
+	function &getRiskAssessment() {
+		return $this->riskAssessment;
+	}
+        
 	/**
 	 * Get a specific author of this submission.
 	 * @param $authorId int
@@ -222,6 +234,14 @@ class Submission extends DataObject {
 	 */
 	function setAuthors($authors) {
 		return $this->authors = $authors;
+	}
+
+        /**
+	 * Set risk assessment of this submission.
+	 * @param $riskAssessment object riskAssessment
+	 */
+	function setRiskAssessment($riskAssessment) {
+		return $this->riskAssessment = $riskAssessment;
 	}
 
 	/**
