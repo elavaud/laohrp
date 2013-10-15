@@ -595,7 +595,9 @@ class PeopleHandler extends ManagerHandler {
 		//Management of the ERC Member Status
 		$userSettingsDao =& DAORegistry::getDAO('UserSettingsDAO');
 		$sectionEditorsDAO =& DAORegistry::getDAO('SectionEditorsDAO');
-		$ercMemberStatus =& Request::getUserVar('ercMemberStatus');
+		$editAssignmentDao =& DAORegistry::getDAO('EditAssignmentDAO');
+		$articleDAO =& DAORegistry::getDAO('ArticleDAO');
+                $ercMemberStatus =& Request::getUserVar('ercMemberStatus');
 		$ethicsCommittee =& Request::getUserVar('ethicsCommittee');
 		if ($users != null && is_array($users) && $rolePath == 'reviewer') {
 			if($ethicsCommittee == "UHS"){
@@ -606,7 +608,7 @@ class PeopleHandler extends ManagerHandler {
 					$roleId = '512';
 					if((count($uhsSecretary)<'1') && (count($users)<'2')){
 						for ($i=0; $i<count($users); $i++) {
-							if (($userSettingsDao->getSetting($users[$i], 'uhsMemberStatus', '4')) == "UHS Member"){
+							if (($userSettingsDao->getSetting($users[$i], 'uhsMemberStatus', '4')) != "Retired"){
 								$userSettingsDao->updateSetting($users[$i], 'uhsMemberStatus', 'Retired', 'string', 0, 0);
 								if (($userSettingsDao->getSetting($users[$i], 'niophMemberStatus', '4')) != "NIOPH-ERC, Member"){
 									$roleDao->deleteRoleByUserId($users[$i], '4', '4096');
@@ -620,6 +622,16 @@ class PeopleHandler extends ManagerHandler {
 								$userSettingsDao->updateSetting($users[$i], 'secretaryStatus', 'UHS Secretary');
 								$roleDao->insertRole($role);
 								$sectionEditorsDAO->insertEditor($journal->getId(), '2', $users[$i], '1', '1');
+                                                                $sectionArticles = $articleDAO->getArticleIdByJournalAndSectionId($journal->getId(), '2');
+                                                                foreach ($sectionArticles as $sectionArticle) {
+                                                                    $editAssignment = new EditAssignment();
+                                                                    $editAssignment->setArticleId($sectionArticle);
+                                                                    $editAssignment->setEditorId($users[$i]);
+                                                                    $editAssignment->setCanReview('1');
+                                                                    $editAssignment->setCanEdit('1');
+                                                                    $editAssignmentDao->insertEditAssignment($editAssignment);
+                                                                    unset($editAssignment);
+                                                                }
 							}
 						}						
 					}
@@ -631,7 +643,7 @@ class PeopleHandler extends ManagerHandler {
 					$roleId = '512';
 					if((count($uhsSecretaryAssistants) + count($users))<'4'){
 						for ($i=0; $i<count($users); $i++) {
-							if (($userSettingsDao->getSetting($users[$i], 'uhsMemberStatus', '4')) == "UHS Member"){
+							if (($userSettingsDao->getSetting($users[$i], 'uhsMemberStatus', '4')) != "Retired"){
 								$userSettingsDao->updateSetting($users[$i], 'uhsMemberStatus', 'Retired', 'string', 0, 0);
 								if (($userSettingsDao->getSetting($users[$i], 'niophMemberStatus', '4')) != "NIOPH-ERC, Member"){
 									$roleDao->deleteRoleByUserId($users[$i], '4', '4096');
@@ -645,6 +657,16 @@ class PeopleHandler extends ManagerHandler {
 								$userSettingsDao->updateSetting($users[$i], 'secretaryStatus', 'UHS Secretary Assistant');
 								$roleDao->insertRole($role);
 								$sectionEditorsDAO->insertEditor($journal->getId(), '2', $users[$i], '1', '1');
+                                                                $sectionArticles = $articleDAO->getArticleIdByJournalAndSectionId($journal->getId(), '2');
+                                                                foreach ($sectionArticles as $sectionArticle) {
+                                                                    $editAssignment = new EditAssignment();
+                                                                    $editAssignment->setArticleId($sectionArticle);
+                                                                    $editAssignment->setEditorId($users[$i]);
+                                                                    $editAssignment->setCanReview('1');
+                                                                    $editAssignment->setCanEdit('1');
+                                                                    $editAssignmentDao->insertEditAssignment($editAssignment);
+                                                                    unset($editAssignment);
+                                                                }
 							}
 						}						
 					}
@@ -658,6 +680,11 @@ class PeopleHandler extends ManagerHandler {
 								$userSettingsDao->updateSetting($users[$i], 'secretaryStatus', 'Retired', 'string', 0, 0);
 								$roleDao->deleteRoleByUserId($users[$i], '4', '512');
 								$sectionEditorsDAO->deleteEditor($journal->getId(), '2', $users[$i]);
+                                                                $editAssignments = $editAssignmentDao->getEditAssignmentsByUserId($users[$i]);
+                                                                $editAssignments = $editAssignments->toArray();
+                                                                foreach ($editAssignments as $editAssignment) {
+                                                                    $editAssignmentDao->deleteEditAssignmentById($editAssignment->getEditId());
+                                                                }
 							}
 							if (!$roleDao->roleExists($journal->getId(), $users[$i], $roleId)) {
 								$role = new Role();
@@ -679,6 +706,11 @@ class PeopleHandler extends ManagerHandler {
 								$userSettingsDao->updateSetting($users[$i], 'secretaryStatus', 'Retired', 'string', 0, 0);
 								$roleDao->deleteRoleByUserId($users[$i], '4', '512');
 								$sectionEditorsDAO->deleteEditor($journal->getId(), '2', $users[$i]);
+                                                                $editAssignments = $editAssignmentDao->getEditAssignmentsByUserId($users[$i]);
+                                                                $editAssignments = $editAssignments->toArray();
+                                                                foreach ($editAssignments as $editAssignment) {
+                                                                    $editAssignmentDao->deleteEditAssignmentById($editAssignment->getEditId());
+                                                                }
 							}
 							if (!$roleDao->roleExists($journal->getId(), $users[$i], $roleId)) {
 								$role = new Role();
@@ -700,6 +732,11 @@ class PeopleHandler extends ManagerHandler {
 								$userSettingsDao->updateSetting($users[$i], 'secretaryStatus', 'Retired', 'string', 0, 0);
 								$roleDao->deleteRoleByUserId($users[$i], '4', '512');
 								$sectionEditorsDAO->deleteEditor($journal->getId(), '2', $users[$i]);
+                                                                $editAssignments = $editAssignmentDao->getEditAssignmentsByUserId($users[$i]);
+                                                                $editAssignments = $editAssignments->toArray();
+                                                                foreach ($editAssignments as $editAssignment) {
+                                                                    $editAssignmentDao->deleteEditAssignmentById($editAssignment->getEditId());
+                                                                }
 							}
 							if (!$roleDao->roleExists($journal->getId(), $users[$i], $roleId)) {
 								$role = new Role();
@@ -721,7 +758,7 @@ class PeopleHandler extends ManagerHandler {
 					$roleId = '512';
 					if((count($niophSecretary)<'1') && (count($users)<'2')){
 						for ($i=0; $i<count($users); $i++) {
-							if (($userSettingsDao->getSetting($users[$i], 'niophMemberStatus', '4')) == "NIOPH Member"){
+							if (($userSettingsDao->getSetting($users[$i], 'niophMemberStatus', '4')) != "Retired"){
 								$userSettingsDao->updateSetting($users[$i], 'niophMemberStatus', 'Retired', 'string', 0, 0);
 								if(($userSettingsDao->getSetting($users[$i], 'uhsMemberStatus', '4')) != "UHS Member"){
 									$roleDao->deleteRoleByUserId($users[$i], '4', '4096');
@@ -735,6 +772,16 @@ class PeopleHandler extends ManagerHandler {
 								$userSettingsDao->updateSetting($users[$i], 'secretaryStatus', 'NIOPH Secretary');
 								$roleDao->insertRole($role);
 								$sectionEditorsDAO->insertEditor($journal->getId(), '1', $users[$i], '1', '1');
+                                                                $sectionArticles = $articleDAO->getArticleIdByJournalAndSectionId($journal->getId(), '1');
+                                                                foreach ($sectionArticles as $sectionArticle) {
+                                                                    $editAssignment = new EditAssignment();
+                                                                    $editAssignment->setArticleId($sectionArticle);
+                                                                    $editAssignment->setEditorId($users[$i]);
+                                                                    $editAssignment->setCanReview('1');
+                                                                    $editAssignment->setCanEdit('1');
+                                                                    $editAssignmentDao->insertEditAssignment($editAssignment);
+                                                                    unset($editAssignment);
+                                                                }
 							}
 						}						
 					}
@@ -746,7 +793,7 @@ class PeopleHandler extends ManagerHandler {
 					$roleId = '512';
 					if((count($niophSecretaryAssistants) + count($users)) < '4'){
 						for ($i=0; $i<count($users); $i++) {
-							if (($userSettingsDao->getSetting($users[$i], 'niophMemberStatus', '4')) == "NIOPH Member"){
+							if (($userSettingsDao->getSetting($users[$i], 'niophMemberStatus', '4')) != "Retired"){
 								$userSettingsDao->updateSetting($users[$i], 'niophMemberStatus', 'Retired', 'string', 0, 0);
 								if(($userSettingsDao->getSetting($users[$i], 'uhsMemberStatus', '4')) != "UHS Member"){
 									$roleDao->deleteRoleByUserId($users[$i], '4', '4096');
@@ -760,6 +807,16 @@ class PeopleHandler extends ManagerHandler {
 								$userSettingsDao->updateSetting($users[$i], 'secretaryStatus', 'NIOPH Secretary Assistant');
 								$roleDao->insertRole($role);
 								$sectionEditorsDAO->insertEditor($journal->getId(), '1', $users[$i], '1', '1');
+                                                                $sectionArticles = $articleDAO->getArticleIdByJournalAndSectionId($journal->getId(), '1');
+                                                                foreach ($sectionArticles as $sectionArticle) {
+                                                                    $editAssignment = new EditAssignment();
+                                                                    $editAssignment->setArticleId($sectionArticle);
+                                                                    $editAssignment->setEditorId($users[$i]);
+                                                                    $editAssignment->setCanReview('1');
+                                                                    $editAssignment->setCanEdit('1');
+                                                                    $editAssignmentDao->insertEditAssignment($editAssignment);
+                                                                    unset($editAssignment);
+                                                                }
 							}
 						}						
 					}
@@ -773,6 +830,11 @@ class PeopleHandler extends ManagerHandler {
 								$userSettingsDao->updateSetting($users[$i], 'secretaryStatus', 'Retired', 'string', 0, 0);
 								$roleDao->deleteRoleByUserId($users[$i], '4', '512');
 								$sectionEditorsDAO->deleteEditor($journal->getId(), '1', $users[$i]);
+                                                                $editAssignments = $editAssignmentDao->getEditAssignmentsByUserId($users[$i]);
+                                                                $editAssignments = $editAssignments->toArray();
+                                                                foreach ($editAssignments as $editAssignment) {
+                                                                    $editAssignmentDao->deleteEditAssignmentById($editAssignment->getEditId());
+                                                                }
 							}
 							if (!$roleDao->roleExists($journal->getId(), $users[$i], $roleId)) {
 								$role = new Role();
@@ -794,6 +856,11 @@ class PeopleHandler extends ManagerHandler {
 								$userSettingsDao->updateSetting($users[$i], 'secretaryStatus', 'Retired', 'string', 0, 0);
 								$roleDao->deleteRoleByUserId($users[$i], '4', '512');
 								$sectionEditorsDAO->deleteEditor($journal->getId(), '1', $users[$i]);
+                                                                $editAssignments = $editAssignmentDao->getEditAssignmentsByUserId($users[$i]);
+                                                                $editAssignments = $editAssignments->toArray();
+                                                                foreach ($editAssignments as $editAssignment) {
+                                                                    $editAssignmentDao->deleteEditAssignmentById($editAssignment->getEditId());
+                                                                }
 							}
 							if (!$roleDao->roleExists($journal->getId(), $users[$i], $roleId)) {
 								$role = new Role();
@@ -815,6 +882,11 @@ class PeopleHandler extends ManagerHandler {
 								$userSettingsDao->updateSetting($users[$i], 'secretaryStatus', 'Retired', 'string', 0, 0);
 								$roleDao->deleteRoleByUserId($users[$i], '4', '512');
 								$sectionEditorsDAO->deleteEditor($journal->getId(), '1', $users[$i]);
+                                                                $editAssignments = $editAssignmentDao->getEditAssignmentsByUserId($users[$i]);
+                                                                $editAssignments = $editAssignments->toArray();
+                                                                foreach ($editAssignments as $editAssignment) {
+                                                                    $editAssignmentDao->deleteEditAssignmentById($editAssignment->getEditId());
+                                                                }
 							}
 							if (!$roleDao->roleExists($journal->getId(), $users[$i], $roleId)) {
 								$role = new Role();
@@ -887,12 +959,18 @@ class PeopleHandler extends ManagerHandler {
 				$roleDao->deleteRoleByUserId($userId, $journalId, $roleId);
 			}
 			if ($roleId=='512'){
+                                $editAssignmentDao =& DAORegistry::getDAO('EditAssignmentDAO');
 				$userSettingsDao =& DAORegistry::getDAO('UserSettingsDAO');
 				
 				$userSettingsDao->updateSetting($userId, 'secretaryStatus', 'Retired', 'string', 0, 0);
 				$sectionEditorsDAO =& DAORegistry::getDAO('SectionEditorsDAO');
 				$sectionEditorsDAO->deleteEditorsByUserId($userId);
 				$roleDao->deleteRoleByUserId($userId, $journalId, $roleId);
+                                $editAssignments = $editAssignmentDao->getEditAssignmentsByUserId($userId);
+                                $editAssignments = $editAssignments->toArray();
+                                foreach ($editAssignments as $editAssignment) {
+                                    $editAssignmentDao->deleteEditAssignmentById($editAssignment->getEditId());
+                                }
 			}			
 			else $roleDao->deleteRoleByUserId($userId, $journalId, $roleId);
 		}

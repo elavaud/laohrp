@@ -1280,6 +1280,31 @@ class ArticleDAO extends DAO {
 
 		return $articles;
 	}
+        
+	/**
+	 * Get an array of article id according the section.
+	 * @param $journalId int
+	 * @param sectionId int
+         * @return array
+	 */        
+        function getArticleIdByJournalAndSectionId($journalId, $sectionId){
+            $articleIdArray = array();
+            $result =& $this->retrieve(
+                'SELECT article_id FROM articles WHERE journal_id = ? AND section_id = ? AND submission_progress = 0',
+                array($journalId, $sectionId)
+            );
+            
+            while (!$result->EOF) {
+                    $row = $result->GetRowAssoc(false);
+                    $articleIdArray[] =& $row['article_id'];
+                    $result->MoveNext();
+            }
+            
+            $result->Close();
+            unset($result);
+            
+            return $articleIdArray;
+        }
 
 	/**
 	 * Internal function to fill in the passed article object from the row.
@@ -1314,7 +1339,6 @@ class ArticleDAO extends DAO {
 		if (isset($row['currency'])) $article->setSelectedCurrency($row['currency'], $article->getLocale());
 		
 		HookRegistry::call('ArticleDAO::_returnSearchArticleFromRow', array(&$article, &$row));
-
 	}
 }
 
