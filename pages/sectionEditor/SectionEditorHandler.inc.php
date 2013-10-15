@@ -87,11 +87,7 @@ class SectionEditorHandler extends Handler {
 				$functionName = 'getSectionEditorSubmissionsInReviewIterator';
 				$helpTopicId = 'editorial.sectionEditorsRole.submissions.inReview';
 				break;
-			case 'submissionsInEditing':
-				$functionName = 'getSectionEditorSubmissionsInEditing';
-				$helpTopicId = 'editorial.sectionEditorsRole.submissions.inEditing';
-				break;
-			case 'submissionsArchives':
+                        case 'submissionsArchives':
 				$functionName = 'getSectionEditorSubmissionsArchivesIterator';
 				$helpTopicId = 'editorial.sectionEditorsRole.submissions.archives';
 				break;
