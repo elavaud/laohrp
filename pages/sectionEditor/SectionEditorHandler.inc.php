@@ -84,7 +84,7 @@ class SectionEditorHandler extends Handler {
 		switch($page) {
 			case 'minutes':
 				$page = 'minutes';
-				$functionName = 'getSectionEditorSubmissionsInReview';
+				$functionName = 'getSectionEditorSubmissionsInReviewIterator';
 				$helpTopicId = 'editorial.sectionEditorsRole.submissions.inReview';
 				break;
 			case 'submissionsInEditing':
@@ -92,12 +92,12 @@ class SectionEditorHandler extends Handler {
 				$helpTopicId = 'editorial.sectionEditorsRole.submissions.inEditing';
 				break;
 			case 'submissionsArchives':
-				$functionName = 'getSectionEditorSubmissionsArchives';
+				$functionName = 'getSectionEditorSubmissionsArchivesIterator';
 				$helpTopicId = 'editorial.sectionEditorsRole.submissions.archives';
 				break;
 			default:
 				$page = 'submissionsInReview';
-				$functionName = 'getSectionEditorSubmissionsInReview';
+				$functionName = 'getSectionEditorSubmissionsInReviewIterator';
 				$helpTopicId = 'editorial.sectionEditorsRole.submissions.inReview';
 		}
 
@@ -112,27 +112,28 @@ class SectionEditorHandler extends Handler {
 			}	
 		}
 
+		//workaround for multiple use of iterator in one page 3/21/2012
 		$submissions =& $sectionEditorSubmissionDao->$functionName(
-			$user->getId(),
-			$journal->getId(),
-			$filterSection,
-			$searchField,
-			$searchMatch,
-			$search,
-			$dateSearchField,
-			$fromDate,
-			$toDate,
-			$technicalUnitField,
-			$countryField,
-			$rangeInfo,
-			$sort,
-			$sortDirection
-		);
-
+			$user->getId(), $journalId, $filterSection, $searchField, $searchMatch, $search, $dateSearchField, $fromDate,
+			$toDate, $technicalUnitField, $countryField, $rangeInfo, $sort, $sortDirection);
+		$submissions1 =& $sectionEditorSubmissionDao->$functionName(
+			$user->getId(), $journalId, $filterSection, $searchField, $searchMatch, $search, $dateSearchField, $fromDate,
+			$toDate, $technicalUnitField, $countryField, $rangeInfo, $sort, $sortDirection);
+		$submissions2 =& $sectionEditorSubmissionDao->$functionName(
+			$user->getId(), $journalId, $filterSection, $searchField, $searchMatch, $search, $dateSearchField, $fromDate,
+			$toDate, $technicalUnitField, $countryField, $rangeInfo, $sort, $sortDirection);
+		$submissions3 =& $sectionEditorSubmissionDao->$functionName(
+			$user->getId(), $journalId, $filterSection, $searchField, $searchMatch, $search, $dateSearchField, $fromDate,
+			$toDate, $technicalUnitField, $countryField, $rangeInfo, $sort, $sortDirection);
+                
 		$templateMgr =& TemplateManager::getManager();
 		$templateMgr->assign('helpTopicId', $helpTopicId);
 		$templateMgr->assign('sectionOptions', $filterSectionOptions);
 		$templateMgr->assign_by_ref('submissions', $submissions);
+		$templateMgr->assign_by_ref('submissions1', $submissions1);
+		$templateMgr->assign_by_ref('submissions2', $submissions2);
+		$templateMgr->assign_by_ref('submissions3', $submissions3);
+		$templateMgr->assign_by_ref('submissions4', $submissions4);
 		$templateMgr->assign('filterSection', $filterSection);
 		$templateMgr->assign('pageToDisplay', $page);
 		$templateMgr->assign('sectionEditor', $user->getFullName());
@@ -167,11 +168,11 @@ class SectionEditorHandler extends Handler {
          *********************************************************************/
 		$technicalUnitDAO =& DAORegistry::getDAO('TechnicalUnitDAO');
 		$technicalUnits =& $technicalUnitDAO->getTechnicalUnits();
-        $countryDAO =& DAORegistry::getDAO('ProvincesOfLaosDAO');
-        $countries =& $countryDAO->getProvincesOfLaos();
+                $countryDAO =& DAORegistry::getDAO('ProvincesOfLaosDAO');
+                $countries =& $countryDAO->getProvincesOfLaos();
        
 		$templateMgr->assign_by_ref('technicalUnits', $technicalUnits);
-        $templateMgr->assign_by_ref('countries', $countries);
+                $templateMgr->assign_by_ref('countries', $countries);
         
 		import('classes.issue.IssueAction');
 		$issueAction = new IssueAction();

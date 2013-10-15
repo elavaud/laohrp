@@ -23,7 +23,7 @@
 	<tr><td colspan="6" class="headseparator">&nbsp;</td></tr>
 <p></p>
 {assign var="count" value=0}
-{foreach from=$submissions item=submission}	
+{iterate from=submissions1 item=submission}	
 	{assign var="status" value=$submission->getSubmissionStatus()}
     {assign var="decision" value=$submission->getMostRecentDecision() }
 
@@ -66,7 +66,7 @@
 				<td colspan="6" class="separator">&nbsp;</td>
 			</tr>
 		{/if}
-{/foreach}
+{/iterate}
 {if $count==0}
 	<tr>
 		<td colspan="6" class="nodata">{translate key="submissions.noSubmissions"}</td>
@@ -97,7 +97,7 @@
 	<tr><td colspan="6" class="headseparator">&nbsp;</td></tr>
 <p></p>
 {assign var="count" value=0}
-{foreach from=$submissions item=submission}	
+{iterate from=submissions2 item=submission}	
 	{assign var="status" value=$submission->getSubmissionStatus()}
         {assign var="decision" value=$submission->getMostRecentDecision() }
 
@@ -119,7 +119,7 @@
 				<td colspan="6" class="separator">&nbsp;</td>
 			</tr>
 		{/if}
-{/foreach}
+{/iterate}
 {if $count==0}
 	<tr>
 		<td colspan="6" class="nodata">{translate key="submissions.noSubmissions"}</td>
@@ -151,7 +151,7 @@
 	<tr><td colspan="6" class="headseparator">&nbsp;</td></tr>
 <p></p>
 {assign var="count" value=0}
-{foreach from=$submissions item=submission}	
+{iterate from=submissions3 item=submission}	
 	{assign var="status" value=$submission->getSubmissionStatus()}
         {assign var="decision" value=$submission->getMostRecentDecision() }
 
@@ -182,7 +182,7 @@
 				<td colspan="6" class="separator">&nbsp;</td>
 			</tr>
 		{/if}
-{/foreach}
+{/iterate}
 {if $count==0}
 	<tr>
 		<td colspan="6" class="nodata">{translate key="submissions.noSubmissions"}</td>
@@ -199,5 +199,14 @@
 	</tr>
 {/if}
 </table>
+{if !$submissions3->wasEmpty() || !$submissions2->wasEmpty() || !$submissions1->wasEmpty()}
+<table width="100%">
+	<tr>
+		<td width="20%" align="left"><br/>{page_info iterator=$submissions1}</td>
+		<td width="80%" align="right"><br/>{page_links anchor="submissions" name="submissions" iterator=$submissions1 searchField=$searchField searchMatch=$searchMatch search=$search dateFromDay=$dateFromDay dateFromYear=$dateFromYear dateFromMonth=$dateFromMonth dateToDay=$dateToDay dateToYear=$dateToYear dateToMonth=$dateToMonth dateSearchField=$dateSearchField section=$section sort=$sort sortDirection=$sortDirection}</td>
+	</tr>
+</table>
+{/if}
+
 </div>
 
