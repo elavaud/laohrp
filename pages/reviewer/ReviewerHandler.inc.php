@@ -235,7 +235,40 @@ class ReviewerHandler extends Handler {
 		
 		$templateMgr->display('reviewer/meetings.tpl');
 	}
-	
+
+        /**
+	 * Download a file.
+	 * @param $args array ($articleId, $fileId, [$revision])
+	 */
+	function downloadFileFullReview($args) {
+		$this->validate();
+		$articleId = isset($args[0]) ? $args[0] : 0;
+		$fileId = isset($args[1]) ? $args[1] : 0;
+		$revision = isset($args[2]) ? $args[2] : null;
+		
+                
+                $user =& Request::getUser();
+		$articleDao =& DAORegistry::getDAO('ArticleDAO');
+		$userSettingsDao =& DAORegistry::getDAO('UserSettingsDAO');
+                
+                $article =& $articleDao->getArticle($articleId);
+                
+                if (
+                        ($userSettingsDao->getSetting($user->getId(), 'uhsMemberStatus') == "UHS Chair") 
+                        || ($userSettingsDao->getSetting($user->getId(), 'uhsMemberStatus') == "UHS Vice-Chair")
+                        || ($userSettingsDao->getSetting($user->getId(), 'uhsMemberStatus') == "UHS Member")
+                        || ($userSettingsDao->getSetting($user->getId(), 'niophMemberStatus') == "NIOPH Chair") 
+                        || ($userSettingsDao->getSetting($user->getId(), 'niophMemberStatus') == "NIOPH Vice-Chair") 
+                        || ($userSettingsDao->getSetting($user->getId(), 'niophMemberStatus') == "NIOPH Member")) {
+                    if ($articleDao->isForFullReview($articleId, $article->getSectionId())) {
+                        if (!Action::downloadFile($articleId, $fileId, $revision)) {
+                                Request::redirect(null, null, 'submissionForFullReview', $articleId);
+                        }   
+                    }
+                }
+                Request::redirect(null, null, 'submissionForFullReview', $articleId);
+	}
+
 	/**
 	 * Used by subclasses to validate access keys when they are allowed.
 	 * @param $userId int The user this key refers to

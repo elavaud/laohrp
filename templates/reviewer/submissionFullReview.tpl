@@ -71,7 +71,7 @@
 			<td class="value" width="70%">
 				{if $reviewFile}
 				{if $submission->getDateConfirmed() or not $journal->getSetting('restrictReviewerAccessToFile')}
-					<a href="{url op="downloadFileFullReview" path=$reviewId|to_array:$articleId:$reviewFile->getFileId():$reviewFile->getRevision()}" class="file">{$reviewFile->getFileName()|escape}</a>
+					<a href="{url op="downloadFileFullReview" path=$articleId|to_array:$reviewFile->getFileId():$reviewFile->getRevision()}" class="file">{$reviewFile->getFileName()|escape}</a>
 				{else}{$reviewFile->getFileName()|escape}{/if}
 				&nbsp;&nbsp;{$reviewFile->getDateModified()|date_format:$dateFormatLong}
 				{else}
@@ -88,7 +88,7 @@
 				{foreach from=$suppFiles item=suppFile}
 					{if $suppFile->getShowReviewers() }
 						{assign var=sawSuppFile value=1}
-						<a href="{url op="downloadFileFullReview" path=$reviewId|to_array:$articleId:$suppFile->getFileId()}" class="file">{$suppFile->getFileName()|escape}</a><cite>&nbsp;&nbsp;({$suppFile->getType()})</cite><br />
+						<a href="{url op="downloadFileFullReview" path=$articleId|to_array:$suppFile->getFileId()}" class="file">{$suppFile->getFileName()|escape}</a><cite>&nbsp;&nbsp;({$suppFile->getType()})</cite><br />
 					{/if}
 				{/foreach}
 				{if !$sawSuppFile}

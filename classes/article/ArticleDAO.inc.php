@@ -1306,6 +1306,25 @@ class ArticleDAO extends DAO {
             return $articleIdArray;
         }
 
+        /**
+	 * Get if a proposal is for full review according the section and the article ID.
+	 * @param $articleId int
+	 * @param sectionId int
+         * @return bool
+	 */        
+        function isForFullReview($articleId, $sectionId){
+		$result =& $this->retrieve(
+			'SELECT COUNT(*) FROM articles a LEFT JOIN edit_decisions ed ON (a.article_id = ed.article_id) WHERE a.article_id = ? AND a.section_id = ? AND ed.decision = 7',
+			array($articleId, $sectionId)
+		);
+		$returner = isset($result->fields[0]) && $result->fields[0] == 1 ? true : false;
+
+		$result->Close();
+		unset($result);
+
+		return $returner;
+        }
+
 	/**
 	 * Internal function to fill in the passed article object from the row.
 	 * @param $article Article output article

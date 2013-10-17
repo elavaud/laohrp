@@ -102,45 +102,47 @@ class ReviewerSubmissionDAO extends DAO {
 		$reviewerSubmission = new ReviewerSubmission();
 
 		// Editor Assignment
-		$editAssignments =& $this->editAssignmentDao->getEditAssignmentsByArticleId($row['article_id']);
+		if ($row['article_id']) $editAssignments =& $this->editAssignmentDao->getEditAssignmentsByArticleId($row['article_id']);
 		$reviewerSubmission->setEditAssignments($editAssignments->toArray());
 
 		// Files
-		$reviewerSubmission->setSubmissionFile($this->articleFileDao->getArticleFile($row['submission_file_id']));
-		$reviewerSubmission->setRevisedFile($this->articleFileDao->getArticleFile($row['revised_file_id']));
-		$reviewerSubmission->setSuppFiles($this->suppFileDao->getSuppFilesByArticle($row['article_id']));
-		$reviewerSubmission->setReviewFile($this->articleFileDao->getArticleFile($row['review_file_id']));
-		$reviewerSubmission->setReviewerFile($this->articleFileDao->getArticleFile($row['reviewer_file_id']));
-		$reviewerSubmission->setReviewerFileRevisions($this->articleFileDao->getArticleFileRevisions($row['reviewer_file_id']));
+		if ($row['submission_file_id']) $reviewerSubmission->setSubmissionFile($this->articleFileDao->getArticleFile($row['submission_file_id']));
+		if ($row['revised_file_id']) $reviewerSubmission->setRevisedFile($this->articleFileDao->getArticleFile($row['revised_file_id']));
+		if ($row['article_id']) $reviewerSubmission->setSuppFiles($this->suppFileDao->getSuppFilesByArticle($row['article_id']));
+		if ($row['review_file_id']) $reviewerSubmission->setReviewFile($this->articleFileDao->getArticleFile($row['review_file_id']));
+		if ($row['reviewer_file_id']) {
+                    $reviewerSubmission->setReviewerFile($this->articleFileDao->getArticleFile($row['reviewer_file_id']));
+                }
+		if ($row['reviewer_file_id']) $reviewerSubmission->setReviewerFileRevisions($this->articleFileDao->getArticleFileRevisions($row['reviewer_file_id']));
 
 		// Comments
-		$reviewerSubmission->setMostRecentPeerReviewComment($this->articleCommentDao->getMostRecentArticleComment($row['article_id'], COMMENT_TYPE_PEER_REVIEW, $row['review_id']));
+		if ($row['review_id']) $reviewerSubmission->setMostRecentPeerReviewComment($this->articleCommentDao->getMostRecentArticleComment($row['article_id'], COMMENT_TYPE_PEER_REVIEW, $row['review_id']));
 
 		// Editor Decisions
 		for ($i = 1; $i <= $row['current_round']; $i++) {
-			$reviewerSubmission->setDecisions($this->getEditorDecisions($row['article_id'], $i), $i);
+			if ($row['article_id']) $reviewerSubmission->setDecisions($this->getEditorDecisions($row['article_id'], $i), $i);
 		}
 
 		// Review Assignment 
-		$reviewerSubmission->setReviewId($row['review_id']);
-		$reviewerSubmission->setReviewerId($row['reviewer_id']);
-		$reviewerSubmission->setReviewerFullName($row['first_name'].' '.$row['last_name']);
-		$reviewerSubmission->setCompetingInterests($row['competing_interests']);
-		$reviewerSubmission->setRecommendation($row['recommendation']);
-		$reviewerSubmission->setDateAssigned($this->datetimeFromDB($row['date_assigned']));
-		$reviewerSubmission->setDateNotified($this->datetimeFromDB($row['date_notified']));
-		$reviewerSubmission->setDateConfirmed($this->datetimeFromDB($row['date_confirmed']));
-		$reviewerSubmission->setDateCompleted($this->datetimeFromDB($row['date_completed']));
-		$reviewerSubmission->setDateAcknowledged($this->datetimeFromDB($row['date_acknowledged']));
-		$reviewerSubmission->setDateDue($this->datetimeFromDB($row['date_due']));
-		$reviewerSubmission->setDeclined($row['declined']);
-		$reviewerSubmission->setReplaced($row['replaced']);
-		$reviewerSubmission->setCancelled($row['cancelled']==1?1:0);
-		$reviewerSubmission->setReviewerFileId($row['reviewer_file_id']);
-		$reviewerSubmission->setQuality($row['quality']);
-		$reviewerSubmission->setRound($row['round']);
-		$reviewerSubmission->setReviewFileId($row['review_file_id']);
-		$reviewerSubmission->setReviewRevision($row['review_revision']);
+		if ($row['review_id']) $reviewerSubmission->setReviewId($row['review_id']);
+		if ($row['reviewer_id']) $reviewerSubmission->setReviewerId($row['reviewer_id']);
+		if ($row['first_name'] && $row['last_name']) $reviewerSubmission->setReviewerFullName($row['first_name'].' '.$row['last_name']);
+		if ($row['competing_interests']) $reviewerSubmission->setCompetingInterests($row['competing_interests']);
+		if ($row['recommendation']) $reviewerSubmission->setRecommendation($row['recommendation']);
+		if ($row['date_assigned']) $reviewerSubmission->setDateAssigned($this->datetimeFromDB($row['date_assigned']));
+		if ($row['date_notified']) $reviewerSubmission->setDateNotified($this->datetimeFromDB($row['date_notified']));
+		if ($row['date_confirmed']) $reviewerSubmission->setDateConfirmed($this->datetimeFromDB($row['date_confirmed']));
+		if ($row['date_completed']) $reviewerSubmission->setDateCompleted($this->datetimeFromDB($row['date_completed']));
+		if ($row['date_acknowledged']) $reviewerSubmission->setDateAcknowledged($this->datetimeFromDB($row['date_acknowledged']));
+		if ($row['date_due']) $reviewerSubmission->setDateDue($this->datetimeFromDB($row['date_due']));
+		if ($row['declined']) $reviewerSubmission->setDeclined($row['declined']);
+		if ($row['replaced']) $reviewerSubmission->setReplaced($row['replaced']);
+		if ($row['cancelled']) $reviewerSubmission->setCancelled($row['cancelled']==1?1:0);
+		if ($row['reviewer_file_id']) $reviewerSubmission->setReviewerFileId($row['reviewer_file_id']);
+		if ($row['quality']) $reviewerSubmission->setQuality($row['quality']);
+		if ($row['round']) $reviewerSubmission->setRound($row['round']);
+		if ($row['review_file_id']) $reviewerSubmission->setReviewFileId($row['review_file_id']);
+		if ($row['review_revision']) $reviewerSubmission->setReviewRevision($row['review_revision']);
 
 		// Article attributes
 		$this->articleDao->_articleFromRow($reviewerSubmission, $row);
@@ -376,6 +378,7 @@ class ReviewerSubmissionDAO extends DAO {
 		return $returner;
 	}
 
+                                    
 	/**
 	 * Retrieve a submission for Full Review article ID.
 	 * @param $articleId int
@@ -387,9 +390,15 @@ class ReviewerSubmissionDAO extends DAO {
 		$locale = Locale::getLocale();
 		$result =& $this->retrieve(
 			'SELECT	a.*,
+                                r.*,
+				r2.review_revision,
+				u.first_name, u.last_name,
 				COALESCE(stl.setting_value, stpl.setting_value) AS section_title,
 				COALESCE(sal.setting_value, sapl.setting_value) AS section_abbrev
 			FROM	articles a
+				LEFT JOIN review_assignments r ON (a.article_id = r.submission_id)
+				LEFT JOIN users u ON (r.reviewer_id = u.user_id)
+				LEFT JOIN review_rounds r2 ON (r.submission_id = r2.submission_id AND r.round = r2.round)
 				LEFT JOIN sections s ON (s.section_id = a.section_id)
 				LEFT JOIN section_settings stpl ON (s.section_id = stpl.section_id AND stpl.setting_name = ? AND stpl.locale = ?)
 				LEFT JOIN section_settings stl ON (s.section_id = stl.section_id AND stl.setting_name = ? AND stl.locale = ?)

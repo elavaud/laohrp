@@ -42,7 +42,6 @@ switch ($op) {
 	//
 	
 	case 'downloadFile':
-	case 'downloadFileFullReview':
 	//
 	// Submission Review Form
 	//
@@ -69,6 +68,7 @@ switch ($op) {
 		break;
 	case 'index':
 	case 'submissions':
+	case 'downloadFileFullReview':
 	case 'meetings':
 		define('HANDLER_CLASS', 'ReviewerHandler');
 		import('pages.reviewer.ReviewerHandler');
