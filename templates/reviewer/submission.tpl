@@ -268,6 +268,7 @@ $(document).ready(function() {
 	</tr>
 {/if}{* $currentJournal->getSetting('requireReviewerCompetingInterests') *}
 
+
 {if $reviewAssignment->getReviewFormId()}
 	<tr valign="top">
 		<td>{$currentStep|escape}.{assign var="currentStep" value=$currentStep+1}</td>
