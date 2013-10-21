@@ -131,9 +131,11 @@ $(document).ready(
 		<td width="20%" class="value">
 			<input type="checkbox" name="primarySponsor" checked="checked"/>&nbsp;Primary Sponsor
 		</td>
+		<!--
 		<td width="20%" class="value">
 			<input type="checkbox" name="fundsRequired" />&nbsp;Funds Required
 		</td>
+		-->
 	</tr>
 	<tr>
 		<td class="value">
