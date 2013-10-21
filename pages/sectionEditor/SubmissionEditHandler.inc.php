@@ -481,10 +481,11 @@ class SubmissionEditHandler extends SectionEditorHandler {
 			case SUBMISSION_EDITOR_DECISION_INCOMPLETE:
 			case SUBMISSION_EDITOR_DECISION_EXEMPTED:
 				SubmissionCommentsHandler::emailEditorDecisionComment($articleId);
-				break;			
-		}
-		
-		Request::redirect(null, null, 'submissionReview', $articleId);
+				break;	
+			default:
+				Request::redirect(null, null, 'submissionReview', $articleId);
+			break;
+		}		
 	}
 	
 	/**

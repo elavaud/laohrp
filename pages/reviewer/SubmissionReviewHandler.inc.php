@@ -244,21 +244,6 @@ class SubmissionReviewHandler extends ReviewerHandler {
 		}
 	}
 
-	/**
-	 * Download a file.
-	 * @param $args array ($articleId, $fileId, [$revision])
-	 */
-	function downloadFileFullReview($args) {
-		$reviewId = isset($args[0]) ? $args[0] : 0;
-		$articleId = isset($args[1]) ? $args[1] : 0;
-		$fileId = isset($args[2]) ? $args[2] : 0;
-		$revision = isset($args[3]) ? $args[3] : null;
-
-		$reviewerSubmission =& $this->submission;
-		if (!Action::downloadFile($articleId, $fileId, $revision)) {
-			Request::redirect(null, null, 'submission', $reviewId);
-		}
-	}
 	
 	//
 	// Review Form
