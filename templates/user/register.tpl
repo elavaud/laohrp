@@ -236,7 +236,8 @@
 	<textarea name="interests" id="interestsTextOnly" rows="5" cols="40" class="textArea">
 			{foreach name=currentInterests from=$interestsKeywords item=interest}{$interest|urldecode}{if !$smarty.foreach.currentInterests.last}, {/if}{/foreach}
 	</textarea>
-</div> 
+</div>
+
 <br />
 <p><input type="submit" value="{translate key="user.registerA"}" class="button defaultButton" /> <input type="button" value="{translate key="common.cancel"}" class="button" onclick="document.location.href='{url page="index" escape=false}'" /></p>
 
