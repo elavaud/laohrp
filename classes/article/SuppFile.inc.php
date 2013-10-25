@@ -409,7 +409,7 @@ class SuppFile extends ArticleFile {
 			if (!empty($publicSuppFileId)) return $publicSuppFileId;
 		}
 		return $this->getId();
-	}
+	}        
 }
 
 ?>
