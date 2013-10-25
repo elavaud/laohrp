@@ -2095,7 +2095,6 @@ class SectionEditorAction extends Action {
 		$userDao =& DAORegistry::getDAO('UserDAO');
 		$articleCommentDao =& DAORegistry::getDAO('ArticleCommentDAO');
 		$sectionEditorSubmissionDao =& DAORegistry::getDAO('SectionEditorSubmissionDAO');
-		$suppFileDao =& DAORegistry::getDAO('SuppFileDAO');
 
 		$journal =& Request::getJournal();
 
@@ -2119,18 +2118,7 @@ class SectionEditorAction extends Action {
 		$sectionEditorSubmission,
 		isset($decisionTemplateMap[$decisionConst])?$decisionTemplateMap[$decisionConst]:null
 		);
-                
-                $suppfiles =& $suppFileDao->getSuppFilesByArticle($sectionEditorSubmission->getId());
-                foreach ($suppfiles as $suppfile){
-                    if ($suppfile->getType() == "Final Decision"){
-                        if(isset($finalDecisionFile)) {
-                            if ($suppfile->getDateUploaded() > $finalDecisionFile->getDateUploaded()) $finalDecisionFile =& $suppfile;
-                        } else $finalDecisionFile =& $suppfile;
-                    }
-                }
-                
-                
-                
+                                
 		$copyeditor = $sectionEditorSubmission->getUserBySignoffType('SIGNOFF_COPYEDITING_INITIAL');
 
 		if ($send && !$email->hasErrors()) {
@@ -2151,7 +2139,6 @@ class SectionEditorAction extends Action {
 
 			return true;
 		} else {
-                        if (isset($finalDecisionFile)) $email->addPersistAttachment($finalDecisionFile);
 			if (!Request::getUserVar('continued')) {
 				$authorUser =& $userDao->getUser($sectionEditorSubmission->getUserId());
 				$authorEmail = $authorUser->getEmail();
