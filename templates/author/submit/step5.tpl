@@ -75,7 +75,7 @@ function checkSubmissionChecklist(elements) {
     {/if}
     <tr valign="top">
         <td title="ບົດຄັດຫຍໍ້" class="label" width="20%">[?] {translate key="proposal.abstract"}</td>
-        <td class="value">{$article->getLocalizedAbstract()}</td>
+        <td class="value">{$article->getLocalizedAbstract()|strip_unsafe_html|nl2br|default:"&mdash;"}</td>
     </tr>
     
     <tr valign="top">

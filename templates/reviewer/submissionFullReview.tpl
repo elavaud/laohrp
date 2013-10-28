@@ -131,7 +131,7 @@
     {/if}
     <tr valign="top">
         <td class="label">{if !$isSectionEditor}<br/>{translate key="proposal.abstract"}{/if}<br/>ບົດຄັດຫຍໍ້</td>
-        <td class="value"><br/>{$submission->getLocalizedAbstract()}</td>
+        <td class="value"><br/>{$submission->getLocalizedAbstract()|strip_unsafe_html|nl2br|default:"&mdash;"}</td>
     </tr>
     <tr valign="top">
         <td class="label">{if !$isSectionEditor}<br/>{translate key="proposal.keywords"}{/if}<br/>ຄຳສັບຫລັກ</td>
