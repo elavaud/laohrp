@@ -73,7 +73,7 @@
     {/if}
     <tr valign="top">
         <td title="Short description of the primary purpose of the protocol, including a brief statement of the study hypothesis. It also includes publication/s details (link/reference), if any." class="label">{if !$isSectionEditor}<br/>{translate key="proposal.abstract"}{/if}<br/>[?] ບົດຄັດຫຍໍ້</td>
-        <td class="value"><br/>{$submission->getLocalizedAbstract()}</td>
+        <td class="value"><br/>{$submission->getLocalizedAbstract()|strip_unsafe_html|nl2br|default:"&mdash;"}</td>
     </tr>
     <tr valign="top">
         <td title="Significant or descriptive words." class="label">{if !$isSectionEditor}<br/>{translate key="proposal.keywords"}{/if}<br/>[?] ຄຳສັບຫລັກ</td>
