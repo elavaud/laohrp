@@ -2118,6 +2118,8 @@ class SectionEditorAction extends Action {
 		$sectionEditorSubmission,
 		isset($decisionTemplateMap[$decisionConst])?$decisionTemplateMap[$decisionConst]:null
 		);
+                
+                
                                 
 		$copyeditor = $sectionEditorSubmission->getUserBySignoffType('SIGNOFF_COPYEDITING_INITIAL');
 
@@ -2140,9 +2142,23 @@ class SectionEditorAction extends Action {
 			return true;
 		} else {
 			if (!Request::getUserVar('continued')) {
+                                $editAssignmentDao =& DAORegistry::getDAO('EditAssignmentDAO');
+                                $sectionEditors =& $editAssignmentDao->getEditorAssignmentsByArticleId3($sectionEditorSubmission->getId());
+                            	$userSettingsDao =& DAORegistry::getDAO('UserSettingsDAO');
+                                foreach ($sectionEditors as $sectionEditorEntry) {
+                                        $sectionEditor =& $sectionEditorEntry['user'];
+                                        if (($userSettingsDao->getSetting($sectionEditor->getId(), "secretaryStatus") == "UHS Secretary") || ($userSettingsDao->getSetting($sectionEditor->getId(), "secretaryStatus") == "NIOPH Secretary")){
+                                            $email->setFrom($sectionEditor->getEmail(), $sectionEditor->getFullName());
+                                            $mainSectionEditor =& $sectionEditor; 
+                                        }
+                                        $email->addBcc($sectionEditor->getEmail(), $sectionEditor->getFullName());
+                                }
+                                if (!isset($mainSectionEditor)) $mainSectionEditor =& $user;
+                                
 				$authorUser =& $userDao->getUser($sectionEditorSubmission->getUserId());
 				$authorEmail = $authorUser->getEmail();
 				$email->assignParams(array(
+                                        'secretaryName' => $mainSectionEditor->getFullName(),
 					'editorialContactSignature' => $user->getContactSignature(),
 					'authorName' => $authorUser->getFullName(),
 					'url' => Request::url(null, 'author', 'submission', $sectionEditorSubmission->getArticleId()),
