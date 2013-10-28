@@ -472,14 +472,12 @@ function checkSubmissionChecklist(elements) {
 		*}
 	{/if}
 	<p>
-	Please pay the fees to:<br/><br/>
-	{if $sectionId == 1}
-		Secretary<br/>National Ethics Committee for Health Research<br/>Room #221<br/>National Institute of Public Health<br/>Samsenthai Road, Ban Kao Nhot, Sisattanak District,<br/>Vientiane, Lao PDR<br/>Tel: (856-21) 250670-205<br/><br/>
-		Or by cheque payable to "National Institute of Public Health", the cheque can be mailed to above address or delivered in person.
-	{elseif $sectionId == 2}
-		Secretary<br/>Ethical Committee of the University of Health Sciences<br/>University of Health Sciences<br/>Samsenthai Road, Sisattanak District,<br/>Vientiane, Lao PDR<br/><br/>
-		Cheques will soon be available. For now, please pay with cash.
-	{/if}
+	While doing the transfer, please specify the title of the proposal and, if the account used is not the account of one of the investigators, the name of the account holder.
+	<br/>Please be aware that any transfer fee should be added to the review fee.
+
+
+	<br/><br/>Please pay the fees to:<br/><br/>
+	{$bankAccount}
 	</p>
 	<div class="separator"></div>
 {/if}

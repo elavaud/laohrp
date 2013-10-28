@@ -44,7 +44,7 @@ class AuthorSubmitStep5Form extends AuthorSubmitForm {
 		$user =& Request::getUser();
 		$templateMgr =& TemplateManager::getManager();
 
-        // Get article file for this article
+                // Get article file for this article
 		$articleFileDao =& DAORegistry::getDAO('ArticleFileDAO');
 		$articleFiles =& $articleFileDao->getArticleFilesByArticle($this->articleId);			
 		
@@ -59,6 +59,12 @@ class AuthorSubmitStep5Form extends AuthorSubmitForm {
 		
 		$templateMgr->assign_by_ref('files', $articleFiles);		
 		$templateMgr->assign_by_ref('journal', Request::getJournal());
+
+                // Get bank information
+		$sectionDao =& DAORegistry::getDAO('SectionDAO');
+                $section =& $sectionDao->getSection($this->article->getSectionId());
+                $bankAccount = $section->getLocalizedBankAccount();
+                $templateMgr->assign('bankAccount', $bankAccount);
 
                 //Added by AIM, 1.20.2012
                 $templateMgr->assign_by_ref('article', $this->article);

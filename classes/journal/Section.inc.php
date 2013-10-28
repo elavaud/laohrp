@@ -362,6 +362,33 @@ class Section extends DataObject {
 	function setPolicy($policy, $locale) {
 		return $this->setData('policy', $policy, $locale);
 	}
+
+        /**
+	 * Get bank info.
+	 * @param $locale string
+	 * @return string
+	 */
+	function getBankAccount($locale) {
+		return $this->getData('bankAccount', $locale);
+	}
+
+        /**
+	 * Get bank info.
+	 * @return string
+	 */
+	function getLocalizedBankAccount() {
+		return $this->getLocalizedData('bankAccount');
+	}
+
+	/**
+	 * Set Bank Info.
+	 * @param $bankAccount string
+	 * @param $locale string
+	 */
+	function setBankAccount($bankAccount, $locale) {
+		return $this->setData('bankAccount', $bankAccount, $locale);
+	}
+
 }
 
 ?>
