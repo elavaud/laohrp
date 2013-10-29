@@ -93,7 +93,7 @@ $(document).ready(function() {
 
 <table class="data" width="100%">
 <tr>
-	<td title="ເລືອກຊະນິດຂອງຟາຍເອກະສານ (ກົດCTRLຄ້າງໄວ້ເພື່ອເຂົ້າສູ່ການເລືອກຫລາຍຟາຍພ້ອມກັນ)" width="30%" class="label">[?] Select file type(s)<br />(Hold down the CTRL button to select multiple options.)</td>
+	<td title="ເລືອກຊະນິດຂອງຟາຍເອກະສານ (ກົດCTRLຄ້າງໄວ້ເພື່ອເຂົ້າສູ່ການເລືອກຫລາຍຟາຍພ້ອມກັນ)" width="30%" class="label">[?] <b>First,</b> please select the file type(s)<br /><br /><i>(If you want to select multiple options, hold down the CTRL/CMD button.)</i></td>
 	<td width="35%" class="value">
 <!--Start Edit Jan 30 2012-->
                 <select name="fileType[]" id="fileType" multiple="multiple" size="8" class="selectMenu">
@@ -112,7 +112,7 @@ $(document).ready(function() {
         <!--End Edit -->
 </tr>
 <tr>
-        <td width="30%" class="label">Select file to upload</td>
+        <td width="30%" class="label"><b>Second,</b> please select the file to upload</td>
         <td width="70%" class="value" colspan="2">
                 <input type="file" name="uploadSuppFile" id="uploadSuppFile"  class="uploadField" />
                 <input name="submitUploadSuppFile" type="submit" class="button" value="{translate key="common.upload"}" /> 
