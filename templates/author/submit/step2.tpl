@@ -1028,7 +1028,7 @@ Are the subject coming from all over Lao?" width="20%" class="label">[?] {fieldL
                 <td width="40%"><a href="#" id="addAnotherType">Add another type</a></td>
             </tr>
             <tr>
-            	<td title="ວັນເກັບກຳຂໍ້ມູນ: ຮູບແບບຂອງຂໍ້ມູນໃຊ້ໃນການຄົ້ນຄວ້າ" width="20%" class="label">{fieldLabel name="dataCollection" required="true" key="proposal.dataCollection"}</td>
+            	<td title="Primary data are collected firsthand by a researcher through experiments, surveys, questionnaires, focus groups, interviews and taking measurements, while secondary data are readily available and is available to the public through publications, journals and newspapers." width="20%" class="label">[?] {fieldLabel name="dataCollection" required="true" key="proposal.dataCollection"}</td>
             	<td width="80%" class="value">
             		<select name="dataCollection[{$formLocale|escape}]" class="selectMenu">
             			<option value=""></option>
