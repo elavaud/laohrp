@@ -79,9 +79,15 @@ function checkEditorAssignments() {
 	<td class="value"><input type="text" name="abbrev[{$formLocale|escape}]" id="abbrev" value="{$abbrev[$formLocale]|escape}" size="20" maxlength="20" class="textField" />&nbsp;&nbsp;{translate key="section.abbreviation.example"}</td>
 </tr>
 <tr valign="top">
+	<td class="label">{fieldLabel name="bankAccount" key="manager.sections.bankAccount"}</td>
+	<td class="value"><textarea name="bankAccount[{$formLocale|escape}]" rows="4" cols="40" id="bankAccount" class="textArea">{$bankAccount[$formLocale]|escape}</textarea></td>
+</tr>
+<!--
+<tr valign="top">
 	<td class="label">{fieldLabel name="policy" key="manager.sections.policy"}</td>
 	<td class="value"><textarea name="policy[{$formLocale|escape}]" rows="4" cols="40" id="policy" class="textArea">{$policy[$formLocale]|escape}</textarea></td>
 </tr>
+-->
 <tr valign="top">
 	<td class="label">{fieldLabel name="reviewFormId" key="submission.reviewForm"}</td>
 	<td class="value">
@@ -91,6 +97,7 @@ function checkEditorAssignments() {
 		</select>
 	</td>
 </tr>
+<!--{*
 <tr valign="top">
 	<td rowspan="4" class="label">{fieldLabel suppressId="true" key="submission.indexing"}</td>
 	<td class="value">
@@ -125,12 +132,14 @@ function checkEditorAssignments() {
 		{fieldLabel name="editorRestriction" key="manager.sections.editorRestriction"}
 	</td>
 </tr>
+*}-->
 <tr valign="top">
 	<td class="label">{fieldLabel key="manager.sections.wordCount"}</td>
 	<td class="value">
 		{fieldLabel name="wordCount" key="manager.sections.wordCountInstructions"}&nbsp;&nbsp;<input type="text" name="wordCount" id="abbrev" value="{$wordCount}" size="10" maxlength="20" class="textField" />
 	</td>
 </tr>
+<!--{*
 <tr valign="top">
 	<td class="label">{fieldLabel name="hideTitle" key="issue.toc"}</td>
 	<td class="value">
@@ -161,9 +170,11 @@ function checkEditorAssignments() {
 	</td>
 </tr>
 {/if}
+*}-->
 </table>
 </div>
 <div class="separator"></div>
+<!--{*
 <div id="sectionEditors">
 <h3>{translate key="user.role.sectionEditors"}</h3>
 {url|assign:"sectionEditorsUrl" op="people" path="sectionEditors"|to_array}
@@ -239,6 +250,8 @@ function checkEditorAssignments() {
 	</tr>
 </table>
 </div>
+*}-->
+
 <p><input type="submit" value="{translate key="common.save"}" class="button defaultButton" /> <input type="button" value="{translate key="common.cancel"}" class="button" onclick="document.location.href='{url op="sections" escape=false}'" /></p>
 
 </form>

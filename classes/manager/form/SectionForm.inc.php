@@ -143,7 +143,8 @@ class SectionForm extends Form {
 					'hideAbout' => $section->getHideAbout(),
 					'disableComments' => $section->getDisableComments(),
 					'policy' => $section->getPolicy(null), // Localized
-					'assignedEditors' => $sectionEditorsDao->getEditorsBySectionId($journal->getId(), $this->sectionId),
+					'bankAccount' => $section->getBankAccount(null), // Localized
+                                        'assignedEditors' => $sectionEditorsDao->getEditorsBySectionId($journal->getId(), $this->sectionId),
 					'unassignedEditors' => $sectionEditorsDao->getEditorsNotInSection($journal->getId(), $this->sectionId),
 					'wordCount' => $section->getAbstractWordCount()
 				);
@@ -159,7 +160,7 @@ class SectionForm extends Form {
 	 * Assign form data to user-submitted data.
 	 */
 	function readInputData() {
-		$this->readUserVars(array('title', 'abbrev', 'policy', 'reviewFormId', 'identifyType', 'metaIndexed', 'metaReviewed', 'abstractsNotRequired', 'editorRestriction', 'hideTitle', 'hideAuthor', 'hideAbout', 'disableComments', 'wordCount'));
+		$this->readUserVars(array('title', 'abbrev', 'policy', 'bankAccount', 'reviewFormId', 'identifyType', 'metaIndexed', 'metaReviewed', 'abstractsNotRequired', 'editorRestriction', 'hideTitle', 'hideAuthor', 'hideAbout', 'disableComments', 'wordCount'));
 		$assignedEditorIds = Request::getUserVar('assignedEditorIds');
 		if (empty($assignedEditorIds)) $assignedEditorIds = array();
 		elseif (!is_array($assignedEditorIds)) $assignedEditorIds = array($assignedEditorIds);
@@ -223,7 +224,8 @@ class SectionForm extends Form {
 		$section->setHideAbout($this->getData('hideAbout') ? 1 : 0);
 		$section->setDisableComments($this->getData('disableComments') ? 1 : 0);
 		$section->setPolicy($this->getData('policy'), null); // Localized
-		$section->setAbstractWordCount($this->getData('wordCount'));
+		$section->setBankAccount($this->getData('bankAccount'), null); // Localized
+                $section->setAbstractWordCount($this->getData('wordCount'));
 
 		if ($section->getId() != null) {
 			$sectionDao->updateSection($section);

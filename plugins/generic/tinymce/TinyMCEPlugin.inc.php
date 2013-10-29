@@ -184,7 +184,8 @@ class TinyMCEPlugin extends GenericPlugin {
 			case 'manager/editSection':
 			case 'manager/updateSection':
 			case 'manager/createSection':
-				$fields[] = 'policy';
+				$fields[] = 'bankAccount';
+                                $fields[] = 'policy';
 				break;
 			case 'manager/setup':
 			case 'manager/saveSetup':
