@@ -918,7 +918,7 @@ Is the research involving patients from different countries?" width="20%" class=
             
             <tr valign="top">
                 <td title="ເປັນການຄົ້ນຄວ້າລະດັບຊາດບໍ່?
-Is it a nationwide research?" width="20%" class="label">[?] {fieldLabel name="nationwide" required="true" key="proposal.nationwide"}</td>
+Are the subject coming from all over Lao?" width="20%" class="label">[?] {fieldLabel name="nationwide" required="true" key="proposal.nationwide"}</td>
                 <td width="80%" class="value">
                 	<input type="radio" name="nationwide[{$formLocale|escape}]" id="nationwide" value="Yes" {if  $nationwide[$formLocale] == "Yes" } checked="checked"{/if}  />Yes
                     &nbsp;&nbsp;&nbsp;&nbsp;
