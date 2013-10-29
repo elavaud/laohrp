@@ -1072,6 +1072,7 @@ Are the subject coming from all over Lao?" width="20%" class="label">[?] {fieldL
 -->    
     <div id="sourcesOfGrant">
         <h3>{translate key="proposal.sourceOfMonetary"} / ການສະຫນັບສະຫນຸນແຫລ່ງທຶນແລະດ້ານອຸປະກອນເຄື່ອງໄຊ້</h3>
+        <p><i>This section allows you to detail the source of monetary and material support of the research proposal. Most of the time, the primary sponsor is also the source of monetary and material supoprt. In this case, please specify it again in this section.</i></p>
         <table width="100%" class="data">
         
             <tr><td><br/></td></tr>
