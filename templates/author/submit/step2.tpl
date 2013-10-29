@@ -1127,7 +1127,7 @@ Are the subject coming from all over Lao?" width="20%" class="label">[?] {fieldL
                     <select name="internationalGrantName[{$formLocale|escape}][]" id="internationalGrantName" class="selectMenu" onchange="showOrHideOtherInternationalGrantName(this.value);">
                         <option value=""></option>
                         {foreach from=$agencies key=id item=igName}
-                            {if $igName.code != "NA"}
+                            {if $igName.code != "NA" && $igName.code != "UHS"}
                                 {assign var="isSelected" value=false}
                                 {foreach from=$internationalGrantName[$formLocale] key=id item=selectedTypes}
                                     {if $internationalGrantName[$formLocale][$i] == $igName.code}
