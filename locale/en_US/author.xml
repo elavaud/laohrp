@@ -60,7 +60,14 @@
 	<message key="author.submit.submissionLocale">Submission Language</message>
 	<message key="author.submit.submissionLocaleDescription">This site accepts submissions in several languages. Choose the primary language of the submission from the pulldown below.</message>
 	<message key="author.submit.submissionChecklist">Submission Checklist</message>
+    <message key="author.submit.documentChecklist">Document Checklist</message>
 	<message key="author.submit.submissionChecklistDescription">Indicate that this proposal is ready to be considered by the ERC by checking off the following (comments to the Secretary can be added at Step 5).</message>
+    <message key="author.submit.documentChecklistDescription">According to your research proposal, ethics committees in Lao P.D.R. may require the following documents to start the proposal review. A missing document will result as an incomplete proposal. Please click on every boxes in order to specify that you are aware of these requirements.</message>
+    <message key="author.submit.documentChecklist1">Main proposal file with an abstract in Lao and English</message>
+    <message key="author.submit.documentChecklist2">Questionnaires in Lao and English</message>
+    <message key="author.submit.documentChecklist3">Consent form and information sheet in Lao and English</message>
+    <message key="author.submit.documentChecklist4">CV of principal investigator</message>
+    <message key="author.submit.documentChecklist5">Request letter for proposal review from your institution</message>
 	<message key="author.submit.verifyChecklist">You must make sure all items in the submission checklist are satisfied before continuing.</message>
 	<message key="author.submit.copyrightNoticeAgree">The principal investigators agree to the terms of this Copyright Notice, which will apply to this submission if and when it is published by this site (comments to the ERC Secretariat can be added below).</message>
 	<message key="author.submit.copyrightNoticeAgreeRequired">You must agree to the terms of the Copyright Notice before continuing.</message>

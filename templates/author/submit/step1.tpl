@@ -134,6 +134,32 @@ function checkSubmissionChecklist() {
 
 {/if}{* if count($sectionOptions) <= 1 *}
 
+<h3>{translate key="author.submit.documentChecklist"}</h3>
+<p>{translate key="author.submit.documentChecklistDescription"}</p>
+	<table width="100%" class="data">
+		<tr valign="top">
+			<td width="5%"><input type="checkbox" id="checklist" name="checklist[]" value="1"{if $articleId || $submissionChecklist} checked="checked"{/if} /></td>
+			<td width="95%">{translate key="author.submit.documentChecklist1"}</label></td>
+		</tr>
+		<tr valign="top">
+			<td width="5%"><input type="checkbox" id="checklist" name="checklist[]" value="1"{if $articleId || $submissionChecklist} checked="checked"{/if} /></td>
+			<td width="95%">{translate key="author.submit.documentChecklist2"}</label></td>
+		</tr>
+		<tr valign="top">
+			<td width="5%"><input type="checkbox" id="checklist" name="checklist[]" value="1"{if $articleId || $submissionChecklist} checked="checked"{/if} /></td>
+			<td width="95%">{translate key="author.submit.documentChecklist3"}</label></td>
+		</tr>
+		<tr valign="top">
+			<td width="5%"><input type="checkbox" id="checklist" name="checklist[]" value="1"{if $articleId || $submissionChecklist} checked="checked"{/if} /></td>
+			<td width="95%">{translate key="author.submit.documentChecklist4"}</label></td>
+		</tr>
+		<tr valign="top">
+			<td width="5%"><input type="checkbox" id="checklist" name="checklist[]" value="1"{if $articleId || $submissionChecklist} checked="checked"{/if} /></td>
+			<td width="95%">{translate key="author.submit.documentChecklist5"}</label></td>
+		</tr>
+	</table>
+<div class="separator"></div>
+
         
 {if $currentJournal->getLocalizedSetting('copyrightNotice') != ''}
 <div id="copyrightNotice">
