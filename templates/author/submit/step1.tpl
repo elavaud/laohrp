@@ -116,8 +116,8 @@ function checkSubmissionChecklist() {
 		{if !$notFirstChecklistItem}
 			{assign var=notFirstChecklistItem value=1}
 			<div id="checklist">
-			<h3>{translate key="author.submit.submissionChecklist"}</h3>
-			<p>{translate key="author.submit.submissionChecklistDescription"}</p>
+			<h3>{translate key="author.submit.submissionChecklist"} / ລາຍການ ຂອງການຍື່ນບົດສະເໜີຄົ້ນຄ້ວາ</h3>
+			<p title="ສິ່ງທີ່ຈະຢືນຢັນວ່າ ເອກະສານບົດສະເໜີຄົ້ນຄ້ວານັ້ນ ຄົບຖ້ວນ ແລະ ພ້ອມທີ່ຈະນຳເຂົ້າສູ່ການພິຈາລະນາ ໂດຍ ຄະນະກຳມະການ ແມ່ນຕ້ອງກວດເບິ່ງຕາມລາຍການນີ້ (ຄຳເຫັນ ຕໍ່ ເລຂາຄະນະກຳມະການ ສາມາດເພີ້ມໃສ່ໄດ້ ໃນຂັ້ນຕອນ ທີ 5).">[?] {translate key="author.submit.submissionChecklistDescription"}</p>
 			<table width="100%" class="data">
 		{/if}
 		<tr valign="top">
@@ -134,28 +134,32 @@ function checkSubmissionChecklist() {
 
 {/if}{* if count($sectionOptions) <= 1 *}
 
-<h3>{translate key="author.submit.documentChecklist"}</h3>
-<p>{translate key="author.submit.documentChecklistDescription"}</p>
+<h3>{translate key="author.submit.documentChecklist"} / ລາຍການເອກະສານໃນການຍື່ນບົດສະເໜີຄົ້ນຄວ້າເພື່ອຂໍອະນຸມັດຈັນຍາທຳ ຈາກ ຄະນະກຳມະການ ທາງດ້ານຈັນຍາທຳ</h3>
+<p title="
+ອີງຕາມບົດສະເໜີຄົ້ນຄວ້າຂອງທ່ານ, ຄະນະກຳມະການແຫ່ງຊາດທາງດ້ານຈັນຍາທຳການຄົ້ນຄວ້າສາທາລະນະສຸກ ຂອງ ສ.ປ.ປ ລາວ ຮຽກຮ້ອງໃຫ້ມີເອກະສານ ດັ່ງຕໍ່ໄປນີ້ ເພື່ອເລີ່ມຕົ້ນການພິຈາລະນາບົດສະເໜີຄົ້ນຄວ້າ.
+ຖ້າຫາກເອກະສານບໍ່ຄົບຖ້ວນ ຈະເຮັດໃຫ້ບົດສະເໜີການຄົ້ນຄວ້າ ບໍ່ສົມບູນ
+ກະລຸນາໝາຍໃສ່ທຸກໆຫ້ອງ ຕາມລຳດັບ ເພື່ອຊີ້ໃຫ້ເຫັນວ່າ ທ່ານຮູ້ວ່າຕ້ອງມີເອກະສານ ດັ່ງຕໍ່ໄປນີ້.  
+">[?] {translate key="author.submit.documentChecklistDescription"}</p>
 	<table width="100%" class="data">
 		<tr valign="top">
 			<td width="5%"><input type="checkbox" id="checklist" name="checklist[]" value="1"{if $articleId || $submissionChecklist} checked="checked"{/if} /></td>
-			<td width="95%">{translate key="author.submit.documentChecklist1"}</label></td>
+			<td width="95%" title="ໄຟລ໌ ຂອງບົດສະເໜີຄົ້ນຄວ້າ ພ້ອມດ້ວຍ ບົດຄັດຫຍໍ້ ທີ່ເປັນ ພາສາລາວ ແລະ ພາສາອັງກິດ">[?] {translate key="author.submit.documentChecklist1"}</label></td>
 		</tr>
 		<tr valign="top">
 			<td width="5%"><input type="checkbox" id="checklist" name="checklist[]" value="1"{if $articleId || $submissionChecklist} checked="checked"{/if} /></td>
-			<td width="95%">{translate key="author.submit.documentChecklist2"}</label></td>
+			<td width="95%" title="ແບບຟອມສອບຖາມ ທີ່ເປັນ ພາສາລາວ ແລະ ພາສາອັງກິດ">[?] {translate key="author.submit.documentChecklist2"}</label></td>
 		</tr>
 		<tr valign="top">
 			<td width="5%"><input type="checkbox" id="checklist" name="checklist[]" value="1"{if $articleId || $submissionChecklist} checked="checked"{/if} /></td>
-			<td width="95%">{translate key="author.submit.documentChecklist3"}</label></td>
+			<td width="95%" title="ໃບຍິນຍອມເຂົ້າຮ່ວມການສຶກສາ ແລະ ໃບຊີ້ແຈງໃນການຂໍການຮ່ວມມື ທີ່ເປັນພາສາລາວ ແລະ ພາສາອັງກິດ.">[?] {translate key="author.submit.documentChecklist3"}</label></td>
 		</tr>
 		<tr valign="top">
 			<td width="5%"><input type="checkbox" id="checklist" name="checklist[]" value="1"{if $articleId || $submissionChecklist} checked="checked"{/if} /></td>
-			<td width="95%">{translate key="author.submit.documentChecklist4"}</label></td>
+			<td width="95%" title="ຊີວະປະຫວັດຂອງຜູ້ດຳເນີນການຄົ້ນຄວ້າຫຼັກ (PI)">[?] {translate key="author.submit.documentChecklist4"}</label></td>
 		</tr>
 		<tr valign="top">
 			<td width="5%"><input type="checkbox" id="checklist" name="checklist[]" value="1"{if $articleId || $submissionChecklist} checked="checked"{/if} /></td>
-			<td width="95%">{translate key="author.submit.documentChecklist5"}</label></td>
+			<td width="95%" title="ໃບສະເໜີ ຂໍອະນຸມັດຈັນຍາທຳການຄົ້ນຄ້ວາ ຈາກກົມກອງ">[?] {translate key="author.submit.documentChecklist5"}</label></td>
 		</tr>
 	</table>
 <div class="separator"></div>

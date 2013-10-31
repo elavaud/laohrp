@@ -109,7 +109,7 @@
 		{/if}{* $captchaEnabled *}
 
 		<tr valign="top">
-			<td title="ການທັກທາຍ" class="label">[?] {fieldLabel name="salutation" key="user.salutation"}</td>
+			<td title="ຄໍານໍາໜ້າຊື່ (ທ້າວ, ນາງ, ດອກເຕີ, ອາຈານ, ຣສ, ສຈ, ອື່ນໆ)" class="label">[?] {fieldLabel name="salutation" key="user.salutation"}</td>
 			<td class="value"><input type="text" name="salutation" id="salutation" value="{$salutation|escape}" size="20" maxlength="40" class="textField" /></td>
 		</tr>
 		<tr valign="top">
@@ -142,7 +142,7 @@
 		</tr>
 
 		<tr valign="top" id="affiliation">
-			<td title="ການຕິດຕໍ່" class="label">[?] {fieldLabel name="affiliationField" key="user.affiliation"}</td>
+			<td title="ບ່ອນເຣັດວຽກທີ່ສາມາດຕິດຕໍ່ໄດ້" class="label">[?] {fieldLabel name="affiliationField" key="user.affiliation"}</td>
 			<td class="value">
 				<textarea id="affiliation" name="affiliation[{$formLocale|escape}]" rows="5" cols="40" class="textArea">{$affiliation[$formLocale]|escape}</textarea><br/>
 				<span class="instruct">{translate key="user.affiliation.description"}</span>
@@ -196,7 +196,7 @@
 		</tr>
 
 		<tr valign="top">
-			<td title="ການລາຍງານສະຖານທີ່ເຮັດວຽກ (ຕົວຢ່າງ ກົມກອງ ແລະ ຊັ້ນຂັ້ນ)" class="label">[?] {fieldLabel name="biography" key="user.biography"}<br />{translate key="user.biography.description"}</td>
+			<td title="ຕໍາແໜ່ງ, ໜ້າທີ່ີຣັບຜິດຊອບ" class="label">[?] {fieldLabel name="biography" key="user.biography"}<br />{translate key="user.biography.description"}</td>
 			<td class="value"><textarea name="biography[{$formLocale|escape}]" id="biography" rows="5" cols="40" class="textArea">{$biography[$formLocale]|escape}</textarea></td>
 		</tr>
 

@@ -1224,13 +1224,13 @@ Are the subject coming from all over Lao?" width="20%" class="label">[?] {fieldL
 -->    
 
 	<div id="riskAssessment">
-		<h3>{translate key="proposal.riskAssessment"}</h3>
+		<h3>{translate key="proposal.riskAssessment"} / ການປະເມີນຄວາມສ່ຽງ</h3>
         <table width="100%" class="data">
         	<tr valign="top"><td colspan="2">&nbsp;</td></tr>
-        	<tr valign="top"><td colspan="2"><b>{translate key="proposal.researchIncludesHumanSubject"}</b></td></tr>
+        	<tr valign="top"><td colspan="2" title="ບົດສະເໜີການຄົ້ນຄວ້າກ່ຽວຂ້ອງກັບຄົນ:"><b>[?] {translate key="proposal.researchIncludesHumanSubject"}</b></td></tr>
         	<tr valign="top"><td colapse="2">&nbsp;</td></tr>
         	<tr valign="top" id="identityRevealedField">
-        		<td width="40%" class="label">{fieldLabel name="identityRevealed" required="true" key="proposal.identityRevealed"}</td>
+        		<td width="40%" class="label" title="ຂໍ້ມູນສ່ວນຕົວອາດຖືກເປີດເຜີຍໃນລະຫວ່າງຂະບວນການຄົ້ນຄວ້າບໍ?">[?] {fieldLabel name="identityRevealed" required="true" key="proposal.identityRevealed"}</td>
         		<td width="60%" class="value">
                 	<input type="radio" name="identityRevealed" value="1" {if $identityRevealed == "1"} checked="checked" {elseif $riskAssessment.identityRevealed == "1" } checked="checked" {/if}  />{translate key="common.yes"}
                     &nbsp;&nbsp;&nbsp;&nbsp;
@@ -1238,7 +1238,7 @@ Are the subject coming from all over Lao?" width="20%" class="label">[?] {fieldL
         		</td>
         	</tr>
         	<tr valign="top" id="unableToConsentField">
-        		<td width="40%" class="label">{fieldLabel name="unableToConsent" required="true" key="proposal.unableToConsent"}</td>
+        		<td width="40%" class="label" title="ບໍ່ສາມາດໃຫ້ການຍິນຍອມເຂົ້າຮ່ວມການຄົ້ນຄວ້າໄດ້?">[?] {fieldLabel name="unableToConsent" required="true" key="proposal.unableToConsent"}</td>
         		<td width="60%" class="value">
                 	<input type="radio" name="unableToConsent" value="1" {if $unableToConsent == "1"} checked="checked" {elseif $riskAssessment.unableToConsent == "1" } checked="checked" {/if}  />{translate key="common.yes"}
                     &nbsp;&nbsp;&nbsp;&nbsp;
@@ -1246,7 +1246,7 @@ Are the subject coming from all over Lao?" width="20%" class="label">[?] {fieldL
         		</td>
         	</tr>
         	<tr valign="top" id="under18Field">
-        		<td width="40%" class="label">{fieldLabel name="under18" required="true" key="proposal.under18"}</td>
+        		<td width="40%" class="label" title="ອາຍຸຕ່ຳກວ່າ 18 ປີບໍ?">[?] {fieldLabel name="under18" required="true" key="proposal.under18"}</td>
         		<td width="60%" class="value">
                 	<input type="radio" name="under18" value="1" {if $under18 == "1"} checked="checked" {elseif $riskAssessment.under18 == "1" } checked="checked" {/if}  />{translate key="common.yes"}
                     &nbsp;&nbsp;&nbsp;&nbsp;
@@ -1254,7 +1254,7 @@ Are the subject coming from all over Lao?" width="20%" class="label">[?] {fieldL
         		</td>
         	</tr>
         	<tr valign="top" id="dependentRelationshipField">
-        		<td width="40%" class="label">{fieldLabel name="dependentRelationship" required="true" key="proposal.dependentRelationship"}<br/><i>{translate key="proposal.dependentRelationshipInstruct"}</i></td>
+        		<td width="40%" class="label" title="ມີສາຍພົວພັນສ່ວນຕົວກັບທີມງານນັກຄົ້ນຄວ້າບໍ?">[?] {fieldLabel name="dependentRelationship" required="true" key="proposal.dependentRelationship"}<br/><i title="(ຕົວຢ່າງ: ນັກຄົ້ນຄວ້າແມ່ນແພດປິ່ນປົວໃຫ້ແກ່ຜູ້ເຂົ້າຮ່ວມການຄົ້ນຄວ້າຄົນໃດໜຶ່ງ)">[?] {translate key="proposal.dependentRelationshipInstruct"}</i></td>
         		<td width="60%" class="value">
                 	<input type="radio" name="dependentRelationship" value="1" {if $dependentRelationship == "1"} checked="checked" {elseif $riskAssessment.dependentRelationship == "1" } checked="checked" {/if}  />{translate key="common.yes"}
                     &nbsp;&nbsp;&nbsp;&nbsp;
@@ -1262,7 +1262,7 @@ Are the subject coming from all over Lao?" width="20%" class="label">[?] {fieldL
         		</td>
         	</tr>
         	<tr valign="top" id="ethnicMinorityField">
-        		<td width="40%" class="label">{fieldLabel name="ethnicMinority" required="true" key="proposal.ethnicMinority"}</td>
+        		<td width="40%" class="label" title="ແມ່ນຊົນເຜົ່າໃດບໍ?">[?] {fieldLabel name="ethnicMinority" required="true" key="proposal.ethnicMinority"}</td>
         		<td width="60%" class="value">
                 	<input type="radio" name="ethnicMinority" value="1" {if $ethnicMinority == "1"} checked="checked" {elseif $riskAssessment.ethnicMinority == "1" } checked="checked" {/if}  />{translate key="common.yes"}
                     &nbsp;&nbsp;&nbsp;&nbsp;
@@ -1270,7 +1270,7 @@ Are the subject coming from all over Lao?" width="20%" class="label">[?] {fieldL
         		</td>
         	</tr>
         	<tr valign="top" id="impairmentField">
-        		<td width="40%" class="label">{fieldLabel name="impairment" required="true" key="proposal.impairment"}</td>
+        		<td width="40%" class="label" title="ມີຄວາມບົກຜ່ອງທາງດ້ານສະຕິປັນຍາ ຫຼື ສຸຂະພາບຈິດບໍ?">[?] {fieldLabel name="impairment" required="true" key="proposal.impairment"}</td>
         		<td width="60%" class="value">
                 	<input type="radio" name="impairment" value="1" {if $impairment == "1"} checked="checked" {elseif $riskAssessment.impairment == "1" } checked="checked" {/if}  />{translate key="common.yes"}
                     &nbsp;&nbsp;&nbsp;&nbsp;
@@ -1278,7 +1278,7 @@ Are the subject coming from all over Lao?" width="20%" class="label">[?] {fieldL
         		</td>
         	</tr>
         	<tr valign="top" id="pregnantField">
-        		<td width="40%" class="label">{fieldLabel name="pregnant" required="true" key="proposal.pregnant"}</td>
+        		<td width="40%" class="label" title="ແມ່ນແມ່ຍິງກຳລັງຖືພາບໍ?">[?] {fieldLabel name="pregnant" required="true" key="proposal.pregnant"}</td>
         		<td width="60%" class="value">
                 	<input type="radio" name="pregnant" value="1" {if $pregnant == "1"} checked="checked" {elseif $riskAssessment.pregnant == "1" } checked="checked" {/if}  />{translate key="common.yes"}
                     &nbsp;&nbsp;&nbsp;&nbsp;
@@ -1288,10 +1288,10 @@ Are the subject coming from all over Lao?" width="20%" class="label">[?] {fieldL
         	<tr valign="top"><td colspan="2">&nbsp;</td></tr>
         </table>
         <table width="100%" class="data">
-        	<tr valign="top"><td colspan="2"><b>{translate key="proposal.researchIncludes"}</b></td></tr>
+        	<tr valign="top"><td colspan="2" title="ບົດຄົ້ນຄວ້ານີ້ກວມເອົາ:"><b>[?] {translate key="proposal.researchIncludes"}</b></td></tr>
         	<tr valign="top"><td colapse="2">&nbsp;</td></tr>
         	<tr valign="top" id="newTreatmentField">
-        		<td width="40%" class="label">{fieldLabel name="newTreatment" required="true" key="proposal.newTreatment"}</td>
+        		<td width="40%" class="label" title="ການປິ່ນປົວວິທີໃໝ່, ວິທີການປິ່ນປົວ ຫຼື ການທົດລອງບໍ?">[?] {fieldLabel name="newTreatment" required="true" key="proposal.newTreatment"}</td>
         		<td width="60%" class="value">
                 	<input type="radio" name="newTreatment" value="1" {if $newTreatment == "1"} checked="checked" {elseif $riskAssessment.newTreatment == "1"} checked="checked" {/if}  />{translate key="common.yes"}
                     &nbsp;&nbsp;&nbsp;&nbsp;
@@ -1299,7 +1299,7 @@ Are the subject coming from all over Lao?" width="20%" class="label">[?] {fieldL
         		</td>
         	</tr>
         	<tr valign="top" id="bioSamplesField">
-        		<td width="40%" class="label">{fieldLabel name="bioSamples" required="true" key="proposal.bioSamples"}</td>
+        		<td width="40%" class="label" title="ການເກັບຕົວຢ່າງທາງຊີວະວິທະຍາເຊັ່ນ:ຈາກເລືອດ, ການຕັດສິ້ນສ່ວນຈາກເນື້ອເຍື່ອຕ່າງໆຫຼືບໍ?">[?] {fieldLabel name="bioSamples" required="true" key="proposal.bioSamples"}</td>
         		<td width="60%" class="value">
                 	<input type="radio" name="bioSamples" value="1" {if $bioSamples == "1"} checked="checked" {elseif $riskAssessment.bioSamples == "1" } checked="checked" {/if}  />{translate key="common.yes"}
                     &nbsp;&nbsp;&nbsp;&nbsp;
@@ -1307,7 +1307,7 @@ Are the subject coming from all over Lao?" width="20%" class="label">[?] {fieldL
         		</td>
         	</tr>
         	<tr valign="top" id="radiationField">
-        		<td width="40%" class="label">{fieldLabel name="radiation" required="true" key="proposal.radiation"}</td>
+        		<td width="40%" class="label" title="ການນຳໃຊ້ແສງລັງສີຫຼືບໍ?">[?] {fieldLabel name="radiation" required="true" key="proposal.radiation"}</td>
         		<td width="60%" class="value">
                 	<input type="radio" name="radiation" value="1" {if $radiation == "1"} checked="checked" {elseif $riskAssessment.radiation == "1" } checked="checked" {/if}  />{translate key="common.yes"}
                     &nbsp;&nbsp;&nbsp;&nbsp;
@@ -1315,7 +1315,7 @@ Are the subject coming from all over Lao?" width="20%" class="label">[?] {fieldL
         		</td>
         	</tr>
         	<tr valign="top" id="distressField">
-        		<td width="40%" class="label">{fieldLabel name="distress" required="true" key="proposal.distress"}</td>
+        		<td width="40%" class="label" title="ມີອາການເຈັບປວດ ຫຼື ຄວາມໂສກເສົ້າບໍ?">[?] {fieldLabel name="distress" required="true" key="proposal.distress"}</td>
         		<td width="60%" class="value">
                 	<input type="radio" name="distress" value="1" {if $distress == "1"} checked="checked" {elseif $riskAssessment.distress == "1" } checked="checked" {/if}  />{translate key="common.yes"}
                     &nbsp;&nbsp;&nbsp;&nbsp;
@@ -1323,7 +1323,7 @@ Are the subject coming from all over Lao?" width="20%" class="label">[?] {fieldL
         		</td>
         	</tr>
         	<tr valign="top" id="inducementsField">
-        		<td width="40%" class="label">{fieldLabel name="inducements" required="true" key="proposal.inducements"}</td>
+        		<td width="40%" class="label" title="ການຊັກຊວນບໍ?">[?] {fieldLabel name="inducements" required="true" key="proposal.inducements"}</td>
         		<td width="60%" class="value">
                 	<input type="radio" name="inducements" value="1" {if $inducements == "1"} checked="checked" {elseif $riskAssessment.inducements == "1" } checked="checked" {/if}  />{translate key="common.yes"}
                     &nbsp;&nbsp;&nbsp;&nbsp;
@@ -1331,7 +1331,7 @@ Are the subject coming from all over Lao?" width="20%" class="label">[?] {fieldL
         		</td>
         	</tr>
         	<tr valign="top" id="sensitiveInfoField">
-        		<td width="40%" class="label">{fieldLabel name="sensitiveInfo" required="true" key="proposal.sensitiveInfo"}</td>
+        		<td width="40%" class="label" title="ມີການເກັບຂໍ້ມູນທີ່ມີຄວາມລະອຽດອ່ອນບໍ?">[?] {fieldLabel name="sensitiveInfo" required="true" key="proposal.sensitiveInfo"}</td>
         		<td width="60%" class="value">
                 	<input type="radio" name="sensitiveInfo" value="1" {if $sensitiveInfo == "1"} checked="checked" {elseif $riskAssessment.sensitiveInfo == "1" } checked="checked" {/if}  />{translate key="common.yes"}
                     &nbsp;&nbsp;&nbsp;&nbsp;
@@ -1339,7 +1339,7 @@ Are the subject coming from all over Lao?" width="20%" class="label">[?] {fieldL
         		</td>
         	</tr>
         	<tr valign="top" id="deceptionField">
-        		<td width="40%" class="label">{fieldLabel name="deception" required="true" key="proposal.deception"}</td>
+        		<td width="40%" class="label" title="ມີການຫຼອກລວງບໍ?">[?] {fieldLabel name="deception" required="true" key="proposal.deception"}</td>
         		<td width="60%" class="value">
                 	<input type="radio" name="deception" value="1" {if $deception == "1"} checked="checked" {elseif $riskAssessment.deception == "1" } checked="checked" {/if}  />{translate key="common.yes"}
                     &nbsp;&nbsp;&nbsp;&nbsp;
@@ -1347,7 +1347,7 @@ Are the subject coming from all over Lao?" width="20%" class="label">[?] {fieldL
         		</td>
         	</tr>
         	<tr valign="top" id="reproTechnologyField">
-        		<td width="40%" class="label">{fieldLabel name="reproTechnology" required="true" key="proposal.reproTechnology"}</td>
+        		<td width="40%" class="label" title="ເຕັກໂນໂລຢີຊ່ວຍໃນການຈະເລີນພັນບໍ?">[?] {fieldLabel name="reproTechnology" required="true" key="proposal.reproTechnology"}</td>
         		<td width="60%" class="value">
                 	<input type="radio" name="reproTechnology" value="1" {if $reproTechnology == "1"} checked="checked" {elseif $riskAssessment.reproTechnology == "1" } checked="checked" {/if}  />{translate key="common.yes"}
                     &nbsp;&nbsp;&nbsp;&nbsp;
@@ -1355,7 +1355,7 @@ Are the subject coming from all over Lao?" width="20%" class="label">[?] {fieldL
         		</td>
         	</tr>
         	<tr valign="top" id="geneticField">
-        		<td width="40%" class="label">{fieldLabel name="genetic" required="true" key="proposal.genetic"}</td>
+        		<td width="40%" class="label" title="ການສຶກສາທາງພັນທຸກຳຂອງມະນຸດບໍ?">[?] {fieldLabel name="genetic" required="true" key="proposal.genetic"}</td>
         		<td width="60%" class="value">
                 	<input type="radio" name="genetic" value="1" {if $genetic == "1"} checked="checked" {elseif $riskAssessment.genetic == "1" } checked="checked" {/if}  />{translate key="common.yes"}
                     &nbsp;&nbsp;&nbsp;&nbsp;
@@ -1363,7 +1363,7 @@ Are the subject coming from all over Lao?" width="20%" class="label">[?] {fieldL
         		</td>
         	</tr>
         	<tr valign="top" id="stemCellField">
-        		<td width="40%" class="label">{fieldLabel name="stemCell" required="true" key="proposal.stemCell"}</td>
+        		<td width="40%" class="label" title="ການຄົ້ນຄວ້າຈຸລັງຕົ້ນກຳເນີດບໍ?">[?] {fieldLabel name="stemCell" required="true" key="proposal.stemCell"}</td>
         		<td width="60%" class="value">
                 	<input type="radio" name="stemCell" value="1" {if $stemCell == "1"} checked="checked" {elseif $riskAssessment.stemCell == "1" } checked="checked" {/if}  />{translate key="common.yes"}
                     &nbsp;&nbsp;&nbsp;&nbsp;
@@ -1371,7 +1371,7 @@ Are the subject coming from all over Lao?" width="20%" class="label">[?] {fieldL
         		</td>
         	</tr>
         	<tr valign="top" id="biosafetyField">
-        		<td width="40%" class="label">{fieldLabel name="genetics" required="true" key="proposal.biosafety"}</td>
+        		<td width="40%" class="label" title="ປະເດັນຄວາມປອດໄພທາງດ້ານຊີວະພາບບໍ?">[?] {fieldLabel name="biosafety" required="true" key="proposal.biosafety"}</td>
         		<td width="60%" class="value">
                 	<input type="radio" name="biosafety" value="1" {if $biosafety == "1"} checked="checked" {elseif $riskAssessment.biosafety == "1" } checked="checked" {/if}  />{translate key="common.yes"}
                     &nbsp;&nbsp;&nbsp;&nbsp;
@@ -1381,60 +1381,62 @@ Are the subject coming from all over Lao?" width="20%" class="label">[?] {fieldL
         	<tr valign="top"><td colspan="2">&nbsp;</td></tr>
         </table>
         <table width="100%" class="data">
-        	<tr valign="top"><td colspan="2"><b>{translate key="proposal.potentialRisk"}</b></td></tr>
+        	<tr valign="top"><td colspan="2" title="ຄວາມສ່ຽງທີ່ອາດຈະເກີດຂື້ນໄດ້"><b>[?] {translate key="proposal.potentialRisk"}</b></td></tr>
         	<tr valign="top"><td colapse="2">&nbsp;</td></tr>
         	<tr valign="top" id="riskLevelField">
-        		<td width="30%" class="label">{fieldLabel name="riskLevel" required="true" key="proposal.riskLevel"}</td>
+        		<td width="30%" class="label" title="ລະດັບຂອງຄວາມສ່ຽງຢູ່ໃນການຄົ້ນຄວ້າ
+        		Minimal risk means that the probability and magnitude of harm or discomfort anticipated in the research are not greater in and of themselves than those ordinarily encountered in daily life or during the performance of routine physical or psychological examination or tests.
+        		">[?] {fieldLabel name="riskLevel" required="true" key="proposal.riskLevel"}</td>
         		<td width="70%" class="value">
             		<select name="riskLevel" class="selectMenu" id="riskLevel">
             			<option value=""></option>
-            			<option value="1" {if $riskLevel == "1"} selected="selected" {elseif $riskAssessment.riskLevel == "1" } selected="selected" {/if}>{translate key="proposal.riskLevelNoMore"}</option>
-            			<option value="2" {if $riskLevel == "2"} selected="selected" {elseif $riskAssessment.riskLevel == "2" } selected="selected" {/if}>{translate key="proposal.riskLevelMinore"}</option>
-            			<option value="3" {if $riskLevel == "3"} selected="selected" {elseif $riskAssessment.riskLevel == "3" } selected="selected" {/if}>{translate key="proposal.riskLevelMore"}</option>
+            			<option value="1" title="ມີຄວາມສ່ຽງໜ້ອຍທີ່ສຸດ" {if $riskLevel == "1"} selected="selected" {elseif $riskAssessment.riskLevel == "1" } selected="selected" {/if}>[?] {translate key="proposal.riskLevelNoMore"}</option>
+            			<option value="2" title="ມີຄວາມສ່ຽງປານກາງ" {if $riskLevel == "2"} selected="selected" {elseif $riskAssessment.riskLevel == "2" } selected="selected" {/if}>[?] {translate key="proposal.riskLevelMinore"}</option>
+            			<option value="3" title="ມີຄວາມສ່ຽງສູງ" {if $riskLevel == "3"} selected="selected" {elseif $riskAssessment.riskLevel == "3" } selected="selected" {/if}>[?] {translate key="proposal.riskLevelMore"}</option>
 					</select>
 				</td>
         	</tr>
         	<tr valign="top" id="listRisksField">
-                <td width="30%" class="label">{fieldLabel name="listRisks" required="true" key="proposal.listRisks"}</td>
+                <td width="30%" class="label" title="ສະຫຼຸບຫຍໍ້ລາຍການຄວາມສ່ຽງ">[?] {fieldLabel name="listRisks" required="true" key="proposal.listRisks"}</td>
                 <td width="70%" class="value">
                     <textarea name="listRisks" class="textArea" id="listRisks" rows="5" cols="40">{if $listRisks}{$listRisks}{else}{$riskAssessment.listRisks|escape}{/if}</textarea><br/>
                 </td>
             </tr>
             <tr valign="top" id="howRisksMinimizedField">
-                <td width="30%" class="label">{fieldLabel name="howRisksMinimized" required="true" key="proposal.howRisksMinimized"}</td>
+                <td width="30%" class="label" title="ຄວາມສ່ຽງຈະຖືກແກ້ໄຂແນວໃດ">[?] {fieldLabel name="howRisksMinimized" required="true" key="proposal.howRisksMinimized"}</td>
                 <td width="70%" class="value">
                     <textarea name="howRisksMinimized" class="textArea" id="howRisksMinimized" rows="5" cols="40">{if $howRisksMinimized}{$listRisks}{else}{$riskAssessment.howRisksMinimized|escape}{/if}</textarea><br/>
                 </td>
             </tr>
             <tr valign="top" id="riskApplyToField">
-                <td width="30%" class="label">{fieldLabel name="riskApplyTo" key="proposal.riskApplyTo"}</td>
+                <td width="30%" class="label" title="ນຳຄວາມສ່ຽງໃຫ້ແກ່:">[?] {fieldLabel name="riskApplyTo" key="proposal.riskApplyTo"}</td>
                 <td width="70%" class="value">
-                	<input type="checkbox" name="risksToTeam" value="1" {if $risksToTeam == "1"} checked="checked" {elseif $riskAssessment.risksToTeam == '1'} checked="checked" {/if}/>{translate key="proposal.researchTeam"}<br/>
-                	<input type="checkbox" name="risksToSubjects" value="1" {if $risksToSubjects == "1"} checked="checked" {elseif $riskAssessment.risksToSubjects == '1'} checked="checked" {/if}/>{translate key="proposal.researchSubjects"}<br/>
-                	<input type="checkbox" name="risksToCommunity" value="1" {if $risksToCommunity == "1"} checked="checked" {elseif $riskAssessment.risksToCommunity == '1'} checked="checked" {/if}/>{translate key="proposal.widerCommunity"}
+                	<input type="checkbox" name="risksToTeam" value="1" {if $risksToTeam == "1"} checked="checked" {elseif $riskAssessment.risksToTeam == '1'} checked="checked" {/if}/>{translate key="proposal.researchTeam"} / ທີມນັກຄົ້ນຄວ້າ<br/>
+                	<input type="checkbox" name="risksToSubjects" value="1" {if $risksToSubjects == "1"} checked="checked" {elseif $riskAssessment.risksToSubjects == '1'} checked="checked" {/if}/>{translate key="proposal.researchSubjects"} / ຫົວຂໍ້ຂອງການຄົ້ນຄວ້າ<br/>
+                	<input type="checkbox" name="risksToCommunity" value="1" {if $risksToCommunity == "1"} checked="checked" {elseif $riskAssessment.risksToCommunity == '1'} checked="checked" {/if}/>{translate key="proposal.widerCommunity"} / ຊຸມຊົນ
                 </td>
             </tr>
         	<tr valign="top"><td colapse="2">&nbsp;</td></tr>
         </table>
         <table width="100%" class="data">
-        	<tr valign="top"><td colspan="2"><b>{translate key="proposal.potentialBenefits"}</b></td></tr>
+        	<tr valign="top"><td colspan="2" title="ຜົນປະໂຫຍດຕ່າງໆທີ່ຈະໄດ້ຮັບ"><b>[?] {translate key="proposal.potentialBenefits"}</b></td></tr>
         	<tr valign="top"><td colapse="2">&nbsp;</td></tr>
            	<tr valign="top" id="benefitsFromTheProjectField">
-                <td width="30%" class="label">{fieldLabel name="benefitsFromTheProject" key="proposal.benefitsFromTheProject"}</td>
+                <td width="30%" class="label" title="ຜົນປະໂຫຍດຈາກການເຮັດການຄົ້ນຄວ້າ:">[?] {fieldLabel name="benefitsFromTheProject" key="proposal.benefitsFromTheProject"}</td>
                 <td width="70%" class="value">
-                	<input type="checkbox" name="benefitsToParticipants" value="1" {if $benefitsToParticipants == "1"} checked="checked" {elseif $riskAssessment.benefitsToParticipants == '1'} checked="checked" {/if}/>{translate key="proposal.directBenefits"}<br/>
-                	<input type="checkbox" name="knowledgeOnCondition" value="1" {if $knowledgeOnCondition == "1"} checked="checked" {elseif $riskAssessment.knowledgeOnCondition == '1'} checked="checked" {/if}/>{translate key="proposal.participantCondition"}<br/>
-                	<input type="checkbox" name="knowledgeOnDisease" value="1" {if $knowledgeOnDisease == "1"} checked="checked" {elseif $riskAssessment.knowledgeOnDisease == '1'} checked="checked" {/if}/>{translate key="proposal.diseaseOrCondition"}
+                	<input type="checkbox" name="benefitsToParticipants" value="1" {if $benefitsToParticipants == "1"} checked="checked" {elseif $riskAssessment.benefitsToParticipants == '1'} checked="checked" {/if}/>{translate key="proposal.directBenefits"} / ນຳຜົນປະໂຫຍດໂດຍກົງໃຫ້ແກ່ຜູ້ເຂົ້າຮ່ວມການສຶກສາ<br/>
+                	<input type="checkbox" name="knowledgeOnCondition" value="1" {if $knowledgeOnCondition == "1"} checked="checked" {elseif $riskAssessment.knowledgeOnCondition == '1'} checked="checked" {/if}/>{translate key="proposal.participantCondition"} / ເປັນຂໍ້ມູນກ່ຽວກັບສະພາບຂອງຜູ້ເຂົ້າຮ່ວມການສຶກສາ ຫຼື ຄວາມຫຍຸຸ້ງຍາກຕ່າງໆ<br/>
+                	<input type="checkbox" name="knowledgeOnDisease" value="1" {if $knowledgeOnDisease == "1"} checked="checked" {elseif $riskAssessment.knowledgeOnDisease == '1'} checked="checked" {/if}/>{translate key="proposal.diseaseOrCondition"} / ເປັນຂໍ້ມູນກ່ຽວກັບພະຍາດ ຫຼື ເງື່ອນໄຂທີ່ກຳລັງສຶກສາ
                 </td>
             </tr>
         	<tr valign="top" id="conflictOfInterestField">
-        		<td title="{translate key="proposal.conflictOfInterestInstruct"}" width="30%" class="label">{fieldLabel name="conflictOfInterest" required="true" key="proposal.conflictOfInterest"}</td>
+        		<td title="{translate key="proposal.conflictOfInterestInstruct"}" width="30%" class="label">[?] {fieldLabel name="conflictOfInterest" required="true" key="proposal.conflictOfInterest"}</td>
         		<td width="70%" class="value">
                 	<input type="radio" name="conflictOfInterest" value="1" {if $conflictOfInterest == "1"} checked="checked" {elseif  $riskAssessment.conflictOfInterest == "1" } checked="checked" {/if}  />{translate key="common.yes"}
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <input type="radio" name="conflictOfInterest" value="2" {if $conflictOfInterest == "2"} checked="checked" {elseif  $riskAssessment.conflictOfInterest == "2" } checked="checked" {/if} />{translate key="common.no"}  
                     &nbsp;&nbsp;&nbsp;&nbsp;
-                    <input type="radio" name="conflictOfInterest" value="3" {if $conflictOfInterest == "3"} checked="checked" {elseif  $riskAssessment.conflictOfInterest == "3" } checked="checked" {/if} />{translate key="common.notSure"}
+                    <input type="radio" name="conflictOfInterest" value="3" {if $conflictOfInterest == "3"} checked="checked" {elseif  $riskAssessment.conflictOfInterest == "3" } checked="checked" {/if} />{translate key="common.notSure"} / ບໍ່ແນ່ໃຈ
         		</td>
         	</tr>
         </table>

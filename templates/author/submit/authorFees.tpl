@@ -8,7 +8,7 @@
  *
  *}
 <div id="authorFees">
-<h3>{*translate key="payment.authorFees"*}Proposal Review Fee</h3>
+<h3>{*translate key="payment.authorFees"*}Proposal Review Fee / ຄ່າທຳນຽມ ຂອງການພິຈາລະນາ ບົດສະເໜີຄົ້ນຄວ້າ</h3>
 {*<p>{translate key="about.authorFeesMessage"}</p>*}
 {if $currentJournal->getSetting('submissionFeeEnabled')}
 	<p>{$currentJournal->getLocalizedSetting('submissionFeeName')|escape}:
