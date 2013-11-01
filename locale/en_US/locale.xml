@@ -213,10 +213,10 @@
         <message key="proposal.informedConsentIncluded">Informed Consent Included?</message>
         <message key="proposal.dataCollectionQuestionnairesIncluded">Data Collection Questionnaires Included?</message>
         <message key="proposal.ethicalClearanceEnclosed">Ethical Clearance Enclosed?</message>
-        <message key="proposal.reviewedByOtherErc">Proposal reviewed by other ERC</message>
+        <message key="proposal.reviewedByOtherErc">Proposal reviewed by other ethics committee</message>
             <!-- Added by EL on April 17, 2012-->
             <message key="proposal.rtoOffice">Office</message>
-        <message key="proposal.otherErcDecision">If yes, other ERC Decision </message>
+        <message key="proposal.otherErcDecision">Other committee decision </message>
         <message key="proposal.nameOfIndustry">If yes, please specify:</message>
         <message key="proposal.proofOfRegistration">Proof Of Registration Included? </message>
         <message key="proposal.dataCollection">Data Collection: </message>
