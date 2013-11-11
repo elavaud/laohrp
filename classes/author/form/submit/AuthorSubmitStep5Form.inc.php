@@ -275,7 +275,7 @@ class AuthorSubmitStep5Form extends AuthorSubmitForm {
 			//unset($sectionEditor);
 		}
                 
-                if ($mainSectionEditor) $sectionEditor =& $mainSectionEditor;
+                if (isset($mainSectionEditor)) $sectionEditor =& $mainSectionEditor;
                 
 		if ($mail->isEnabled()) {
 			$mail->addRecipient($user->getEmail(), $user->getFullName());
