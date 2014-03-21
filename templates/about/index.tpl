@@ -39,7 +39,7 @@
 <li>&#187; {*<a title="Standard Operating Procedures (lao)" href="/laohrp/public/Lao_IRBs_HR_SOP_lao.pdf" target="_blank">*}Standard Operating Procedures (lao) - Coming soon...<br />{*</a>*}</li>
 <li>&#187; {*<a title="Standard Operating Procedures (engl)" href="/laohrp/public/WPRO_ERC_SOP_Final2010_web.pdf" target="_blank">*}Standard Operating Procedures (engl) - Coming soon...<br />{*</a>*}</li>
 <li>&#187; {*<a title="Userguide for investigators (engl)" href="/laohrp/public/Lao_IRBs_HR_Investigator_Userguide_lao.pdf" target="_blank">*}Userguide for investigators (lao) - Coming soon...<br />{*</a>*}</li>
-<li>&#187; <a title="Userguide for investigators (lao)" href="/laohrp/public/LaoHRP_Userguide_Investigator_engl.pdf" target="_blank">Userguide for investigators (engl)<br /></a></li>
+<li>&#187; <a title="Userguide for investigators (lao)" href="/public/LaoHRP_Userguide_Investigator_engl.pdf" target="_blank">Userguide for investigators (engl)<br /></a></li>
 </ul>
 </div>
 
