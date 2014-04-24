@@ -536,11 +536,14 @@ class ArticleFileManager extends FileManager {
 		/** Start edit, MSB Sept29, 2011
 		 *  If whoId is already created, use it in naming the file (whoId.type.revision.dateuploaded.extension)
 		 *  Else, use the default naming scheme (articleId.fileId.revision.type.extension)
+                 * 
+                 *  EDIT: Not for supp file: If resubmission (so proposalId already created) 2 supp files might be uploaded during the same minute 
+                 *  -> the second supp file will overwrite the first one (but the entry in the database will stay)
+                 *  Anyway, the supp files are renamed when finishing the (re)submission of the proposal by the renameFile function of this class
 		 **/
 		$whoId = $this->article->getWhoId($this->article->getLocale());
-		$suppFileDao =& DAORegistry::getDAO('SuppFileDAO');
 		 
-		if($whoId!=null || $whoId!=''){
+		if(($whoId!=null || $whoId!='') && $articleFile->getType() != 'supp'){
 			
 			$date = new DateTime($articleFile->getDateUploaded());
 			$dateUploaded = $date->format('MdY-g:ia');
